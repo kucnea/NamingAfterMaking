@@ -63,10 +63,7 @@
                 <div class="nav-menu">
                     <ul class="nav-menu-inner">
                         <li>
-                            <a class="" href="home.html">Home</a>
-                        </li>
-                        <li>
-                            <a class="" href="about-us.html">About Us</a>                         
+                            <a class="" href="ingame/gamescreen">게임하기</a>
                         </li>
                         <li>
                             <a class="menu-has-sub">Artists <i class="fa fa-angle-down"></i></a>
@@ -80,6 +77,9 @@
                                 </li>
                             </ul>
                             <!-- End Dropdown -->
+                        </li>
+                        <li>
+                            <a class="" href="introduce/nam">게임소개</a>                         
                         </li>
                         <li>
                             <a class="menu-has-sub">Events <i class="fa fa-angle-down"></i></a>
@@ -104,7 +104,7 @@
                             <a class="" href="login.html">Sign In</a>                            
                         </li>
 						<li>
-                            <a class="btn btn-md btn-black join-btn" href="join-gth.html">Join GTH</a>                            
+                            <a class="btn btn-md btn-black join-btn" href="join/page">Join N.A.M.</a>                            
                         </li>
                     </ul>
                 </div>
