@@ -84,54 +84,17 @@
                 <!-- End Mobile Navbar Icon -->
 
                 <!-- Navbar Navigation -->
-                <div class="nav-menu">
-                    <ul class="nav-menu-inner">
-                        <li>
-                            <a class="" href="/home.html">Home</a>
-                        </li>
-                        <li>
-                            <a class="" href="/about-us.html">About Us</a>                         
-                        </li>
-                        <li>
-                            <a class="menu-has-sub">Artists <i class="fa fa-angle-down"></i></a>
-							<!-- Dropdown -->
-                            <ul class="sub-dropdown dropdown">
-								<li>
-                                    <a href="/artist-directory.html">Artist Directory</a>
-                                </li>
-                                <li>
-                                    <a href="/institutes-directory.html">Training Institutes</a>
-                                </li>
-                            </ul>
-                            <!-- End Dropdown -->
-                        </li>
-                        <li>
-                            <a class="menu-has-sub">Events <i class="fa fa-angle-down"></i></a>
-							<!-- Dropdown -->
-                            <ul class="sub-dropdown dropdown">
-								<li>
-                                    <a href="/upcoming-competitions.html">Competitions & Auditions</a>
-                                </li>
-                                <li>
-                                    <a href="/events-calendar.html">Events Calendar</a>
-                                </li>
-								<li>
-                                    <a href="/past-events.html">Past Events Gallery</a>
-                                </li>
-                            </ul>
-                            <!-- End Dropdown -->
-                        </li>
-                        <li>
-                            <a class="" href="/contact-us.html">Contact Us</a>
-                        </li>
-                        <li>
-                            <a class="" href="/login.html">Sign In</a>                            
-                        </li>
-						<li>
-                            <a class="btn btn-md btn-black join-btn" href="/join-gth.html">Join GTH</a>                            
-                        </li>
-                    </ul>
-                </div>
+                                
+                <!-- menu -->
+                <!-- menu -->
+                <!-- menu -->
+                
+                <tiles:insertAttribute name="menu"/>
+                
+                <!-- menu -->
+                <!-- menu -->
+                <!-- menu -->
+                
                 <!-- End Navbar Navigation -->
 
             </div>

@@ -1,9 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>  
 
 <!DOCTYPE html>
 <html>
 
+<head>
+    <meta charset="utf-8" />
+    <title>Global Talent House - hub for creative minds</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Vrinda Maru Kansal">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+    <!-- Favicone Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="apple-touch-icon" href="img/favicon.png">
+
+    <!-- CSS -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="css/ionicons.css" rel="stylesheet" type="text/css" />
+    <link href="css/plugin/sidebar-menu.css" rel="stylesheet" type="text/css" />
+    <link href="css/plugin/animate.css" rel="stylesheet" type="text/css" />
+    <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <!-- SLIDER REVOLUTION CSS SETTINGS -->
+    <link href="plugin/rs-plugin/css/settings.css" rel="stylesheet" type="text/css" media="screen" />
+
+</head>
 
 <body style="overflow:hidden;">
 
@@ -60,54 +87,17 @@
                 <!-- End Mobile Navbar Icon -->
 
                 <!-- Navbar Navigation -->
-                <div class="nav-menu">
-                    <ul class="nav-menu-inner">
-                        <li>
-                            <a class="" href="ingame/gamescreen">게임하기</a>
-                        </li>
-                        <li>
-                            <a class="menu-has-sub">Artists <i class="fa fa-angle-down"></i></a>
-							<!-- Dropdown -->
-                            <ul class="sub-dropdown dropdown">
-								<li>
-                                    <a href="artist-directory.html">Artist Directory</a>
-                                </li>
-                                <li>
-                                    <a href="institutes-directory.html">Training Institutes</a>
-                                </li>
-                            </ul>
-                            <!-- End Dropdown -->
-                        </li>
-                        <li>
-                            <a class="" href="introduce/nam">게임소개</a>                         
-                        </li>
-                        <li>
-                            <a class="menu-has-sub">Events <i class="fa fa-angle-down"></i></a>
-							<!-- Dropdown -->
-                            <ul class="sub-dropdown dropdown">
-								<li>
-                                    <a href="upcoming-competitions.html">Competitions & Auditions</a>
-                                </li>
-                                <li>
-                                    <a href="events-calendar.html">Events Calendar</a>
-                                </li>
-								<li>
-                                    <a href="past-events.html">Past Events Gallery</a>
-                                </li>
-                            </ul>
-                            <!-- End Dropdown -->
-                        </li>
-                        <li>
-                            <a class="" href="contact-us.html">Contact Us</a>
-                        </li>
-                        <li>
-                            <a class="" href="login.html">Sign In</a>                            
-                        </li>
-						<li>
-                            <a class="btn btn-md btn-black join-btn" href="join/page">Join N.A.M.</a>                            
-                        </li>
-                    </ul>
-                </div>
+                
+                <!-- menu -->
+                <!-- menu -->
+                <!-- menu -->
+                
+                <tiles:insertAttribute name="menu"/>
+                
+                <!-- menu -->
+                <!-- menu -->
+                <!-- menu -->
+                
                 <!-- End Navbar Navigation -->
 
             </div>
