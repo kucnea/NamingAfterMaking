@@ -59,7 +59,7 @@
 
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="/index.html">
+                    <a href="index.html">
                         <img class="logo-light" src="/img/gth-logo-white.png" alt="Global Talent House" />
                         <img class="logo-dark" src="/img/gth-logo-black.png" alt="Global Talent House" />
                     </a>
@@ -88,20 +88,20 @@
                 <div class="nav-menu">
                     <ul class="nav-menu-inner">
                         <li>
-                            <a class="" href="/home.html">Home</a>
+                            <a class="" href="home.html">Home</a>
                         </li>
                         <li>
-                            <a class="" href="/about-us.html">About Us</a>                         
+                            <a class="" href="about-us.html">About Us</a>                         
                         </li>
                         <li>
                             <a class="menu-has-sub">Artists <i class="fa fa-angle-down"></i></a>
 							<!-- Dropdown -->
                             <ul class="sub-dropdown dropdown">
 								<li>
-                                    <a href="/artist-directory.html">Artist Directory</a>
+                                    <a href="artist-directory.html">Artist Directory</a>
                                 </li>
                                 <li>
-                                    <a href="/institutes-directory.html">Training Institutes</a>
+                                    <a href="institutes-directory.html">Training Institutes</a>
                                 </li>
                             </ul>
                             <!-- End Dropdown -->
@@ -111,25 +111,25 @@
 							<!-- Dropdown -->
                             <ul class="sub-dropdown dropdown">
 								<li>
-                                    <a href="/upcoming-competitions.html">Competitions & Auditions</a>
+                                    <a href="upcoming-competitions.html">Competitions & Auditions</a>
                                 </li>
                                 <li>
-                                    <a href="/events-calendar.html">Events Calendar</a>
+                                    <a href="events-calendar.html">Events Calendar</a>
                                 </li>
 								<li>
-                                    <a href="/past-events.html">Past Events Gallery</a>
+                                    <a href="past-events.html">Past Events Gallery</a>
                                 </li>
                             </ul>
                             <!-- End Dropdown -->
                         </li>
                         <li>
-                            <a class="" href="/contact-us.html">Contact Us</a>
+                            <a class="" href="contact-us.html">Contact Us</a>
                         </li>
                         <li>
-                            <a class="" href="/login.html">Sign In</a>                            
+                            <a class="" href="login.html">Sign In</a>                            
                         </li>
 						<li>
-                            <a class="btn btn-md btn-black join-btn" href="/join-gth.html">Join GTH</a>                            
+                            <a class="btn btn-md btn-black join-btn" href="join-gth.html">Join GTH</a>                            
                         </li>
                     </ul>
                 </div>
@@ -149,7 +149,7 @@
 					<h6>Hub for creative minds</h6>
 					<div class="spacer-15"></div>
                     <div class="page-breadcrumb">
-                        <a href="/index.html">Home</a>/<span>About</span>
+                        <a href="index.html">Home</a>/<span>About</span>
                     </div>
                 </div>
             </div>
@@ -363,6 +363,7 @@
 
         <!-- End CONTENT ------------------------------------------------------------------------------>
 
+           
         <!-- FOOTER -->
         <!-- FOOTER -->
         <!-- FOOTER -->
@@ -385,7 +386,7 @@
 
     <!-- JS -->
 
-    <script ="/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="/js/jquery-1.11.2.min.js" type="text/javascript"></script>
     <script src="/js/jquery-ui.min.js" type="text/javascript"></script>
     <script src="/js/plugin/jquery.easing.js" type="text/javascript"></script>
     <script src="/js/bootstrap.min.js" type="text/javascript"></script>
