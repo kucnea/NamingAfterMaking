@@ -90,7 +90,7 @@
                 <div class="row title">
                     <h2 class="h2">Login</h2>
                     <div class="page-breadcrumb">
-                        <a href="/index.html">Home</a>/<span>Login</span>
+                        <a href="/index">Home</a>/<span>Login</span>
                     </div>
                 </div>
             </div>

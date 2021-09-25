@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class InGameController {
 
 	@RequestMapping("gamescreen")
-	public String index() {	//url과 method명을 맞추는 것이 관리에 용이
+	public String gamescreen() {	//url과 method명을 맞추는 것이 관리에 용이
 	
 		return "ingame.gameScreen";
 	}

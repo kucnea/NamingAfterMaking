@@ -57,26 +57,32 @@
                             <a class="" href="/introduce/nam">게임소개</a>                         
                         </li>
                         <li>
-                            <a class="menu-has-sub">Events <i class="fa fa-angle-down"></i></a>
+                            <a class="" href="/gong/board">공략게시판</a>
+                        </li>
+                        <li>
+                            <a class="" href="/rank/page">랭킹페이지</a>
+                        </li>
+                        <li>
+                            <a class="" href="/free/board">자유게시판</a>
+                        </li>
+                        <li>
+                            <a class="" href="/realtime/chat">실시간 채팅방</a>
+                        </li>
+                        <li>
+                            <a class="menu-has-sub">To 개발자<i class="fa fa-angle-down"></i></a>
 							<!-- Dropdown -->
                             <ul class="sub-dropdown dropdown">
 								<li>
-                                    <a href="upcoming-competitions.html">Competitions & Auditions</a>
+                                    <a href="/todeveloper/introduce">개발자 소개</a>
                                 </li>
                                 <li>
-                                    <a href="events-calendar.html">Events Calendar</a>
+                                    <a href="/todeveloper/reportboard">버그제보, 건의게시판</a>
                                 </li>
 								<li>
-                                    <a href="past-events.html">Past Events Gallery</a>
+                                    <a href="/todeveloper/mtm">일대일 상담</a>
                                 </li>
                             </ul>
                             <!-- End Dropdown -->
-                        </li>
-                        <li>
-                            <a class="" href="contact-us.html">Contact Us</a>
-                        </li>
-                        <li>
-                            <a class="" href="login.html">Sign In</a>                            
                         </li>
 						<li>
                             <a class="btn btn-md btn-black join-btn" href="/join/page">Join N.A.M.</a>                            
