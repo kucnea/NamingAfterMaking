@@ -7,18 +7,18 @@
                 <!--Footer Info -->
                 <div class="row footer-info mb-30">
                     <div class="col-md-6 col-sm-12 col-xs-12 mb-sm-30 text-sm-left">
-                        <p class="mb-xs-0">Our ante tincidunt tempus, Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros.</p>
+                        <p class="mb-xs-0">It's a small ability, but I made it with confidence in the result. It is a one-person service, so even if the speed may be slow, I will do our best to serve you without losing faith. Hope you have a pleasant experience.</p>
                         <ul class="link-small">
-                            <li><a href="mailto:yourname@domain.com"><i class="fa fa-envelope-o left"></i>yourname@domain.com</a></li>
-                            <li><a><i class="fa fa-phone left"></i>+40 (0) 012 345 6789</a></li>
+                            <li><a href="mailto:yourname@domain.com"><i class="fa fa-envelope-o left"></i>bbkucnea@gmail.com</a></li>
+                            <li><a><i class="fa fa-phone left"></i>+82 (010) ----</a></li>
                         </ul>
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12 text-right text-sm-left">
                         <ul class="link">
-                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                            <li><a href="terms-and-conditions.html">Terms</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                            <li><a href="contact-us.html">Contact</a></li>
+                            <li><a href="/service/privacypolicy">Privacy Policy</a></li>
+                            <li><a href="/service/tnc">Terms</a></li>
+                            <li><a href="/service/faq">FAQ</a></li>
+                            <li><a href="/service/contact">Contact</a></li>
                         </ul>
 						<div class="spacer-30"></div>
 						<ul class="social">
@@ -39,8 +39,8 @@
             <div class="copyright ptb-15">
                 <div class="container">
 					<div class="row">
-						<div class="col-sm-6 text-left text-sm-left">© 2016 <a href="index.html"><b>Global Talent House</b></a>. All Rights Reserved.</div>
-                        <div class="col-sm-6 text-right text-sm-left">Website  by <a target="_blank" href="http://vrinmkansal.com/"><b>Vrinda Maru Kansal</b></a></div>
+						<div class="col-sm-6 text-left text-sm-left">© 2021 <a href="/index"><b>Lee Min HO</b></a>. All Rights Reserved.</div>
+                        <div class="col-sm-6 text-right text-sm-left">Website  by <a target="_blank" href="/todeveloper/introduce"><b>Lee Min Ho</b></a></div>
 					</div>
                 </div>
             </div>
