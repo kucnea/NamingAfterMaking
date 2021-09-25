@@ -169,7 +169,7 @@
                             <div class="contact-icon-left"><i class="ion ion-ios-people"></i></div>
                             <h6>Contact Developer</h6>
                             <p>
-                                <span>Lee Min Ho - https://open.kakao.com/me/dalmoo</span>
+                                <span>Lee Min Ho - <a href="https://open.kakao.com/me/dalmoo"> 오픈 카톡 프로필</a></span>
                             </p>
                         </div>
 						
