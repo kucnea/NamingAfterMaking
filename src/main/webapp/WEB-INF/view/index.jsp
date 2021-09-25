@@ -60,30 +60,12 @@
             <div class="header-inner">
 
                 <!-- Logo -->
-                <div class="logo">
-                    <a href="index.html">
-                        <img class="logo-light" src="img/gth-logo-white.png" alt="Global Talent House" />
-                        <img class="logo-dark" src="img/gth-logo-black.png" alt="Global Talent House" />
-                    </a>
-                </div>
                 <!-- End Logo -->
 
                 <!-- Rightside Menu (Search icon) -->
-                <div class="side-menu-btn">
-                    <ul>
-                        <!-- Search Icon -->
-                        <li class="">
-                            <a class="search-overlay-menu-btn header-icon"><i class="fa fa-search"></i></a>
-                        </li>
-                        <!-- End Search Icon -->
-                    </ul>
-                </div>
                 <!-- End Rightside Menu -->
 
                 <!-- Mobile Navbar Icon -->
-                <div class="nav-mobile nav-bar-icon">
-                    <span></span>
-                </div>
                 <!-- End Mobile Navbar Icon -->
 
                 <!-- Navbar Navigation -->

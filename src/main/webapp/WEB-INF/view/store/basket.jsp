@@ -14,18 +14,18 @@
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
     <!-- Favicone Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-    <link rel="icon" type="image/png" href="img/favicon.png">
-    <link rel="apple-touch-icon" href="img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
 
     <!-- CSS -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
-    <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
-    <link href="css/ionicons.css" rel="stylesheet" type="text/css" />
-    <link href="css/plugin/sidebar-menu.css" rel="stylesheet" type="text/css" />
-    <link href="css/plugin/animate.css" rel="stylesheet" type="text/css" />
-    <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="/css/ionicons.css" rel="stylesheet" type="text/css" />
+    <link href="/css/plugin/sidebar-menu.css" rel="stylesheet" type="text/css" />
+    <link href="/css/plugin/animate.css" rel="stylesheet" type="text/css" />
+    <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -56,30 +56,12 @@
             <div class="header-inner">
 
                 <!-- Logo -->
-                <div class="logo">
-                    <a href="index.html">
-                        <img class="logo-light" src="img/gth-logo-white.png" alt="Global Talent House" />
-                        <img class="logo-dark" src="img/gth-logo-black.png" alt="Global Talent House" />
-                    </a>
-                </div>
                 <!-- End Logo -->
 
                 <!-- Rightside Menu (Search icon) -->
-                <div class="side-menu-btn">
-                    <ul>
-                        <!-- Search Icon -->
-                        <li class="">
-                            <a class="search-overlay-menu-btn header-icon"><i class="fa fa-search"></i></a>
-                        </li>
-                        <!-- End Search Icon -->
-                    </ul>
-                </div>
                 <!-- End Rightside Menu -->
 
                 <!-- Mobile Navbar Icon -->
-                <div class="nav-mobile nav-bar-icon">
-                    <span></span>
-                </div>
                 <!-- End Mobile Navbar Icon -->
 
                 <!-- Navbar Navigation -->
@@ -189,7 +171,7 @@
 				</div>	
 				<div class="row mtb-30">
 					<div class="item-box col-md-4 col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2 mb-sm-30">
-						<a href="artist-profile.html"><img alt="1" src="img/portfolio/1.jpg" class="item-container"></a>                           
+						<a href="artist-profile.html"><img alt="1" src="/img/portfolio/1.jpg" class="item-container"></a>                           
 					</div>
 					<div class="col-md-8 col-sm-8 col-xs-12">
 						<a href="artist-profile.html"><h6>John Doe</h6></a>
@@ -205,7 +187,7 @@
 				<hr>
 				<div class="row mtb-30">
 					<div class="item-box col-md-4 col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2 mb-sm-30">
-						<a href="artist-profile.html"><img alt="1" src="img/portfolio/1.jpg" class="item-container"></a>                            
+						<a href="artist-profile.html"><img alt="1" src="/img/portfolio/1.jpg" class="item-container"></a>                            
 					</div>
 					<div class="col-md-8 col-sm-8 col-xs-12">
 						<a href="artist-profile.html"><h6>John Doe</h6></a>
@@ -249,25 +231,25 @@
 
     <!-- JS -->
 
-    <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
-    <script src="js/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="js/plugin/jquery.easing.js" type="text/javascript"></script>
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/plugin/jquery.flexslider.js" type="text/javascript"></script>
-    <script src="js/plugin/jquery.fitvids.js" type="text/javascript"></script>
-    <script src="js/plugin/jquery.viewportchecker.js" type="text/javascript"></script>
-    <script src="js/plugin/jquery.stellar.min.js" type="text/javascript"></script>
-    <script src="js/plugin/wow.min.js" type="text/javascript"></script>
-    <script src="js/plugin/jquery.colorbox-min.js" type="text/javascript"></script>	
-    <script src="js/plugin/owl.carousel.min.js" type="text/javascript"></script>
-    <script src="js/plugin/isotope.pkgd.min.js" type="text/javascript"></script>
-    <script src="js/plugin/masonry.pkgd.min.js" type="text/javascript"></script>
-    <script src="js/plugin/imagesloaded.pkgd.min.js" type="text/javascript"></script>
-    <script src="js/plugin/jquery.fs.tipper.min.js" type="text/javascript"></script>
-    <script src="js/plugin/mediaelement-and-player.min.js"></script>
-    <script src="js/plugin/sidebar-menu.js" type="text/javascript"></script>
-    <script src="js/theme.js" type="text/javascript"></script>
-    <script src="js/navigation.js" type="text/javascript"></script>
+    <script src="/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="/js/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="/js/plugin/jquery.easing.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/js/plugin/jquery.flexslider.js" type="text/javascript"></script>
+    <script src="/js/plugin/jquery.fitvids.js" type="text/javascript"></script>
+    <script src="/js/plugin/jquery.viewportchecker.js" type="text/javascript"></script>
+    <script src="/js/plugin/jquery.stellar.min.js" type="text/javascript"></script>
+    <script src="/js/plugin/wow.min.js" type="text/javascript"></script>
+    <script src="/js/plugin/jquery.colorbox-min.js" type="text/javascript"></script>	
+    <script src="/js/plugin/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="/js/plugin/isotope.pkgd.min.js" type="text/javascript"></script>
+    <script src="/js/plugin/masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/js/plugin/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <script src="/js/plugin/jquery.fs.tipper.min.js" type="text/javascript"></script>
+    <script src="/js/plugin/mediaelement-and-player.min.js"></script>
+    <script src="/js/plugin/sidebar-menu.js" type="text/javascript"></script>
+    <script src="/js/theme.js" type="text/javascript"></script>
+    <script src="/js/navigation.js" type="text/javascript"></script>
 </body>
 </html>
 
