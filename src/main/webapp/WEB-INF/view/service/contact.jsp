@@ -26,7 +26,7 @@
     <link href="/css/plugin/sidebar-menu.css" rel="stylesheet" type="text/css" />
     <link href="/css/plugin/animate.css" rel="stylesheet" type="text/css" />
     <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-
+    
 </head>
 
 <body>
@@ -144,15 +144,13 @@
                             <div class="contact-icon-left"><i class="ion ion-ios-location"></i></div>
                             <h6>Office Location</h6>
 							<div class="col-md-6">
-							<strong>Mumbai</strong>
+							<strong>None</strong>
                             <p>
-                                37, Ground Floor, Shreeji Chambers,<br> 
-								Calicut Street, Fort Market, <br>
-								Mumbai - 400001
+                                If you want, you can support me. Plz Contact to me.
                             </p>
-							<p><i class="fa fa-phone left"></i> 022 22610754</p>
+							<p><i class="fa fa-phone left"></i> 010 -----</p>
 							</div>
-							<div class="col-md-6">
+							<!-- <div class="col-md-6">
 							<strong>Pune</strong>
                             <p>
                                 The Mesh, C-4/5, Rakshalekha Society,<br>
@@ -160,20 +158,18 @@
 								Pune - 411001
                             </p>
 							<p><i class="fa fa-phone left"></i> 020- 41245252</p>
-							</div>
+							</div> -->
 							<div class="clearfix"></div>
                         </div>
 						<div class="contact-box-left mb-45">
                             <div class="contact-icon-left"><i class="fa fa-envelope-o left"></i></div>
-                            <h6> yourname@domain.com</h6>          
+                            <h6> bbkucnea@gmail.com</h6>          
                         </div>
                         <div class="contact-box-left mb-45">
                             <div class="contact-icon-left"><i class="ion ion-ios-people"></i></div>
-                            <h6>Contact People</h6>
+                            <h6>Contact Developer</h6>
                             <p>
-                                <span>Mr. John Doe - 09323637353</span>
-								<br/>
-								<span>Mrs. Jane Doe - 07498123098</span>
+                                <span>Lee Min Ho - https://open.kakao.com/me/dalmoo</span>
                             </p>
                         </div>
 						
@@ -181,6 +177,7 @@
 
                             <h6>Follow Us</h6>
                             <ul class="list-none social">
+                                <li><a href="https://open.kakao.com/me/dalmoo" target="_blank"><img src="/img/icon/kakaoIcon.png" width=17px height=17px></a></li>
                                 <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="https://instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a></li>
                                 <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
