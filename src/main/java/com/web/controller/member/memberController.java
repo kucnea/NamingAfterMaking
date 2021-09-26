@@ -19,5 +19,11 @@ public class memberController {
 		return "member.join";
 	}
 	
+	@RequestMapping("appointment")
+	public String appointment() {	//url과 method명을 맞추는 것이 관리에 용이
+		
+		return "member.memberAppointment";
+	}
+	
 	
 }
