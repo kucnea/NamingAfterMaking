@@ -88,9 +88,9 @@
         <section class="inner-intro dark-bg overlay-dark">
             <div class="container">
                 <div class="row title">
-                    <h2 class="h2">Login</h2>
+                    <h2 class="h2">Join</h2>
                     <div class="page-breadcrumb">
-                        <a href="/index">Home</a>/<span>Login</span>
+                        <a href="/index">Home</a>/<span>JOIN</span>
                     </div>
                 </div>
             </div>
@@ -106,8 +106,12 @@
                             <h4> 함께할 준비 됐나요? </h4>
                             <form>
                                 <div class="form-field-wrapper">
-                                    <label for="login-email">당신의 용사의 Id를 정해주세요. <p style="font-size:0.8em;";>( 해당 코드네임 규칙은 한글, 대문자, 특수문자 사용이 불가합니다. )</p></label>
-                                    <input type="text" required="" placeholder="Enter your Id" name="login-email" id="login-email" class="input-sm form-full" aria-required="true">
+                                    <label for="login-id">당신의 용사의 Id를 정해주세요. <p style="font-size:0.8em;";>( 해당 코드네임 규칙은 한글, 대문자, 특수문자 사용이 불가합니다. )</p></label>
+                                    <input type="text" required="" placeholder="Enter your Id" name="login-id" id="login-id" class="input-sm form-full" aria-required="true">
+                                </div>
+                                <div class="form-field-wrapper">
+                                    <label for="login-name">당신의 용사의 이름을 정해주세요. <p style="font-size:0.8em;";>( 사람의 이름은 특수문자 사용이 불가합니다. )</p></label>
+                                    <input type="text" required="" placeholder="Enter Hero's Name" name="login-name" id="login-name" class="input-sm form-full" aria-required="true">
                                 </div>
                                 <div class="form-field-wrapper">
                                     <label for="login-pass">당신과 용사가 서로 알아 볼 수 있는 비밀번호를 정해주세요. <p style="font-size:0.8em;";>( 비밀번호 규칙은 한글, 대문자, 특수문자 사용이 불가합니다. )</p></label>
