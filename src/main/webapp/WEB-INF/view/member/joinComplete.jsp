@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>   
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 
 <!DOCTYPE html>
 <html>
@@ -89,9 +89,9 @@
         <section class="inner-intro dark-bg overlay-dark">
             <div class="container">
                 <div class="row title">
-                    <h2 class="h2">Terms of Use</h2>
+                    <h2 class="h2">Welcome N.A.M.</h2>
                     <div class="page-breadcrumb">
-                        <a href="/index">Home</a>/<a href="/member/join">join</a>/<span>Terms of Use</span>
+                        <a href="/index">Home</a>/<a href="/member/join">join</a>/<span>Tanks to Join!</span>
                     </div>
                 </div>
             </div>
@@ -105,25 +105,11 @@
             <div class="container">
                 <div class="row text-center">
                     <div class="col-md-12">
-                        <h3 class="h4">이용 약관</h3>
+                        <h3 class="h4">${member.pId }님, 회원 가입을 축하합니다.</h3>
                         <div class="spacer-15"></div>
-                        <p>i) 해당 페이지에서 서비스 제공자를 'A', 이용자를 'B'로 칭한다. </p>
-                        <p>i) A는 가진 능력과 상황하에서 최대한 B의 원활한 사이트 이용 및 개인 정보 보호를 위해 서비스한다. </p>
-                        <p>i) A는 안전한 사이트 이용을 위해 B에게 다음과 같은 내용을 미리 고지한다.</p>
-                        <ul style="text-align:left;">
-                        <li>하나, A는 초보 개발자로 보안 및 크래킹에 취약하다.</li>
-                        <li>하나, A가 서비스하는 사이트에 개인 정보 수집은 최소한으로 설계했다. 이외 B의 유출로 인한 피해 및 사건사고는 A의 책임이 없다.</li>
-                        <li>하나, 사이트 특성상 개인 정보 수집은 최소한으로 유지되어 범인 특정 및 유출 피해 방지에 어려움이 있을 수 있다. 
-                        하지만 A는 개인 정보 유출사례에대해 최대한의 노력을 한다.</li>
-                        <li>하나, 사이트상 노출되지는 않지만 ip가 저장된다.</li>
-                        <li>하나, 사이트에 발생하는 게임데이터는 ( 캐릭터, 장비, 아이템 등 ) A에게 귀속되어 B에게 이용을 서비스하는 것으로, 
-                        부득이하게 B의 이전 이용 경험과 동일하지 않거나, B가 예상한 가치와 변동이 발생하더라도 이에 대한 책임을 지지 않는다.</li>
-                        <li>하나, 현 사이트의 게임데이터의 이용권한을 양도할 수 있으나, 거래하는 행위는 허하지 않으며 이에 따른 사건사고는 
-                        A의 책임이 없다.</li>
-                        <li>하나, 서비스 중 발생하는 예외 사례에 있어서는 A의 주관대로 결정되며, B의 요청이 타당하다고 여겨질 시 A는 판단에 대해 대답할 책임이 있다.</li>
-                        <li>하나, 해당 사이트 서비스는 영리목적이 아니다.</li>
-                        
-                        </ul> 
+                        <p>N.A.M의 세계는 당신을 기다리고 있었습니다. ${member.pNick } 용사와 함께 모험의 세계로 떠나실 준비 되었나요?</p>
+                        <p>${member.pNick } 용사가 당신과 함꼐 할 모험에 벌써부터 설레인다 하네요. :)</p>
+                        <p>행복한 하루 되시기 바랍니다. (-_-)(_ _)(^_^)</p>
                     </div>
                 </div>
             </div>

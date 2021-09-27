@@ -104,22 +104,22 @@
                     <div class="col-md-6">
                         <div class="border-box">
                             <h4> 함께할 준비 됐나요? </h4>
-                            <form>
+                            <form action="/member/create" method="post">
                                 <div class="form-field-wrapper">
-                                    <label for="login-id">당신의 용사의 Id를 정해주세요. <p style="font-size:0.8em;";>( 해당 코드네임 규칙은 한글, 대문자, 특수문자 사용이 불가합니다. )</p></label>
-                                    <input type="text" required="" placeholder="Enter your Id" name="login-id" id="login-id" class="input-sm form-full" aria-required="true">
+                                    <label for="pId">당신의 용사의 Id를 정해주세요. <p style="font-size:0.8em;";>( 해당 코드네임 규칙은 한글, 대문자, 특수문자 사용이 불가합니다. )</p></label>
+                                    <input type="text" required="" placeholder="Enter your Id" name="pId" id="pId" class="input-sm form-full" aria-required="true">
                                 </div>
                                 <div class="form-field-wrapper">
-                                    <label for="login-name">당신의 용사의 이름을 정해주세요. <p style="font-size:0.8em;";>( 사람의 이름은 특수문자 사용이 불가합니다. )</p></label>
-                                    <input type="text" required="" placeholder="Enter Hero's Name" name="login-name" id="login-name" class="input-sm form-full" aria-required="true">
+                                    <label for="pNick">당신의 용사의 이름을 정해주세요. <p style="font-size:0.8em;";>( 사람의 이름은 특수문자 사용이 불가합니다. )</p></label>
+                                    <input type="text" required="" placeholder="Enter Hero's Name" name="pNick" id="pNick" class="input-sm form-full" aria-required="true">
                                 </div>
                                 <div class="form-field-wrapper">
-                                    <label for="login-pass">당신과 용사가 서로 알아 볼 수 있는 비밀번호를 정해주세요. <p style="font-size:0.8em;";>( 비밀번호 규칙은 한글, 대문자, 특수문자 사용이 불가합니다. )</p></label>
-                                    <input type="password" required="" placeholder="Enter your Password" name="login-pass" id="login-pass" class="input-sm form-full" aria-required="true">
+                                    <label for="pPw">당신과 용사가 서로 알아 볼 수 있는 비밀번호를 정해주세요. <p style="font-size:0.8em;";>( 비밀번호 규칙은 한글, 대문자, 특수문자 사용이 불가합니다. )</p></label>
+                                    <input type="password" required="" placeholder="Enter your Password" name="pPw" id="pPw" class="input-sm form-full" aria-required="true">
                                 </div>
                                 <div class="form-field-wrapper">
-                                    <label for="login-appoint">세계와의 약속 ( 이용약관 )에 동의하십니까?</label>
-                                    <input type="checkbox" required="" placeholder="Enter your Password" name="login-appoint" id="login-appoint" class="input-sm form-full" aria-required="true">
+                                    <label for="pAgree">세계와의 약속 ( 이용약관 )에 동의하십니까?</label>
+                                    <input type="checkbox" required="" placeholder="Enter your Password" name="pAgree" id="pAgree" class="input-sm form-full" aria-required="true" value="true">
                                 </div>
                                 <button name="submit" id="form-submit" type="submit" class="btn btn-md btn-black">등록하기</button>
                             </form>
