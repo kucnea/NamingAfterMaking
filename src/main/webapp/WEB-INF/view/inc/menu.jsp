@@ -85,7 +85,7 @@
                             <!-- End Dropdown -->
                         </li>
 						<li>
-                            <a class="btn btn-md btn-black join-btn" href="/member/login">LOGIN N.A.M.</a>                            
+                            <a class="btn btn-md btn-black join-btn" href="/player/login">LOGIN N.A.M.</a>                            
                         </li>
                     </ul>
                 </div>

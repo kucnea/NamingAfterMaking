@@ -88,9 +88,9 @@
         <section class="inner-intro dark-bg overlay-dark">
             <div class="container">
                 <div class="row title">
-                    <h2 class="h2">Join</h2>
+                    <h2 class="h2">Login</h2>
                     <div class="page-breadcrumb">
-                        <a href="/index">Home</a>/<span>JOIN</span>
+                        <a href="/index">Home</a>/<span>Login</span>
                     </div>
                 </div>
             </div>
@@ -103,34 +103,26 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="border-box">
-                            <h4> 함께할 준비 됐나요? </h4>
-                            <form action="/member/create" method="post">
+                            <h4>Already registered?</h4>
+                            <form>
                                 <div class="form-field-wrapper">
-                                    <label for="pId">당신의 용사의 Id를 정해주세요. <p style="font-size:0.8em;";>( 해당 코드네임 규칙은 한글, 대문자, 특수문자 사용이 불가합니다. )</p></label>
-                                    <input type="text" required="" placeholder="Enter your Id" name="pId" id="pId" class="input-sm form-full" aria-required="true">
+                                    <label for="login-email">Your Id</label>
+                                    <input type="text" required="" placeholder="Enter your Id" name="login-email" id="login-email" class="input-sm form-full" aria-required="true">
                                 </div>
                                 <div class="form-field-wrapper">
-                                    <label for="pNick">당신의 용사의 이름을 정해주세요. <p style="font-size:0.8em;";>( 사람의 이름은 특수문자 사용이 불가합니다. )</p></label>
-                                    <input type="text" required="" placeholder="Enter Hero's Name" name="pNick" id="pNick" class="input-sm form-full" aria-required="true">
+                                    <label for="login-pass">Password</label>
+                                    <input type="password" required="" placeholder="Enter your Password" name="login-pass" id="login-pass" class="input-sm form-full" aria-required="true">
                                 </div>
-                                <div class="form-field-wrapper">
-                                    <label for="pPw">당신과 용사가 서로 알아 볼 수 있는 비밀번호를 정해주세요. <p style="font-size:0.8em;";>( 비밀번호 규칙은 한글, 대문자, 특수문자 사용이 불가합니다. )</p></label>
-                                    <input type="password" required="" placeholder="Enter your Password" name="pPw" id="pPw" class="input-sm form-full" aria-required="true">
-                                </div>
-                                <div class="form-field-wrapper">
-                                    <label for="pAgree">세계와의 약속 ( 이용약관 )에 동의하십니까?</label>
-                                    <input type="checkbox" required="" placeholder="Enter your Password" name="pAgree" id="pAgree" class="input-sm form-full" aria-required="true" value="true">
-                                </div>
-                                <button name="submit" id="form-submit" type="submit" class="btn btn-md btn-black">등록하기</button>
+                                <button name="submit" id="form-submit" type="submit" class="btn btn-md btn-black">Log In</button>
+                                <a class="float-right">Forgot password?</a>
                             </form>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="border-box">
-                            <h4>Welcome N.A.M.</h4>
-                            <p> 용사와 여러분간에는 Id( 코드네임 )과 비밀번호 두가지만이 필요하지만, 여러분은 세계와의 약속이 필요합니다.
-                            아래의 버튼을 통해 세계와의 약속을 확인해보세요. ( 이용약관 )</p>
-							<a class="btn btn-md btn-black join-btn" href="/member/appointment">이용약관</a>  
+                            <h4>Join Naming After Making</h4>
+                            <p> 작지만 흥미로운 세계, N.A.M.으로 여러분을 초대합니다. 아래 버튼으로 회원가입을 진행해주세요! </p>
+							<a class="btn btn-md btn-black join-btn" href="/player/join">Join N.A.M.</a>  
                         </div>
                     </div>
                 </div>

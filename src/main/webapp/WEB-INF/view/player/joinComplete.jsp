@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 
 <!DOCTYPE html>
 <html>
@@ -26,8 +27,7 @@
     <link href="/css/plugin/sidebar-menu.css" rel="stylesheet" type="text/css" />
     <link href="/css/plugin/animate.css" rel="stylesheet" type="text/css" />
     <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-
-
+	<link href="/css/plugin/smoothproducts.css" rel="stylesheet" />	
 </head>
 
 <body>
@@ -49,14 +49,15 @@
         </form>
     </div>
     <!-- End Search Overlay Menu -->
+
     <!-- Site Wraper -->
     <div class="wrapper">
 
-        <!-- Header -->
+         <!-- Header -->
         <header id="header" class="header shadow">
             <div class="header-inner">
 
-                <!-- Logo -->
+            	<!-- Logo -->
                 <!-- End Logo -->
 
                 <!-- Rightside Menu (Search icon) -->
@@ -88,47 +89,44 @@
         <section class="inner-intro dark-bg overlay-dark">
             <div class="container">
                 <div class="row title">
-                    <h2 class="h2">Login</h2>
+                    <h2 class="h2">Welcome N.A.M.</h2>
                     <div class="page-breadcrumb">
-                        <a href="/index">Home</a>/<span>Login</span>
+                        <a href="/index">Home</a>/<a href="/player/join">join</a>/<span>Tanks to Join!</span>
                     </div>
                 </div>
             </div>
         </section>
+        <div class="clearfix"></div>
         <!-- End Intro Section -->
         
-        <!-- Login Section -->
-        <section id="Pricing" class="ptb-60 ptb-sm-30">
+        
+        
+		<section id="about" class="wow fadeIn ptb-80 ptb-sm-30">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="border-box">
-                            <h4>Already registered?</h4>
-                            <form>
-                                <div class="form-field-wrapper">
-                                    <label for="login-email">Your Id</label>
-                                    <input type="text" required="" placeholder="Enter your Id" name="login-email" id="login-email" class="input-sm form-full" aria-required="true">
-                                </div>
-                                <div class="form-field-wrapper">
-                                    <label for="login-pass">Password</label>
-                                    <input type="password" required="" placeholder="Enter your Password" name="login-pass" id="login-pass" class="input-sm form-full" aria-required="true">
-                                </div>
-                                <button name="submit" id="form-submit" type="submit" class="btn btn-md btn-black">Log In</button>
-                                <a class="float-right">Forgot password?</a>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="border-box">
-                            <h4>Join Naming After Making</h4>
-                            <p> 작지만 흥미로운 세계, N.A.M.으로 여러분을 초대합니다. 아래 버튼으로 회원가입을 진행해주세요! </p>
-							<a class="btn btn-md btn-black join-btn" href="/member/join">Join N.A.M.</a>  
-                        </div>
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <h3 class="h4">${player.pId }님, 회원 가입을 축하합니다.</h3>
+                        <div class="spacer-15"></div>
+                        <p>N.A.M의 세계는 당신을 기다리고 있었습니다. ${player.pNick } 용사와 함께 모험의 세계로 떠나실 준비 되었나요?</p>
+                        <p>${player.pNick } 용사가 당신과 함꼐 할 모험에 벌써부터 설레인다 하네요. :)</p>
+                        <p>행복한 하루 되시기 바랍니다. (-_-)(_ _)(^_^)</p>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- End Login Section -->
+		
+		
+		
+		
+        <!-- Options Section -->
+        <section class="ptb-60 ptb-sm-30">
+			<div class="container text-left">
+                <div class="row mb-30">
+
+				</div>
+			</div>
+        </section>
+        <!-- End Options Section -->
 
         <!-- End CONTENT ------------------------------------------------------------------------------>
 
@@ -164,15 +162,23 @@
     <script src="/js/plugin/jquery.stellar.min.js" type="text/javascript"></script>
     <script src="/js/plugin/wow.min.js" type="text/javascript"></script>
     <script src="/js/plugin/jquery.colorbox-min.js" type="text/javascript"></script>
+	
+	<script src="/js/plugin/smoothproducts.js"></script>
+	
     <script src="/js/plugin/owl.carousel.min.js" type="text/javascript"></script>
     <script src="/js/plugin/isotope.pkgd.min.js" type="text/javascript"></script>
     <script src="/js/plugin/masonry.pkgd.min.js" type="text/javascript"></script>
     <script src="/js/plugin/imagesloaded.pkgd.min.js" type="text/javascript"></script>
     <script src="/js/plugin/jquery.fs.tipper.min.js" type="text/javascript"></script>
     <script src="/js/plugin/mediaelement-and-player.min.js"></script>
-    <script src="/js/plugin/jquery.validate.min.js" type="text/javascript"></script>
     <script src="/js/plugin/sidebar-menu.js" type="text/javascript"></script>
     <script src="/js/theme.js" type="text/javascript"></script>
     <script src="/js/navigation.js" type="text/javascript"></script>
+
+	 <script type="text/javascript">
+        $(window).load(function () {
+            $('.sp-wrap').smoothproducts();
+        });
+    </script>
 </body>
 </html>
