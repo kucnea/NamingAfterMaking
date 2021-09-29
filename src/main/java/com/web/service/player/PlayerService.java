@@ -3,7 +3,7 @@ package com.web.service.player;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.web.controller.player.Player;
+import com.web.entity.player.Player;
 
 
 public interface PlayerService {

@@ -1,4 +1,4 @@
-package com.web.controller.player;
+package com.web.entity.player;
 
 public class Player {
 	private int pIdx;
