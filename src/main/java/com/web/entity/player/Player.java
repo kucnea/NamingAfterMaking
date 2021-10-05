@@ -2,25 +2,41 @@ package com.web.entity.player;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.ColumnDefault;
+
 @Entity
 @Table(name="Player")
+@SequenceGenerator(						// 오라클 사용시
+		name = "Player_SEQ_GENERATOR",
+		sequenceName = "Player_SEQ",
+		initialValue = 1, allocationSize = 1)
 public class Player {
 	
+	//jpa에게 테이블 자동생성하는건 책 124p,145p를 참고하자.
 	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)  // MYSQL 사용시
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Player_SEQ_GENERATOR") // 오라클 사용시
 	private int pIdx;
+	
+	@Column(nullable = false, length = 16)
 	private String pId;
+	
+	@Column(nullable = false, length = 16)
 	private String pNick;
+	
+	@Column(nullable = false, length = 16)
 	private String pPw;
-	private int pLv;
+
+	private Integer pLv = 1;
 	private String pClass;
-	private float pHp;
-	private float pMp;
-	private float pAtk;
+	private float pHp = 12;
+	private float pMp = 15;
+	private float pAtk = 3;
 	private int pAtkElm;
-	private float pDef;
+	private float pDef = 1;
 	private int pDefElm;
-	private int pLuck;
-	private int pSpd;
+	private int pLuck = 7;
+	private int pSpd = 1;
 	private int pLocation;
 	private int pEHelmet;
 	private int pEArmor;
@@ -32,7 +48,15 @@ public class Player {
 	private float pPVPWin;
 	private float pPVPLose;
 	private int pStatus;
+	
+	@Column(length = 1)
 	private int pAgree;
+	
+	
+	
+	
+	
+	
 	
 	public int getpIdx() {
 		return pIdx;
