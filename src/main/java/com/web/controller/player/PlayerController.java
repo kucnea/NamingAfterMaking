@@ -21,7 +21,7 @@ public class PlayerController {
 //	private PlayerService playerSerivce;
 	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaoracle");
-	EntityManager em = emf.createEntityManager();
+	
 	
 	@RequestMapping("login")
 	public String loginPage() {	//url과 method명을 맞추는 것이 관리에 용이
@@ -41,6 +41,7 @@ public class PlayerController {
 		System.out.println("input player to join : "+player.toString());
 		model.addAttribute("player",player);
 		
+		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		
 		try {
@@ -59,7 +60,7 @@ public class PlayerController {
         } finally {
             em.close(); //엔티티 매니저 종료
         }
-		emf.close(); //엔티티 매니저 팩토리 종료
+//		emf.close(); //엔티티 매니저 팩토리 종료
 		
 		
 		return "player.joinComplete";

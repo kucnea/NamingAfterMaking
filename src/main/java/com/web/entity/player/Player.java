@@ -33,6 +33,7 @@ public class Player {
 	private float pPVPLose;
 	private int pStatus;
 	private int pAgree;
+	
 	public int getpIdx() {
 		return pIdx;
 	}

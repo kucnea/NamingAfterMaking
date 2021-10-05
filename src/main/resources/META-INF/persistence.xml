@@ -17,8 +17,20 @@
             <property name="hibernate.format_sql" value="true" />
             <property name="hibernate.use_sql_comments" value="true" />
             <property name="hibernate.id.new_generator_mappings" value="true" />
-
-            <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
+			
+			<!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
+			
+			<!-- 추가한거 ( https://stackoverflow.com/questions/43197191/hibernate-jpa-not-create-tables-in-oracle-automatically ) -->
+			<property name="hibernate.connection.autoReconnect" value="true" /> 
+        	<property name="hibernate.connection.autoReconnectForPools" value="true" />
+        	<property name="hibernate.connection.is-connection-validation-required" value="true" />
+	        <property name="hibernate.connection.testOnBorrow" value="true" />
+	        <property name="hibernate.connection.validationQuery" value="SELECT 1" />
+	        <property name="hibernate.archive.autodetection" value="class" />
+	        <property name="hibernate.show_sql" value="false" />
+	        <property name="hibernate.format_sql" value="true" />
+	        <property name="hibernate.hbm2ddl.auto" value="update" />
+            
         </properties>
     </persistence-unit>
 
