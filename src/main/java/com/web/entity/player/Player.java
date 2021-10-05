@@ -1,6 +1,12 @@
 package com.web.entity.player;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="Player")
 public class Player {
+	
+	@Id
 	private int pIdx;
 	private String pId;
 	private String pNick;
