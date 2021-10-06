@@ -104,14 +104,14 @@
                     <div class="col-md-6">
                         <div class="border-box">
                             <h4>Already registered?</h4>
-                            <form>
+                            <form action="/player/logedin" method="post">
                                 <div class="form-field-wrapper">
-                                    <label for="login-email">Your Id</label>
-                                    <input type="text" required="" placeholder="Enter your Id" name="login-email" id="login-email" class="input-sm form-full" aria-required="true">
+                                    <label for="pId">Your Id</label>
+                                    <input type="text" required="" placeholder="Enter your Id" name="pId" id="pId" class="input-sm form-full" aria-required="true">
                                 </div>
                                 <div class="form-field-wrapper">
-                                    <label for="login-pass">Password</label>
-                                    <input type="password" required="" placeholder="Enter your Password" name="login-pass" id="login-pass" class="input-sm form-full" aria-required="true">
+                                    <label for="pPw">Password</label>
+                                    <input type="password" required="" placeholder="Enter your Password" name="pPw" id="pPw" class="input-sm form-full" aria-required="true">
                                 </div>
                                 <button name="submit" id="form-submit" type="submit" class="btn btn-md btn-black">Log In</button>
                                 <a class="float-right">Forgot password?</a>
