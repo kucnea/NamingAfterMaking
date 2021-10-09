@@ -55,7 +55,7 @@
                             <p class="lead content-wd650">
                                 죄송합니다. 알 수 없는 오류로 페이지 출력이 되지 않았습니다.<br />
                                 대략적인 정황이나 시간등을 개발자에게 제보해주시면 개선에 큰 힘이 됩니다. 이용에 불편끼쳐드리지 않도록 노력하겠습니다.
-                                ${pId }
+                                ${player.pId }
                             </p>
                             <br />
                             <a href="/index" class="btn btn-md btn-white"><i class="fa fa-angle-left left"></i>Back To Home</a>

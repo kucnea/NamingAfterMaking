@@ -5,21 +5,21 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.web.configuration.session.HttpSessionPlayer;
 import com.web.entity.player.Player;
 
 
 @Controller
 @RequestMapping("/player/")
-@SessionAttributes("player")
+//@SessionAttributes("player")
 public class PlayerController {
 
 //	@Autowired(required=false)
@@ -32,6 +32,9 @@ public class PlayerController {
 //	HttpServletRequest request;
 //	HttpSession session = request.getSession();
 	
+	@Autowired(required = false)
+	private HttpSessionPlayer httpSessionPlayer;
+	
 	@RequestMapping("login")
 	public String loginPage() {	//url과 method명을 맞추는 것이 관리에 용이
 	
@@ -42,8 +45,12 @@ public class PlayerController {
 	public String logedIn(String pId, String pPw,Model model, HttpServletRequest request) {
 //	public String logedIn(@ModelAttribute("player") Player player,Model model, HttpServletRequest request) {
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("pId", pId);
+//		HttpSession session = request.getSession();
+//		session.setAttribute("pId", pId);
+		Player player = new Player();
+		player.setpId(pId);
+		player.setpPw(pPw);
+		httpSessionPlayer.setAttribute(player);
 		
 		System.out.println("logedin Player stage // pId : "+pId+", pPw : "+pPw);
 //		model.addAttribute("player",player);
