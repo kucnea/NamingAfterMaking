@@ -174,7 +174,7 @@
                                     data-endspeed="500"
                                     data-easing="Linear.easeNone"
                                     data-elementdelay="0.1">
-                                    <a href="home.html" class="btn btn-md btn-white-line xs-hidden scroll-to-target">Enter Site</a><span class="btn-space-10 xs-hidden"></span>
+                                    <a href="/ingame/gamescreen" class="btn btn-md btn-white-line xs-hidden scroll-to-target">Enter Site</a><span class="btn-space-10 xs-hidden"></span>
                                 </div>
 
 
