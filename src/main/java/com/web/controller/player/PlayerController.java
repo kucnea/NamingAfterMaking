@@ -40,6 +40,7 @@ public class PlayerController {
 //	public String logedIn(@ModelAttribute("player") Player player,Model model, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
+		session.setAttribute("pId", pId);
 		
 		System.out.println("logedin Player stage // pId : "+pId+", pPw : "+pPw);
 //		model.addAttribute("player",player);
