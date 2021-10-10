@@ -41,7 +41,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/player/logedin"/>
-			<bean id="frontInterceptor" class="com.web.interceptor.FrontInterceptor"></bean>
+			<bean id="loginInterceptor" class="com.web.interceptor.LoginInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
 

@@ -19,7 +19,6 @@ import com.web.entity.player.Player;
 
 @Controller
 @RequestMapping("/player/")
-@SessionAttributes("player")
 public class PlayerController {
 
 	
@@ -42,12 +41,12 @@ public class PlayerController {
 	
 	
 	@PostMapping("logedin")
-	public String logedIn(String pId, String pPw,Model model, HttpServletRequest request) {
+	public String logedIn(@ModelAttribute("player") Player player,Model model, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("pId", pId);
+		session.setAttribute("pId", player.getpId());
 		
-		System.out.println("logedin Player stage // pId : "+pId+", pPw : "+pPw);
+		System.out.println("logedin Player stage // pId : "+player.getpId()+", pPw : "+player.getpPw());
 		
 		
 		EntityManager em = emf.createEntityManager();
@@ -94,7 +93,7 @@ public class PlayerController {
 		
 		if(flag==1) return "error.unknown";
 		else if(flag==2) return "error.404";
-		return "error.unknown";
+		return "player.logedin";
 	}
 	
 	@RequestMapping("join")
