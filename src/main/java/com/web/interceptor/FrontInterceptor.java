@@ -2,6 +2,7 @@ package com.web.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,18 +14,22 @@ public class FrontInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		
-		System.out.println("preHandle");
+		HttpSession session = request.getSession();
+		session.setAttribute("gift", "gift");
+		System.out.println("preHandle has : "+session.getAttribute("pId"));
 		
 		
 		return true;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			@Nullable ModelAndView modelAndView) throws Exception {
-		
-		System.out.println("afterHandle");
+
+		HttpSession session = request.getSession();
+		System.out.println("afterHandle has : "+session.getAttribute("gift"));
+		System.out.println("afterHandle has : "+modelAndView.getModel().get("pId"));
 		
 		
 	}
