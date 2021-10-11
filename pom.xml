@@ -9,11 +9,15 @@
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
   	<maven.compiler.target>1.8</maven.compiler.target>
+  	
+  		<!-- 스프링 데이터 JPA 버전 -->
+		<spring-data-jpa.version>1.8.0.RELEASE</spring-data-jpa.version>
+		<!-- QueryDSL -->
+		<querydsl.version>3.6.3</querydsl.version>
   </properties>
 
   <dependencies>
   
-  <!-- jpa -->
   
    <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-api -->
     <dependency>
@@ -29,12 +33,37 @@
 	    <version>5.2.9.RELEASE</version>
 	</dependency>
 	
+	<!-- jpa -->
+	
   <dependency>
   	<groupId>org.hibernate</groupId>
   	<artifactId>hibernate-entitymanager</artifactId>
   	<version>6.0.0.Alpha7</version>
   	<type>pom</type>
   </dependency>
+
+
+  <!-- 스프링 데이터 JPA -->
+	<dependency>
+		<groupId>org.springframework.data</groupId>
+		<artifactId>spring-data-jpa</artifactId>
+		<version>${spring-data-jpa.version}</version>
+	</dependency>
+
+	<!-- QueryDSL -->
+	<dependency>
+		<groupId>com.mysema.querydsl</groupId>
+		<artifactId>querydsl-apt</artifactId>
+		<version>${querydsl.version}</version>
+		<scope>provided</scope>
+	</dependency>
+
+	<dependency>
+		<groupId>com.mysema.querydsl</groupId>
+		<artifactId>querydsl-jpa</artifactId>
+		<version>${querydsl.version}</version>
+	</dependency>
+
 
 	<dependency>
 		<groupId>org.apache.tiles</groupId>
