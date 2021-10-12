@@ -1,9 +1,5 @@
 package com.web.controller.player;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.web.entity.player.Player;
 
@@ -37,7 +34,7 @@ public class PlayerController {
 	}
 	
 	
-	
+//	@RequestMapping(value="logedin", method = RequestMethod.POST)
 	@PostMapping("logedin")
 	public String logedIn(@ModelAttribute("player") Player player,Model model, HttpServletRequest request) {
 		
@@ -55,6 +52,7 @@ public class PlayerController {
 		
 		return "player.join";
 	}
+	
 	
 	@PostMapping("create")
 	public String create(@ModelAttribute("player") Player player,Model model) {
