@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.web.entity.player.Player;
 
-public interface CustomPlayerRepository extends JpaRepository<Player, Long>{
+public interface CustomPlayerRepository extends JpaRepository<Player, Integer>{
 
 	List<Player> findById(String pId);
 	
