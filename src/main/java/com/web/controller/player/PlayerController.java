@@ -1,11 +1,12 @@
 package com.web.controller.player;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,16 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.web.entity.player.Player;
-import com.web.service.player.PlayerService;
 
 @Controller
 @RequestMapping("/player/")
 public class PlayerController {
 
 	
-	@Autowired PlayerService playerService;
+//	@Autowired PlayerService playerService;
 	
-//	//엔티티 팩토리 싱글톤
+	//엔티티 팩토리 싱글톤
 //	EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaoracle");
 
 	
@@ -62,10 +62,10 @@ public class PlayerController {
 		System.out.println("insert Player stage : "+player.toString());
 		model.addAttribute("player",player);
 		
-		int result = playerService.join(player);
-		
-		if(result==-1) model.addAttribute("result",false); // 이거갖고 자바스크립트 사용해서 결과창 바꾸기.
-		else model.addAttribute("result",true);
+//		int result = playerService.join(player);
+//		
+//		if(result==-1) model.addAttribute("result",false); // 이거갖고 자바스크립트 사용해서 결과창 바꾸기.
+//		else model.addAttribute("result",true);
 			
 //		EntityManager em = emf.createEntityManager();
 //		EntityTransaction tx = em.getTransaction();
@@ -86,7 +86,7 @@ public class PlayerController {
 //        } finally {
 //            em.close(); //엔티티 매니저 종료
 //        }
-////		emf.close(); //엔티티 매니저 팩토리 종료
+//		emf.close(); //엔티티 매니저 팩토리 종료
 		
 		
 		return "player.joinComplete";

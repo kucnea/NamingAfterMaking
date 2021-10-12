@@ -3,16 +3,16 @@
 
     <persistence-unit name="jpaoracle">
 
-        <properties>
+        <!-- <properties>
 
-            <!-- 필수 속성 -->
+            필수 속성
             <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/>
             <property name="javax.persistence.jdbc.user" value="gb2"/>
             <property name="javax.persistence.jdbc.password" value="gb2"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
 
-            <!-- 옵션 -->
+            옵션
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
             <property name="hibernate.use_sql_comments" value="true" />
@@ -20,21 +20,21 @@
 			
 			
 			
-			<!-- 추가한거 ( https://stackoverflow.com/questions/43197191/hibernate-jpa-not-create-tables-in-oracle-automatically ) -->
+			추가한거 ( https://stackoverflow.com/questions/43197191/hibernate-jpa-not-create-tables-in-oracle-automatically )
 			<property name="hibernate.connection.autoReconnect" value="true" /> 
         	<property name="hibernate.connection.autoReconnectForPools" value="true" />
         	<property name="hibernate.connection.is-connection-validation-required" value="true" />
 	        <property name="hibernate.connection.testOnBorrow" value="true" />
 	        <property name="hibernate.connection.validationQuery" value="SELECT 1" />
 	        <property name="hibernate.archive.autodetection" value="class" />
-	        <!-- <property name="hibernate.show_sql" value="false" /> -->
+	        <property name="hibernate.show_sql" value="false" />
 	        <property name="hibernate.format_sql" value="true" />
 	        
-	        <!-- 하기 옵션은 스키마 자동생성으로 개발 서버 환경에서 하고 운영서버의 경우 데이터 손실 날 수 있어 사용하지 않도록 하자. -->
-	        <!-- 혹은 validate로 경고를 남기도록 설정하자. -->
+	        하기 옵션은 스키마 자동생성으로 개발 서버 환경에서 하고 운영서버의 경우 데이터 손실 날 수 있어 사용하지 않도록 하자.
+	        혹은 validate로 경고를 남기도록 설정하자.
 	        <property name="hibernate.hbm2ddl.auto" value="update" />
-            <!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
-        </properties>
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+        </properties> -->
     </persistence-unit>
 
 </persistence>
