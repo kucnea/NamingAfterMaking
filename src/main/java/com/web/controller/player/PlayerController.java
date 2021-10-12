@@ -62,6 +62,11 @@ public class PlayerController {
 		System.out.println("insert Player stage : "+player.toString());
 		model.addAttribute("player",player);
 		
+		int result = playerService.join(player);
+		
+		if(result==-1) model.addAttribute("result",false); // 이거갖고 자바스크립트 사용해서 결과창 바꾸기.
+		else model.addAttribute("result",true);
+			
 //		EntityManager em = emf.createEntityManager();
 //		EntityTransaction tx = em.getTransaction();
 //		

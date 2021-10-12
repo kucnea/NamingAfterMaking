@@ -127,7 +127,12 @@ public class PlayerRepository extends QueryDslRepositorySupport implements Custo
 
 	@Override
 	public List<Player> findById(String pId) {
-		// TODO Auto-generated method stub
+
+//		String jpql = "select m from Player as m where m.pId = '"+pId+"'";
+//		List<Player> resultList = em.createQuery(jpql, Player.class).getResultList();
+		
+		
+		
 		return null;
 	}
 
