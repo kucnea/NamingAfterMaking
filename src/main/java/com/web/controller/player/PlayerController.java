@@ -3,21 +3,22 @@ package com.web.controller.player;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.web.entity.player.Player;
+import com.web.service.PlayerService;
 
 @Controller
 @RequestMapping("/player/")
 public class PlayerController {
 
 	
-//	@Autowired PlayerService playerService;
+	@Autowired PlayerService playerService;
 	
 	//엔티티 팩토리 싱글톤
 //	EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaoracle");
@@ -34,8 +35,8 @@ public class PlayerController {
 	}
 	
 	
-//	@RequestMapping(value="logedin", method = RequestMethod.POST)
-	@PostMapping("logedin")
+	@RequestMapping(value="logedin", method = RequestMethod.POST)
+//	@PostMapping("logedin")
 	public String logedIn(@ModelAttribute("player") Player player,Model model, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
@@ -54,16 +55,17 @@ public class PlayerController {
 	}
 	
 	
-	@PostMapping("create")
+//	@PostMapping("create")
+	@RequestMapping(value="create", method = RequestMethod.POST)
 	public String create(@ModelAttribute("player") Player player,Model model) {
 		
 		System.out.println("insert Player stage : "+player.toString());
 		model.addAttribute("player",player);
 		
-//		int result = playerService.join(player);
-//		
-//		if(result==-1) model.addAttribute("result",false); // 이거갖고 자바스크립트 사용해서 결과창 바꾸기.
-//		else model.addAttribute("result",true);
+		int result = playerService.join(player);
+		
+		if(result==-1) model.addAttribute("result",false); // 이거갖고 자바스크립트 사용해서 결과창 바꾸기.
+		else model.addAttribute("result",true);
 			
 //		EntityManager em = emf.createEntityManager();
 //		EntityTransaction tx = em.getTransaction();

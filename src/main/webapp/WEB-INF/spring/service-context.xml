@@ -4,6 +4,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc
@@ -11,10 +12,15 @@
         http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/tx 
-       	http://www.springframework.org/schema/tx/spring-tx.xsd">
+       	http://www.springframework.org/schema/tx/spring-tx.xsd
+       	http://www.springframework.org/schema/data/jpa 
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
+	<!-- <jpa:repositories base-package="com.web.repository"/> -->
+
+	<!-- <tx:annotation-driven/> -->
 	<!-- <context:annotation-config/> -->
-	<context:component-scan base-package="com.springpractice.web.service"/> 
+	<!-- <context:component-scan base-package="com.web.service, com.web.repository"/> --> 
 	<!-- 해당 package 내부의 component를 찾음. -->
 	<!-- 동시에 annotation을 찾기때문에 상기의 annotation-config도 생략가능. -->
 	
@@ -25,46 +31,21 @@
 		<!-- <property name="dataSource" ref="dataSource"/>  -->
 	<!-- </bean> -->
 	
-    <tx:annotation-driven/>
-    
-    <!-- <context:component-scan base-package="com.web.service, com.web.repository"/> -->
-	
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
 		<property name="username" value="gb2"/>
 		<property name="password" value="gb2"/>
-	</bean>
+	</bean> -->
 	
 
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+	<!-- <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
     
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/> -->
 
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="com.web.entity"/> <!-- @Entity 탐색 시작 위치 -->
-        <property name="jpaVendorAdapter">
-            <!-- 하이버네이트 구현체 사용 -->
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
-        </property>
-        <property name="jpaProperties"> <!-- 하이버네이트 상세 설정 -->
-            <props>
-                <prop key="hibernate.show_sql">true</prop>                   <!-- SQL 보기 -->
-                <prop key="hibernate.format_sql">true</prop>                 <!-- SQL 정렬해서 보기 -->
-                <prop key="hibernate.use_sql_comments">true</prop>           <!-- SQL 코멘트 보기 -->
-                <prop key="hibernate.id.new_generator_mappings">true</prop>  <!-- 새 버전의 ID 생성 옵션 -->
-                <prop key="hibernate.hbm2ddl.auto">update</prop>             <!-- DDL 자동 생성 -->
-                <prop key="hibernate.connection.autoReconnect">true</prop>
-                <prop key="hibernate.connection.autoReconnectForPools">true</prop>
-                <prop key="hibernate.connection.is-connection-validation-required">true</prop>
-                <prop key="hibernate.connection.testOnBorrow">true</prop>
-                <prop key="hibernate.connection.validationQuery">SELECT 1</prop>
-                <prop key="hibernate.archive.autodetection">class</prop>
-            </props>
-        </property>
-    </bean>
+	<!-- <bean id="entityManagerFactory" -->
+	
 </beans>
 

@@ -1,8 +1,12 @@
 package com.web.entity.player;
 
-import javax.persistence.*;
-
-import org.hibernate.annotations.ColumnDefault;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="Player")
@@ -27,7 +31,7 @@ public class Player {
 	@Column(nullable = false, length = 16)
 	private String pPw;
 
-	private Integer pLv = 1;
+	private int pLv = 1;
 	private String pClass;
 	private float pHp = 12;
 	private float pMp = 15;
