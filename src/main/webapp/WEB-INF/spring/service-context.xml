@@ -16,11 +16,13 @@
        	http://www.springframework.org/schema/data/jpa 
         http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-	<!-- <jpa:repositories base-package="com.web.repository"/> -->
+	<jpa:repositories base-package="com.web.repository"/>
 
 	<!-- <tx:annotation-driven/> -->
 	<!-- <context:annotation-config/> -->
-	<!-- <context:component-scan base-package="com.web.service, com.web.repository"/> --> 
+	<context:component-scan base-package="com.web">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
 	<!-- 해당 package 내부의 component를 찾음. -->
 	<!-- 동시에 annotation을 찾기때문에 상기의 annotation-config도 생략가능. -->
 	
@@ -31,21 +33,47 @@
 		<!-- <property name="dataSource" ref="dataSource"/>  -->
 	<!-- </bean> -->
 	
-	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- oracle 버전 시작 -->
+		<!--
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
 		<property name="username" value="gb2"/>
 		<property name="password" value="gb2"/>
-	</bean> -->
-	
+		-->
+		<!-- oracle 버전 끝 -->
+		<!-- h2 버전 시작 -->
+		<property name="driverClassName" value="org.h2.Driver"/>
+		<property name="url" value="jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1"/>
+		<property name="username" value="sa"/>
+		<property name="password" value=""/>
+		<!-- h2 버전 끝 -->
+	</bean>
 
-	<!-- <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
-    
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/> -->
 
-	<!-- <bean id="entityManagerFactory" -->
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="packagesToScan" value="com.web.entity"/> <!-- @Entity 탐색 시작 위치 -->
+		<property name="jpaVendorAdapter">
+			<!-- 하이버네이트 구현체 사용 -->
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+		</property>
+		<property name="jpaProperties"> <!-- 하이버네이트 상세 설정 -->
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop> <!-- 방언 -->
+				<prop key="hibernate.show_sql">true</prop>                   <!-- SQL 보기 -->
+				<prop key="hibernate.format_sql">true</prop>                 <!-- SQL 정렬해서 보기 -->
+				<prop key="hibernate.use_sql_comments">true</prop>           <!-- SQL 코멘트 보기 -->
+				<prop key="hibernate.id.new_generator_mappings">true</prop>  <!-- 새 버전의 ID 생성 옵션 -->
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>             <!-- DDL 자동 생성 -->
+			</props>
+		</property>
+	</bean>
 	
 </beans>
 

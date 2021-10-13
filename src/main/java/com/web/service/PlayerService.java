@@ -30,7 +30,7 @@ public class PlayerService {
 	}
 	
 	private boolean validateDuplicatePlayer(Player player) {
-		List<Player> findPlayers = playerRepository.findByPid(player.getpId());
+		List<Player> findPlayers = playerRepository.findByPId(player.getpId());
 		if (!findPlayers.isEmpty()) return false;
         else return true;
 	}
