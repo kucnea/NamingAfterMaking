@@ -35,18 +35,20 @@
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<!-- oracle 버전 시작 -->
-		<!--
+		
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
 		<property name="username" value="gb2"/>
 		<property name="password" value="gb2"/>
-		-->
+		
 		<!-- oracle 버전 끝 -->
 		<!-- h2 버전 시작 -->
+		<!--
 		<property name="driverClassName" value="org.h2.Driver"/>
 		<property name="url" value="jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1"/>
 		<property name="username" value="sa"/>
 		<property name="password" value=""/>
+		-->
 		<!-- h2 버전 끝 -->
 	</bean>
 
@@ -65,12 +67,19 @@
 		</property>
 		<property name="jpaProperties"> <!-- 하이버네이트 상세 설정 -->
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop> <!-- 방언 -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop> <!-- 방언 -->
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop> H2 방언-->
 				<prop key="hibernate.show_sql">true</prop>                   <!-- SQL 보기 -->
 				<prop key="hibernate.format_sql">true</prop>                 <!-- SQL 정렬해서 보기 -->
 				<prop key="hibernate.use_sql_comments">true</prop>           <!-- SQL 코멘트 보기 -->
 				<prop key="hibernate.id.new_generator_mappings">true</prop>  <!-- 새 버전의 ID 생성 옵션 -->
 				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>             <!-- DDL 자동 생성 -->
+				<!-- <prop key="hibernate.connection.autoReconnect">true</prop>
+				<prop key="hibernate.connection.autoReconnectForPools">true</prop>
+				<prop key="hibernate.connection.is-connection-validation-required">true</prop>
+				<prop key="hibernate.connection.testOnBorrow">true</prop>
+				<prop key="hibernate.connection.validationQuery">SELECT 1</prop>
+				<prop key="hibernate.archive.autodetection">class</prop> -->
 			</props>
 		</property>
 	</bean>
