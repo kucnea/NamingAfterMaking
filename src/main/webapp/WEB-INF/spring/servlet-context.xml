@@ -59,14 +59,6 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
-	<!-- 예제에 있었으나 아직 보지 않음 -->
-	<!-- <mvc:interceptors>
-        <bean class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">
-            <property name="entityManagerFactory" ref="entityManagerFactory" />
-        </bean>
-    </mvc:interceptors> -->
-
-	
 	<mvc:resources location="/static/" mapping="/**"></mvc:resources>
 	
 	<!-- annotation 으로 url mapping을 하는 명령어 -->

@@ -16,7 +16,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter implements Sessi
 			throws Exception {
 		
 		HttpSession session = request.getSession();
-		System.out.println("preHandle has");
+		System.out.println("preHandle");
 		
 		if(session.getAttribute(login)!=null) session.removeAttribute(login);
 		
