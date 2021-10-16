@@ -40,12 +40,21 @@ public class PlayerController {
 	public String logedIn(@ModelAttribute("player") Player player,Model model, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("pId", player.getpId());
 		
-		System.out.println("logedin Controller // pId : "+player.getpId()+", pPw : "+player.getpPw());
 		
-//		playerService.login(player);
+		System.out.println("logedin Controller insert player // pId : "+player.getpId()+", pPw : "+player.getpPw());
 		
+		Player p = playerService.login(player);
+		
+		if(p!=null)	{
+			System.out.println("logedin Controller output player // pId : "+p.getpId()+", pPw : "+p.getpPw());
+			session.setAttribute("pId", p);
+			model.addAttribute("result",true);
+		}else {
+			System.out.println("logedin Controller output player // result : null");
+			model.addAttribute("result",false);
+		}
+
 		return "player.logedin";
 	}
 	

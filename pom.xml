@@ -99,7 +99,14 @@
 	</dependency> -->
 	
 	
-
+	<!-- json -->
+	<dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>20160810</version>
+	</dependency>
+	
+	
 		<!-- 로깅 SLF4J & LogBack -->
 	<dependency>
 		<groupId>org.slf4j</groupId>

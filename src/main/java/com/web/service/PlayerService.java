@@ -1,7 +1,5 @@
 package com.web.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +18,7 @@ public class PlayerService {
 	public int join(Player player) {
 		
 		boolean validFlag = validateDuplicatePlayer(player); // 중복 체크
-		if(validFlag) {
+		if(!validFlag) {
 		playerRepository.save(player);
 		return player.getpIdx();
 		}else {
@@ -31,10 +29,20 @@ public class PlayerService {
 	
 	/* 중복체크 */
 	private boolean validateDuplicatePlayer(Player player) {
-		List<Player> findPlayers = playerRepository.findByPId(player.getpId());
-		if (!findPlayers.isEmpty()) return false;
+		Player findPlayer = playerRepository.findByPId(player.getpId());
+		if (findPlayer==null) return false;
         else return true;
 	}
 	
-	
+	public Player login(Player player) {
+
+		Player p = playerRepository.findByPId(player.getpId());
+		
+		System.out.println("player pass : "+player.getpPw());
+		System.out.println("p pass : "+p.getpPw());
+		
+		if(player.getpPw().equals(p.getpPw())) return p;
+		else return null;
+		
+	}
 }

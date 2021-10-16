@@ -57,6 +57,18 @@ public class Player {
 	private int pAgree;
 
 
+	public Player() {};
+	
+	public Player(String pId, String pPw) { 	// test를 위한 생성자
+		this.pId = pId;
+		this.pPw = pPw;
+	}
+	
+	
+	
+	
+	
+	
 	// Getter & Setter
 	public int getpIdx() {
 		return pIdx;
