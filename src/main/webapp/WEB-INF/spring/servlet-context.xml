@@ -21,9 +21,13 @@
 	<!-- 이게 있어야 어노테이션으로 처리한 것을 읽을 수 있음 -->
 
 	<!-- <context:component-scan base-package="com.web.controller"/> -->
+	<!--
 	<jpa:repositories base-package="com.web.repository"/>
 	<tx:annotation-driven/>
-	<context:component-scan base-package="com.web.service, com.web.repository, com.web.controller"/> 
+	-->
+	<context:component-scan base-package="com.web" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
 	
 	
 	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -83,7 +87,7 @@
 	
 	
 	<!-- service-context.xml에서 가져온 것 -->
-	
+	<!--
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
@@ -96,27 +100,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
-    
-    <!-- JPA 예외를 스프링 예외로 변환 -->
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
-    
-	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="com.web.entity"/> <!-- @Entity 탐색 시작 위치 -->
-        <property name="jpaVendorAdapter">
-            <!-- 하이버네이트 구현체 사용 -->
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
-        </property>
-        <property name="jpaProperties"> <!-- 하이버네이트 상세 설정 -->
-            <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop> <!-- 방언 -->
-                <prop key="hibernate.show_sql">true</prop>                   <!-- SQL 보기 -->
-                <prop key="hibernate.format_sql">true</prop>                 <!-- SQL 정렬해서 보기 -->
-                <prop key="hibernate.use_sql_comments">true</prop>           <!-- SQL 코멘트 보기 -->
-                <prop key="hibernate.id.new_generator_mappings">true</prop>  <!-- 새 버전의 ID 생성 옵션 -->
-                <prop key="hibernate.hbm2ddl.auto">create</prop>             <!-- DDL 자동 생성 -->
-            </props>
-        </property>
-    </bean>
+    -->
+
 </beans>
 

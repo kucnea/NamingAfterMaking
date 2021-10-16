@@ -24,9 +24,8 @@
   </properties>
 
   <dependencies>
-  
-  
-   <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-api -->
+
+  <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-api -->
     <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-api</artifactId>
@@ -59,12 +58,20 @@
     <dependency>
   		<groupId>org.hibernate</groupId>
   		<artifactId>hibernate-entitymanager</artifactId>
-  		<version>6.0.0.Alpha7</version>
-  		<type>pom</type>
+  		<!--version>6.0.0.Alpha7</version--><!-- alpha 버전은 정식(Final 붙은거)이 아닌 테스트용 버전이기 때문에 사용하지 말것 -->
+		<version>5.6.0.Final</version>
+  		<!-- type>pom</type -->
     </dependency>
 
+	  <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+	  <dependency>
+		  <groupId>com.h2database</groupId>
+		  <artifactId>h2</artifactId>
+		  <version>1.4.200</version>
+	  </dependency>
 
-	<!-- QueryDSL -->
+
+	  <!-- QueryDSL -->
 <!-- 	<dependency>
 		<groupId>com.mysema.querydsl</groupId>
 		<artifactId>querydsl-apt</artifactId>
