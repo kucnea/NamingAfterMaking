@@ -32,7 +32,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter implements Sessi
 			@Nullable ModelAndView mv) throws Exception {
 
 		HttpSession session = request.getSession();
-		System.out.println("post Handle has : "+session.getAttribute("pId"));
+		System.out.println("post Handle");
 		
 		Object player = mv.getModelMap().get("player");
 		if(player!=null) {
@@ -43,7 +43,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter implements Sessi
 			lgCookie.setMaxAge(24*60*60);
 			
 			response.addCookie(lgCookie); //왜 난 개발자모드 application 에서 쿠키에 안보이지?
-			
 			
 		}
 		

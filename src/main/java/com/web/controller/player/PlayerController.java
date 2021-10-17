@@ -23,11 +23,6 @@ public class PlayerController {
 	//엔티티 팩토리 싱글톤
 //	EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaoracle");
 
-	
-	
-	
-	
-	
 	@RequestMapping("login")
 	public String loginPage() {	//url과 method명을 맞추는 것이 관리에 용이
 	
@@ -48,7 +43,7 @@ public class PlayerController {
 		
 		if(p!=null)	{
 			System.out.println("logedin Controller output player // pId : "+p.getpId()+", pPw : "+p.getpPw());
-			session.setAttribute("pId", p);
+			model.addAttribute("player", p);
 			model.addAttribute("result",true);
 		}else {
 			System.out.println("logedin Controller output player // result : null");

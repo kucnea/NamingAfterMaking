@@ -34,6 +34,7 @@ public class PlayerService {
         else return true;
 	}
 	
+	/* 로그인 */
 	public Player login(Player player) {
 
 		Player p = playerRepository.findByPId(player.getpId());

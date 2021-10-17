@@ -31,7 +31,7 @@ public class PlayerControllerTest {
 	@Autowired
 	private WebApplicationContext context;
 	private MockMvc mockMvc;
-	ObjectMapper mapper;
+	private ObjectMapper mapper;
 	@Autowired PlayerController playerController;
 	
 	@Before
@@ -51,7 +51,16 @@ public class PlayerControllerTest {
 	
 	@Test
 	public void login() throws Exception {
-
+		
+//		String content = mapper.writeValueAsString(new Player("id","pass"));
+//		
+//		mockMvc.perform(post("/player/logedin")
+//				.content(content)
+//				.contentType(MediaType.APPLICATION_JSON)
+//				.accept(MediaType.APPLICATION_JSON))
+//				.andExpect(status().isOk())
+//				.andDo(print());
+		
 		mockMvc.perform(post("/player/logedin")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(mapper.writeValueAsString(
