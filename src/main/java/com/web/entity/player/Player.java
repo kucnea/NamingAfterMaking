@@ -51,7 +51,7 @@ public class Player {
 	private int pLegendaryPoint;
 	private float pPVPWin;
 	private float pPVPLose;
-	private int pStatus;
+	private int pStatus = 0;
 	
 	@Column(length = 1)
 	private int pAgree;
@@ -69,7 +69,7 @@ public class Player {
 	
 	
 	
-	// Getter & Setter
+	// Getter & Setter & ToString
 	public int getpIdx() {
 		return pIdx;
 	}
