@@ -46,4 +46,11 @@ public class PlayerService {
 		else return null;
 		
 	}
+
+	/* 로그아웃 */
+	public void logout() {
+		
+		
+		
+	}
 }

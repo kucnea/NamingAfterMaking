@@ -105,11 +105,11 @@
                         <div class="border-box">
                             <h4>${player.pId }님 반갑습니다! 용사가 준비되어 있습니다.</h4>
                                 <div class="form-field-wrapper">
-                                    <label>${player1.pId }님 여행 준비가 완료되셨나요? 행복한 모험 되시길 바라요 :)</label>
+                                    <label>${player.pId }님 여행 준비가 완료되셨나요? 행복한 모험 되시길 바라요 :)</label>
 									<button onclick="location.href='/ingame/gamescreen'" class="btn btn-md btn-black">모험하기</button>
                                 </div>
                                 <div class="form-field-wrapper">
-                                    <label>${player1.pId }님 휴식이 필요하다면 용사를 집으로 보내주세요. 고생하셨습니다.</label>
+                                    <label>${player.pId }님 휴식이 필요하다면 용사를 집으로 보내주세요. 고생하셨습니다.</label>
                                     <button onclick="location.href='/player/logout'" class="btn btn-md btn-black">로그아웃</button>
                                 </div>
                         </div>
@@ -117,7 +117,7 @@
                     <div class="col-md-6">
                         <div class="border-box">
                                <div class="form-field-wrapper">
-                                    <label>${player1.pNick }와 쇼핑이 필요하신가요? 아래의 버튼으로 떠나볼까요?</label>
+                                    <label>${player.pNick }와 쇼핑이 필요하신가요? 아래의 버튼으로 떠나볼까요?</label>
 									<button onclick="location.href='/store/storelist'" class="btn btn-md btn-black">쇼핑하기</button>
                                 </div>
                                 <div class="form-field-wrapper">

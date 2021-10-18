@@ -9,6 +9,8 @@ import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.web.entity.player.Player;
+
 public class LoginInterceptor extends HandlerInterceptorAdapter implements SessionNames {
 
 	@Override
@@ -16,7 +18,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter implements Sessi
 			throws Exception {
 		
 		HttpSession session = request.getSession();
-		System.out.println("preHandle");
+		session.setMaxInactiveInterval(18000);
+		System.out.println("login preHandle");
 		
 		if(session.getAttribute(login)!=null) session.removeAttribute(login);
 		
@@ -32,9 +35,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter implements Sessi
 			@Nullable ModelAndView mv) throws Exception {
 
 		HttpSession session = request.getSession();
-		System.out.println("post Handle");
+		session.setMaxInactiveInterval(18000);
+		System.out.println("login postHandle");
 		
 		Object player = mv.getModelMap().get("player");
+
+//		Player p = (Player) mv.getModelMap().get("p");
+//		System.out.println(player.toString());
+//		System.out.println(p.toString());
+		
 		if(player!=null) {
 			session.setAttribute(login, player);
 			
@@ -42,9 +51,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter implements Sessi
 			lgCookie.setPath("/");
 			lgCookie.setMaxAge(24*60*60);
 			
-			response.addCookie(lgCookie); //왜 난 개발자모드 application 에서 쿠키에 안보이지?
+			response.addCookie(lgCookie);
 			
 		}
+		
+		mv.getModelMap().remove("player"); 
+		mv.getModelMap().remove("p"); 
+		mv.getModelMap().remove("result");
 		
 	}
 	

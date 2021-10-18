@@ -88,7 +88,7 @@
 						<li>
                             <c:choose>
                             <c:when test="${login != null }">
-                            <a class="btn btn-md btn-black join-btn" href="/player/logedin">My Page</a>
+                            <a class="btn btn-md btn-black join-btn" href="/player/mypage">My Page</a>
                             </c:when>
                             <c:otherwise>
                             <a class="btn btn-md btn-black join-btn" href="/player/login">LOGIN N.A.M.</a>
@@ -96,7 +96,7 @@
                             </c:choose>                            
                         </li>
                         <c:if test="${login != null }">
-                        <c:set var="pId" value="${player.pId }"/>
+                        <c:set var="pId" value="${player.pId }"/> <!-- pStatus (0 : 자유, 1 : 제제, 2 : 관리자) -->
 	                    <c:if test="${pId eq 'admin' }">
 	                        <li>
 	                        <a class="btn btn-md btn-black join-btn" href="/player/login">관리페이지</a>

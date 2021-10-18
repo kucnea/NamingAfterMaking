@@ -30,27 +30,38 @@ public class PlayerController {
 	}
 	
 	
+	@RequestMapping("mypage")
+	public String logedIn() {
+		
+		return "player.myPage";
+	}
+	
 //	@RequestMapping(value="logedin", method = RequestMethod.POST)
 	@PostMapping("logedin")
 	public String logedIn(@ModelAttribute("player") Player player,Model model, HttpServletRequest request) {
 		
-		HttpSession session = request.getSession();
-		
+//		HttpSession session = request.getSession();
 		
 		System.out.println("logedin Controller insert player // pId : "+player.getpId()+", pPw : "+player.getpPw());
 		
-		Player p = playerService.login(player);
+		player = playerService.login(player); //player로 그대로 사용하는 경우 하기 조건문에서 null이 제대로 걸러지지 않을거같음.
 		
-		if(p!=null)	{
-			System.out.println("logedin Controller output player // pId : "+p.getpId()+", pPw : "+p.getpPw());
-			model.addAttribute("player", p);
-			model.addAttribute("result",true);
+//		System.out.println("player Controller : "+player.toString());
+//		System.out.println("player Controller : "+p.toString());
+		
+		if(player!=null)	{
+			System.out.println("logedin Controller output player // pId : "+player.getpId()+", pPw : "+player.getpPw());
+			model.addAttribute("player", player);
+			model.addAttribute("player1", player); // 세션에서랑 모델에서 변수명이 꼬이는지 로그인 후 화면에서만 player인자값이 안나옴
+			model.addAttribute("result","true");
+			return "player.logedin";
 		}else {
 			System.out.println("logedin Controller output player // result : null");
-			model.addAttribute("result",false);
+			model.addAttribute("result","false");
+			return "player.login";
 		}
 
-		return "player.logedin";
+//		return "player.logedin";
 	}
 	
 	@RequestMapping("join")
@@ -79,5 +90,11 @@ public class PlayerController {
 	public String appointment() {	//url과 method명을 맞추는 것이 관리에 용이
 		
 		return "player.memberAppointment";
+	}
+	
+	@RequestMapping("logout")
+	public String logout() {
+		
+		return "player.login";
 	}
 }
