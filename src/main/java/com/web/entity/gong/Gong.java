@@ -6,10 +6,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.web.entity.player.Player;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name="GONG")
@@ -17,6 +25,10 @@ import javax.persistence.TemporalType;
 		name = "GONG_SEQ_GENERATOR",
 		sequenceName = "GONG_SEQ",
 		initialValue = 1, allocationSize = 1)
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Gong {
 
 	@Id
@@ -31,68 +43,16 @@ public class Gong {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date GongWTime;
 
+	//연관관계
+	@ManyToOne
+//	@MapsId("pIdx")
+	private Player player;
 	
-	
-	
-	
-	
-	
-	// Getter & Setter & ToString
-	public int getGongIdx() {
-		return GongIdx;
-	}
-
-	public void setGongIdx(int gongIdx) {
-		GongIdx = gongIdx;
-	}
-
-	public int getpIdx() {
-		return pIdx;
-	}
-
-	public void setpIdx(int pIdx) {
-		this.pIdx = pIdx;
-	}
-
-	public String getGongTitle() {
-		return GongTitle;
-	}
-
-	public void setGongTitle(String gongTitle) {
-		GongTitle = gongTitle;
-	}
-
-	public String getGongContent() {
-		return GongContent;
-	}
-
-	public void setGongContent(String gongContent) {
-		GongContent = gongContent;
-	}
-
-	public int getGongCnt() {
-		return GongCnt;
-	}
-
-	public void setGongCnt(int gongCnt) {
-		GongCnt = gongCnt;
-	}
-
-	public Date getGongWTime() {
-		return GongWTime;
-	}
-
-	public void setGongWTime(Date gongWTime) {
-		GongWTime = gongWTime;
-	}
-
-	@Override
-	public String toString() {
-		return "Gong [GongIdx=" + GongIdx + ", pIdx=" + pIdx + ", GongTitle=" + GongTitle + ", GongContent="
-				+ GongContent + ", GongCnt=" + GongCnt + ", GongWTime=" + GongWTime + "]";
-	}
 	
 	
 	
 	
 }
+
+
+

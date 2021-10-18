@@ -96,8 +96,8 @@
                             </c:choose>                            
                         </li>
                         <c:if test="${login != null }">
-                        <c:set var="pId" value="${player.pId }"/> <!-- pStatus (0 : 자유, 1 : 제제, 2 : 관리자) -->
-	                    <c:if test="${pId eq 'admin' }">
+                        <c:set var="PId" value="${player.PId }"/> <!-- pStatus (0 : 자유, 1 : 제제, 2 : 관리자) -->
+	                    <c:if test="${PId eq 'admin' }">
 	                        <li>
 	                        <a class="btn btn-md btn-black join-btn" href="/player/login">관리페이지</a>
 	                        </li>

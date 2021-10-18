@@ -20,7 +20,7 @@ public class PlayerService {
 		boolean validFlag = validateDuplicatePlayer(player); // 중복 체크
 		if(!validFlag) {
 		playerRepository.save(player);
-		return player.getpIdx();
+		return player.getPIdx();
 		}else {
 			return -1;
 		}
@@ -29,7 +29,7 @@ public class PlayerService {
 	
 	/* 중복체크 */
 	private boolean validateDuplicatePlayer(Player player) {
-		Player findPlayer = playerRepository.findByPId(player.getpId());
+		Player findPlayer = playerRepository.findByPId(player.getPId());
 		if (findPlayer==null) return false;
         else return true;
 	}
@@ -37,12 +37,12 @@ public class PlayerService {
 	/* 로그인 */
 	public Player login(Player player) {
 
-		Player p = playerRepository.findByPId(player.getpId());
+		Player p = playerRepository.findByPId(player.getPId());
 		
-		System.out.println("player pass : "+player.getpPw());
-		System.out.println("p pass : "+p.getpPw());
+		System.out.println("player pass : "+player.getPPw());
+		System.out.println("p pass : "+p.getPPw());
 		
-		if(player.getpPw().equals(p.getpPw())) return p;
+		if(player.getPPw().equals(p.getPPw())) return p;
 		else return null;
 		
 	}

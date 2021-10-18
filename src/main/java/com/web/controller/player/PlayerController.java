@@ -42,7 +42,7 @@ public class PlayerController {
 		
 //		HttpSession session = request.getSession();
 		
-		System.out.println("logedin Controller insert player // pId : "+player.getpId()+", pPw : "+player.getpPw());
+		System.out.println("logedin Controller insert player // pId : "+player.getPId()+", pPw : "+player.getPPw());
 		
 		player = playerService.login(player); //player로 그대로 사용하는 경우 하기 조건문에서 null이 제대로 걸러지지 않을거같음.
 		
@@ -50,7 +50,7 @@ public class PlayerController {
 //		System.out.println("player Controller : "+p.toString());
 		
 		if(player!=null)	{
-			System.out.println("logedin Controller output player // pId : "+player.getpId()+", pPw : "+player.getpPw());
+			System.out.println("logedin Controller output player // pId : "+player.getPId()+", pPw : "+player.getPPw());
 			model.addAttribute("player", player);
 			model.addAttribute("player1", player); // 세션에서랑 모델에서 변수명이 꼬이는지 로그인 후 화면에서만 player인자값이 안나옴
 			model.addAttribute("result1","t");
