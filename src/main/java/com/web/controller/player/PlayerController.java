@@ -53,11 +53,11 @@ public class PlayerController {
 			System.out.println("logedin Controller output player // pId : "+player.getpId()+", pPw : "+player.getpPw());
 			model.addAttribute("player", player);
 			model.addAttribute("player1", player); // 세션에서랑 모델에서 변수명이 꼬이는지 로그인 후 화면에서만 player인자값이 안나옴
-			model.addAttribute("result","true");
+			model.addAttribute("result1","t");
 			return "player.logedin";
 		}else {
 			System.out.println("logedin Controller output player // result : null");
-			model.addAttribute("result","false");
+			model.addAttribute("result1","f");
 			return "player.login";
 		}
 

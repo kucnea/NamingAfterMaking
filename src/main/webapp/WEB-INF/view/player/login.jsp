@@ -31,7 +31,7 @@
 
 </head>
 
-<c:if test="${result =='false' }">
+<c:if test="${result1 eq 'f' }">
 	<script type="text/javascript">
 		alert("아이디, 비밀번호를 확인해주세요.");
 	</script>

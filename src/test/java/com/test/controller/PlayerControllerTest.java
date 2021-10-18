@@ -31,8 +31,7 @@ public class PlayerControllerTest {
 	
 	@Before
 	public void setUp() {
-		this.mockMvc = standaloneSetup(new PlayerController())
-				.alwaysExpect(status().isMovedTemporarily()).build();
+		this.mockMvc = standaloneSetup(playerController).build();
     }
 	
 	
@@ -43,16 +42,27 @@ public class PlayerControllerTest {
 		.andExpect(status().isOk());
 	}
 	
-	@Test
-	public void login() throws Exception {
-		
-		this.mockMvc.perform(
-				post("/player/logedin")
-					.param("pId", "id")
-					.param("pPw", "pass")
-				).andExpect(status().isOk());
-				
-	}
+//	@Test
+//	public void login() throws Exception {
+//		
+//		this.mockMvc.perform(
+//				post("/player/logedin")
+//					.param("pId", "id")
+//					.param("pPw", "pass")
+//				).andExpect(status().isOk());
+//				
+//	}
 
+	@Test
+	public void create() throws Exception {
+		
+		this.mockMvc .perform(
+				post("/player/create")
+					.param("pId", "id")
+					.param("pName", "name")
+					.param("pPw", "pass")
+					.param("pAgree", "1")
+				).andExpect(status().isOk());
+	}
 }
  
