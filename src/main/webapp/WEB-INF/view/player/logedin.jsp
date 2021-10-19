@@ -103,7 +103,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="border-box">
-                            <h4>${player.PId }님 반갑습니다! 용사가 준비되어 있습니다.</h4>
+                            <h4>${player1.PId }님 반갑습니다! 용사가 준비되어 있습니다.</h4>
                                 <div class="form-field-wrapper">
                                     <label>${player1.PId }님 여행 준비가 완료되셨나요? 행복한 모험 되시길 바라요 :)</label>
 									<button onclick="location.href='/ingame/gamescreen'" class="btn btn-md btn-black">모험하기</button>

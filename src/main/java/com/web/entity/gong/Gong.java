@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,12 +51,14 @@ public class Gong {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date GongWTime;
 
+	
 	//연관관계
 	@ManyToOne
 	@MapsId("pIdx")
 	@JoinColumn(name="pIdx", referencedColumnName = "pIdx") // 추가하면 컬럼하나가 더 적게 join할 수 있대서 했는데 결과가 동일..
 	private Player player;									// referencedColumnName을 정해야 정확하게 maaping이 되고,
 															// 그래야 여러컬럼을 join해도 순서가 맞게 될 수 있음.
+	
 //	@EqualsAndHashCode	//예제는 여기에 동일하게 넣던데 왜 안되지
 //	@Embeddable
 //	public static class GongIdx implements Serializable{
