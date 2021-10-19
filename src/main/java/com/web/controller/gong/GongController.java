@@ -17,13 +17,16 @@ public class GongController {
 	@Autowired GongService gongService;
 	
 	
-	@RequestMapping("board")
-	public String gongBoard(Model model) {	//url과 method명을 맞추는 것이 관리에 용이
+	@RequestMapping("gonglist")
+	public String gongList(Model model) {	//url과 method명을 맞추는 것이 관리에 용이
+		
+		System.out.println("gong Controller : gongList stage");
 		
 		List<Gong> list = gongService.searchAll();
-		model.addAttribute("list", list);
+		if(list==null) model.addAttribute("list", list);
+		else model.addAttribute("msg", "조회된 결과가 없습니다.");
 		
-		return "gong.board";
+		return "gong.gongList";
 	}
 	
 	

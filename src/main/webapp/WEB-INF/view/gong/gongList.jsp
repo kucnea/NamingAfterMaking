@@ -104,16 +104,25 @@
         <section class="ptb-60 ptb-sm-30">
 			<div class="container text-left">
                 <div class="mb-30">	
+                	<a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/index"><i class="fa fa-filter"></i><span> 글쓰기 </span></a>
 					<h2> 1000 Artists </h2>	
 					<hr>
 				</div>	
+				<c:choose>
+				<c:when test="${list eq null }">
+					<div class="col-md-8 col-sm-8 col-xs-12">
+						<a href="artist-profile.html"><h6>${msg }</h6></a>
+						<p> 다른 플레이어를 위해 새로운 공략을 작성해보시는 건 어떨까요? </p>								
+					</div>
+				</c:when>
+				<c:otherwise>
 				<c:forEach var="vo" items="${list }">
 				<div class="row mtb-30">
 					<div class="item-box col-md-4 col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2 mb-sm-30">
 						<a href="artist-profile.html"><img alt="1" src="/img/portfolio/1.jpg" class="item-container"></a>                           
 					</div>
 					<div class="col-md-8 col-sm-8 col-xs-12">
-						<a href="artist-profile.html"><h6>John Doe</h6></a>
+						<a href="artist-profile.html"><h6>${vo.GongTitle }</h6></a>
 						<p class="color">Singer, Musician</p>
 						<p>Pune, India</p>
 						<p>Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor 
@@ -125,6 +134,8 @@
 				</div>	
 				<hr>
 				</c:forEach>
+				</c:otherwise>
+				</c:choose>
 				</div>
 			</div>
 								
