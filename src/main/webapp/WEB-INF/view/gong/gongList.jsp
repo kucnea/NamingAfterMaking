@@ -104,7 +104,7 @@
         <section class="ptb-60 ptb-sm-30">
 			<div class="container text-left">
                 <div class="mb-30">	
-                	<a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/index"><i class="fa fa-filter"></i><span> 글쓰기 </span></a>
+                	<a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/gong/gongwrite"><i class="fa fa-filter"></i><span> 글쓰기 </span></a>
 					<h2> 1000 Artists </h2>	
 					<hr>
 				</div>	

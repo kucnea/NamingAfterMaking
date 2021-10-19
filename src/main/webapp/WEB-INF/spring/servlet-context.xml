@@ -65,7 +65,8 @@
 
 		<mvc:interceptor>
 			<mvc:mapping path="/player/mypage"/>
-			<mvc:mapping path="/player/joinComplete"/>
+			<mvc:mapping path="/player/joincomplete"/>
+			<mvc:mapping path="/gong/gongwrite"/>
 			<bean id="authorizationInterceptor" class="com.web.interceptor.AuthorizationInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>

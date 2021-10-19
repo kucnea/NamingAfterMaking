@@ -117,15 +117,12 @@
                             <!-- END MAIL SENDING UNSUCCESSFULL -->
 
                             <div class="form-field-wrapper">
-                                <input class="input-sm form-full" id="form-name" type="text" name="form-name" placeholder="Your Name" required>
+                                <input class="input-sm form-full" id="form-subject" type="text" name="form-subject" placeholder="제목">
                             </div>
-
+                            
                             <div class="form-field-wrapper">
-                                <input class="input-sm form-full" id="form-email" type="email" name="form-email" placeholder="Email" required>
-                            </div>
-
-                            <div class="form-field-wrapper">
-                                <input class="input-sm form-full" id="form-subject" type="text" name="form-subject" placeholder="Subject">
+	                            <h6>작성자 : ${player.PId }</h6>	
+                                <!-- 쪽지 기능(버튼) 추가 예정 -->
                             </div>
 
                             <div class="form-field-wrapper">
@@ -136,57 +133,6 @@
                         </form>
                         <!-- END Contact FORM -->
                     </div>
-                    <div class="col-md-5 col-md-offset-1 contact">
-                        <div class="contact-box-left mb-45">
-                            <div class="contact-icon-left"><i class="ion ion-ios-location"></i></div>
-                            <h6>Office Location</h6>
-							<div class="col-md-6">
-							<strong>Mumbai</strong>
-                            <p>
-                                37, Ground Floor, Shreeji Chambers,<br> 
-								Calicut Street, Fort Market, <br>
-								Mumbai - 400001
-                            </p>
-							<p><i class="fa fa-phone left"></i> 022 22610754</p>
-							</div>
-							<div class="col-md-6">
-							<strong>Pune</strong>
-                            <p>
-                                The Mesh, C-4/5, Rakshalekha Society,<br>
-								2nd Floor, Lane No-6, Koregaon Park, <br>
-								Pune - 411001
-                            </p>
-							<p><i class="fa fa-phone left"></i> 020- 41245252</p>
-							</div>
-							<div class="clearfix"></div>
-                        </div>
-						<div class="contact-box-left mb-45">
-                            <div class="contact-icon-left"><i class="fa fa-envelope-o left"></i></div>
-                            <h6> yourname@domain.com</h6>          
-                        </div>
-                        <div class="contact-box-left mb-45">
-                            <div class="contact-icon-left"><i class="ion ion-ios-people"></i></div>
-                            <h6>Contact People</h6>
-                            <p>
-                                <span>Mr. John Doe - 09323637353</span>
-								<br/>
-								<span>Mrs. Jane Doe - 07498123098</span>
-                            </p>
-                        </div>
-						
-                        <div class="contact-box-left mb-45">
-
-                            <h6>Follow Us</h6>
-                            <ul class="list-none social">
-                                <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="https://instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://vimeo.com/" target="_blank"><i class="fa fa-vimeo-square"></i></a></li>
-                                <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    
                 </div>
             </div>
         </section>

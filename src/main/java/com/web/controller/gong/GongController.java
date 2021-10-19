@@ -29,5 +29,11 @@ public class GongController {
 		return "gong.gongList";
 	}
 	
-	
+	@RequestMapping("gongwrite")
+	public String gongWrite(Model model) {
+		
+		
+		
+		return "gong.gongWrite";
+	}
 }
