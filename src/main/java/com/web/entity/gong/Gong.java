@@ -44,12 +44,12 @@ public class Gong {
 	@EmbeddedId
 	private GongIdx gongIdx;
 	
-	private String GongTitle;
-	private String GongContent;
-	private int GongCnt;
+	private String gongTitle;
+	private String gongContent;
+	private int gongCnt = 0;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date GongWTime;
+	private Date gongWTime = new Date();
 
 	
 	//연관관계

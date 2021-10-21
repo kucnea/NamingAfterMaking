@@ -117,7 +117,7 @@
                             <!-- END MAIL SENDING UNSUCCESSFULL -->
 
                             <div class="form-field-wrapper">
-                                <input class="input-sm form-full" id="form-subject" type="text" name="form-subject" placeholder="제목">
+                                <input class="input-sm form-full" id="form-subject" type="text" name="gongTitle" placeholder="제목">
                             </div>
                             
                             <div class="form-field-wrapper">
@@ -126,7 +126,7 @@
                             </div>
 
                             <div class="form-field-wrapper">
-                                <textarea class="form-full" id="form-message" rows="7" name="form-message" placeholder="Your Message" required></textarea>
+                                <textarea class="form-full" id="form-message" rows="7" name="gongContent" placeholder="내용" required></textarea>
                             </div>
 
                             <button class="btn btn-md btn-black" type="submit" id="form-submit" name="submit">Send Message</button>
