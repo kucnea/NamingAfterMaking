@@ -24,4 +24,14 @@ public class GongService {
 		
 		return list;
 	}
+	
+	public int write(Gong gong) {
+		
+		int result = 0;
+		
+		gongRepository.save(gong);
+		
+		
+		return result;
+	}
 }

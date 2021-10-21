@@ -102,7 +102,7 @@
                 <div class="row">
 				<div class="col-md-6 pb-60">
                         <!-- Contact FORM -->
-                        <form class="contact-form" id="contact" role="form">
+                        <form class="contact-form" id="contact" role="form" action="/gong/gongsubmit" method="post">
 
                             <!-- IF MAIL SENT SUCCESSFULLY -->
                             <h6 class="successContent">

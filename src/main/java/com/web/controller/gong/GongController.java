@@ -42,7 +42,7 @@ public class GongController {
 	@PostMapping("gongsubmit")
 	public String gongSubmit(Model model, @ModelAttribute("gong") Gong gong) {
 		
-		
+		int result = gongService.write(gong);
 		
 		return "gong.gongList";
 	}
