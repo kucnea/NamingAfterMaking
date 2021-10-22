@@ -40,7 +40,7 @@ import lombok.ToString;
 public class Gong {
 
 //	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GONG_SEQ_GENERATOR") // 오라클 사용시
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GONG_SEQ_GENERATOR") // 오라클 사용시
 	@EmbeddedId
 	private GongIdx gongIdx;
 	

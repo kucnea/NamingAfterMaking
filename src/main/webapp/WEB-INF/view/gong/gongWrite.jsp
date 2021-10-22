@@ -102,7 +102,8 @@
                 <div class="row">
 				<div class="col-md-6 pb-60">
                         <!-- Contact FORM -->
-                        <form class="contact-form" id="contact" role="form" action="/gong/gongsubmit" method="post">
+                        <!-- <form class="contact-form" id="contact" role="form" action="/gong/gongsubmit" method="post"> -->
+                        <form action="/gong/gongsubmit" method="post">
 
                             <!-- IF MAIL SENT SUCCESSFULLY -->
                             <h6 class="successContent">
@@ -120,10 +121,10 @@
                                 <input class="input-sm form-full" id="form-subject" type="text" name="gongTitle" placeholder="제목">
                             </div>
                             
-                            <div class="form-field-wrapper">
+                            <!-- <div class="form-field-wrapper"> -->
 	                            <h6>작성자 : ${player.PId }</h6>	
                                 <!-- 쪽지 기능(버튼) 추가 예정 -->
-                            </div>
+                            <!-- </div> -->
 
                             <div class="form-field-wrapper">
                                 <textarea class="form-full" id="form-message" rows="7" name="gongContent" placeholder="내용" required></textarea>
