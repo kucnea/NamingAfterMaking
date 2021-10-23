@@ -26,6 +26,7 @@ public class GongService {
 		return list;
 	}
 	
+	/* 게시글 작성 */
 	public boolean write(Gong gong, Player player) {
 		
 		if(gong!=null && player!=null) {
@@ -38,12 +39,19 @@ public class GongService {
 		
 	}
 
+	/* 한 건 조회 */
 	public Gong searchOne(int gongIdx) {
 		return gongRepository.findOne(gongIdx);
 	}
 
+	/* 업데이트 */
 	public void update(Gong gong) {
 		gongRepository.save(gong);
+	}
+
+	/* 한 건 삭제*/
+	public void delete(int gongIdx) {
+		gongRepository.delete(gongIdx);
 	}
 
 

@@ -118,4 +118,12 @@ public class GongController {
 		return "redirect:gongdetail?gongIdx="+gongUpdated.getGongIdx();
 	}
 	
+	@RequestMapping("gongdelete")
+	public String gongDelete(@RequestParam("gongIdx") int gongIdx) {
+		
+		gongService.delete(gongIdx);
+		
+		return "redirect:gonglist";
+	}
+	
 }
