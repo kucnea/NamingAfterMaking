@@ -52,7 +52,7 @@ public class GongController {
 		boolean result = gongService.write(gong,player);
 		
 		if(result) {
-			return "gong.gongList";	
+			return "redirect:gonglist";	
 		}else {
 			return "gong.gongWrite";
 		}
