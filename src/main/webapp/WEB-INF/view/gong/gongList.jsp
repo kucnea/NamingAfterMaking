@@ -207,7 +207,33 @@
 				</c:choose>
 				</div>
 			</div>
-								
+				 <div style="text-align: center;">
+					<a href="?page=1&size=${size1 }">&lt;&lt;</a> 
+					<a href="?page=${page1-1 }&size=${size1 }">&lt;</a>  
+					
+					<c:forEach var="i" begin="1" end="${maxPage }">
+						<a href="?page=${i}&size=${size1 }">${i}</a>
+					</c:forEach>
+					
+					<a href="?page=${page1+1 }&size=${size1 }">&gt;</a> 
+					<a href="?page=${maxPage }&size=${size1 }">&gt;&gt;</a>
+				</div>
+				<form action="/gong/gongsearch" method="get">
+				<table>
+					<tr>
+						<th>
+						<select name="searchList">
+							<option value="subject">제목</option>
+							<option value="content">내용</option>
+							<option value="subject || content">제목+내용</option>
+						</select>
+						</th>
+						<th>
+						<input type="text" name="search" placeholder="검색어를 입력하세요" required><input type="submit" value="검색">
+						</th>
+					</tr>
+				</table>
+				</form>
         </section>
 		
         <!-- End Options Section -->

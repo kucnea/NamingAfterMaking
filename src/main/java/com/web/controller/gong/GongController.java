@@ -43,12 +43,20 @@ public class GongController {
 		
 		//여기까지는 기존의 전체를 불러오는 코드. 하기는 페이징을 위해 만들 코드
 		page-=1;
+		
+		
 		Page<Gong> pages = gongService.searchList(page, size);
+		if(page<0) page=0;
+		else if(page>pages.getTotalPages()) page=pages.getTotalPages();
+		
 		System.out.println("Page의 사이즈 : "+pages.getSize());
 		System.out.println("Page의 page수 : "+pages.getTotalPages());
+		System.out.println("Page의 첫 page : ");
+		
 		model.addAttribute("maxPage",pages.getTotalPages());
 		model.addAttribute("page1",page+1);
 		model.addAttribute("size1",size);
+		
 		List<Gong> list = pages.getContent();
 		if(list.size()!=0) model.addAttribute("list", list);
 		else model.addAttribute("msg", "조회된 결과가 없습니다.");
