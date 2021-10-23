@@ -105,6 +105,7 @@
                         <!-- <form class="contact-form" id="contact" role="form" action="/gong/gongsubmit" method="post"> -->
                         <form action="/gong/gongupdatesubmit" method="post">
 							<input type="hidden" name="gongIdx" value=${gong.gongIdx }>
+							<input type="hidden" name="gongCnt" value=${gong.gongCnt }>
                             <!-- IF MAIL SENT SUCCESSFULLY -->
                             <h6 class="successContent">
                                 <i class="fa fa-check left" style="color: #5cb45d;"></i>Your message has been sent successfully.

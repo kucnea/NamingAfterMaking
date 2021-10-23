@@ -30,7 +30,17 @@
 
 
 </head>
-
+	<script type="text/javascript">
+	
+		function confirmDelete(){
+			if(window.confirm("정말 삭제하시겠습니까?")){
+				location.href="/gong/gongdelete?gongIdx=${gong.gongIdx }";
+			}else{
+				location.reload();
+			}
+		}
+		
+	</script>
 <body>
 
     <!-- Preloader -->
@@ -103,17 +113,23 @@
         <section id="about" class="wow fadeIn ptb-80 ptb-sm-30">
             <div class="container">
                 <div class="row text-center">
+                	<div class="col-md-12">
+                		<h2 class="h4">${gong.gongTitle }</h2>
+                		<hr>
+                		<a class="btn btn-md btn-black float-right float-none-xs">작성자 : ${gong.player.getPNick() }</a>
+						<a class="btn btn-md btn-black float-right float-none-xs">조회수 : ${gong.gongCnt }</a>
+                	</div>
                     <div class="col-md-12">
-                        <h2 class="h4">${gong.gongTitle }</h2>
                         <div class="spacer-15">
+                        <br>
+                        <a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/gong/gonglist"><i class="fa fa-filter"></i><span> 목록 </span></a>
                         <c:set var="pIdx" value="${player.PIdx }"/>
                         <c:set var="gongPIdx" value="${gong.player.getPIdx() }"/>
                         <c:if test="${pIdx eq gongPIdx }">
-						<a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/gong/gongdelete?gongIdx=${gong.gongIdx }"><i class="fa fa-filter"></i><span> 삭제 </span></a>
+						<%-- <a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/gong/gongdelete?gongIdx=${gong.gongIdx }"><i class="fa fa-filter"></i><span> 삭제 </span></a> --%>
+						<a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" onclick="confirmDelete();"><i class="fa fa-filter"></i><span> 삭제 </span></a>
 						<a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/gong/gongupdate?gongIdx=${gong.gongIdx }"><i class="fa fa-filter"></i><span> 수정 </span></a>
 						</c:if>
-						<a class="btn btn-md btn-black float-right float-none-xs">작성자 : ${gong.player.getPNick() }</a>
-						<a class="btn btn-md btn-black float-right float-none-xs">조회수 : ${gong.gongCnt }</a>
 						</div>
                     </div>
                     <div class="col-md-12">

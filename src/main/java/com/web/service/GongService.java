@@ -1,5 +1,6 @@
 package com.web.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,12 +42,24 @@ public class GongService {
 
 	/* 한 건 조회 */
 	public Gong searchOne(int gongIdx) {
-		return gongRepository.findOne(gongIdx);
+		Gong gongResult = gongRepository.findOne(gongIdx);
+		
+		// 조회수 올리는걸 한번에 하고 싶었는데 계속 nullPointer가 발생함.
+//		System.out.println(gongResult.getGongCnt());
+//		gongResult.setGongCnt(gongResult.getGongCnt()+1);
+//		gongRepository.save(gongResult);
+		
+		return gongResult;
 	}
 
 	/* 업데이트 */
 	public void update(Gong gong) {
-		gongRepository.save(gong);
+		Gong gongUpdate = gongRepository.findOne(gong.getGongIdx());
+		gongUpdate.setGongTitle(gong.getGongTitle());
+		gongUpdate.setGongContent(gong.getGongContent());
+		gongUpdate.setGongWTime(new Date());
+		gongUpdate.setGongCnt(gong.getGongCnt());
+		gongRepository.save(gongUpdate);
 	}
 
 	/* 한 건 삭제*/

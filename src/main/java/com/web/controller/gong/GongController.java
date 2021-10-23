@@ -105,17 +105,19 @@ public class GongController {
 		System.out.println("gongUpdateSubmit Stage");
 		System.out.println("gong toString : "+gong.toString());
 		
-		Gong gongUpdated = gongService.searchOne(gong.getGongIdx());
-		gongUpdated.setGongTitle(gong.getGongTitle());
-		gongUpdated.setGongContent(gong.getGongContent());
-		gongUpdated.setGongWTime(new Date());
-		gongService.update(gongUpdated);
-		gongUpdated = gongService.searchOne(gong.getGongIdx());
-		model.addAttribute("gong",gongUpdated);
+		gongService.update(gong);
+		
+//		Gong gongUpdated = gongService.searchOne(gong.getGongIdx());
+//		gongUpdated.setGongTitle(gong.getGongTitle());
+//		gongUpdated.setGongContent(gong.getGongContent());
+//		gongUpdated.setGongWTime(new Date());
+//		gongService.update(gongUpdated);
+//		gongUpdated = gongService.searchOne(gong.getGongIdx());
+//		model.addAttribute("gong",gongUpdated);
 		
 		
 		
-		return "redirect:gongdetail?gongIdx="+gongUpdated.getGongIdx();
+		return "redirect:gongdetail?gongIdx="+gong.getGongIdx();
 	}
 	
 	@RequestMapping("gongdelete")
