@@ -39,10 +39,10 @@ import lombok.ToString;
 @ToString
 public class Gong {
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GONG_SEQ_GENERATOR") // 오라클 사용시
-	@EmbeddedId
-	private GongIdx gongIdx;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GONG_SEQ_GENERATOR") // 오라클 사용시
+//	@EmbeddedId									//이거는 시퀀스 자동증가를 사용할 수 없음.
+	private int gongIdx;
 	
 	private String gongTitle;
 	private String gongContent;
@@ -54,7 +54,7 @@ public class Gong {
 	
 	//연관관계
 	@ManyToOne
-	@MapsId("pIdx")
+//	@MapsId("pIdx")
 	@JoinColumn(name="pIdx", referencedColumnName = "pIdx") // 추가하면 컬럼하나가 더 적게 join할 수 있대서 했는데 결과가 동일..
 	private Player player;									// referencedColumnName을 정해야 정확하게 maaping이 되고,
 															// 그래야 여러컬럼을 join해도 순서가 맞게 될 수 있음.

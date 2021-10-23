@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.web.entity.gong.Gong;
+import com.web.entity.player.Player;
 import com.web.repository.GongRepository;
 
 @Service
@@ -22,16 +23,23 @@ public class GongService {
 		
 		List<Gong> list = gongRepository.findAll();
 		
+		for(Gong g : list) {
+			System.out.println("받아오는 리스트 확인");
+			System.out.println("Gong : "+g.toString());
+		}
+		
 		return list;
 	}
 	
-	public int write(Gong gong) {
+	public boolean write(Gong gong, Player player) {
 		
-		int result = 0;
+		if(gong!=null && player!=null) {
+			gong.setPlayer(player);
+			gongRepository.save(gong);
+			return true;
+		}else {
+			return false;
+		}
 		
-		gongRepository.save(gong);
-		
-		
-		return result;
 	}
 }

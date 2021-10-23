@@ -2,6 +2,9 @@ package com.web.controller.gong;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.web.entity.gong.Gong;
+import com.web.entity.player.Player;
 import com.web.service.GongService;
 
 @Controller
@@ -40,10 +44,17 @@ public class GongController {
 	}
 	
 	@PostMapping("gongsubmit")
-	public String gongSubmit(Model model, @ModelAttribute("gong") Gong gong) {
+	public String gongSubmit(Model model, @ModelAttribute("gong") Gong gong,HttpServletRequest request) {
 		
-		int result = gongService.write(gong);
+		HttpSession session = request.getSession();
+		Player player = (Player) session.getAttribute("player");
+		boolean result = gongService.write(gong,player);
 		
-		return "gong.gongList";
+		if(result) {
+			return "gong.gongList";	
+		}else {
+			return "gong.gonWrite";
+		}
+		
 	}
 }
