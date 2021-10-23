@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>   
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 
 <!DOCTYPE html>
 <html>
@@ -27,6 +26,7 @@
     <link href="/css/plugin/sidebar-menu.css" rel="stylesheet" type="text/css" />
     <link href="/css/plugin/animate.css" rel="stylesheet" type="text/css" />
     <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
@@ -49,7 +49,7 @@
     </div>
     <!-- End Search Overlay Menu -->
 
-    <!-- Site Wraper -->
+        <!-- Site Wraper -->
     <div class="wrapper">
 
         <!-- Header -->
@@ -63,9 +63,6 @@
                 <!-- End Rightside Menu -->
 
                 <!-- Mobile Navbar Icon -->
-                <!-- End Mobile Navbar Icon -->
-
-                <!-- Navbar Navigation -->
                                 
                 <!-- menu -->
                 <!-- menu -->
@@ -88,65 +85,60 @@
         <section class="inner-intro dark-bg overlay-dark">
             <div class="container">
                 <div class="row title">
-                    <h2 class="h2">공략게시판</h2>
-					<p> 여러분이 알고계신 공략을 모두에게 자랑해보세요! </p>
+                    <h2 class="h2">공략게시글</h2>
+					<h6>여러분이 알고계신 공략을 모두에게 자랑해보세요!</h6>
 					<div class="spacer-15"></div>
                     <div class="page-breadcrumb">
-                        <a href="/index">Home</a>/<span>공략게시판</span>
+                        <a href="/index">Home</a>/<a href="/gong/gonglist">공략게시판</a>/<span>${gong.gongTitle }</span>
                     </div>
                 </div>
             </div>
         </section>
         <!-- End Intro Section -->
-		
 
-        <!-- Options Section -->
+        <!-- Contact Section -->
         <section class="ptb-60 ptb-sm-30">
-			<div class="container text-left">
-                <div class="mb-30">	
-                	<a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/gong/gongwrite"><i class="fa fa-filter"></i><span> 글쓰기 </span></a>
-					<h2> 공략게시글 </h2>	
-					<hr>
-				</div>	
-				<c:choose>
-				<c:when test="${msg eq '조회된 결과가 없습니다.' }">
-					<div class="col-md-8 col-sm-8 col-xs-12">
-						<a href="artist-profile.html"><h6>${msg }</h6></a>
-						<p> 다른 플레이어를 위해 새로운 공략을 작성해보시는 건 어떨까요? </p>								
-					</div>
-				</c:when>
-				<c:otherwise>
-				<c:forEach var="vo" items="${list }">
-				<div class="row mtb-30">
-					<div class="item-box col-md-4 col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2 mb-sm-30">
-						<a href="artist-profile.html"><img alt="1" src="/img/portfolio/1.jpg" class="item-container"></a>                           
-					</div>
-					<div class="col-md-8 col-sm-8 col-xs-12">
-						<a href="/gong/gongdetail?gongIdx=${vo.gongIdx}"><h6>${vo.gongTitle }</h6></a>
-						<p class="color">${vo.player.getPNick() }</p>
-						<p>조회수 : ${vo.gongCnt } 작성시간 : ${vo.gongWTime }</p>
-						<p><a href="/gong/gongdetail?gongIdx=${vo.gongIdx}">
-						<c:choose>
-						<c:when test="${vo.gongContent.length() >= 60 }">
-						${vo.gongContent.substring(0,60) }...
-						</c:when>
-						<c:otherwise>
-						${vo.gongContent }
-						</c:otherwise>
-						</c:choose>
-						</a></p>								
-					</div>
-				</div>	
-				<hr>
-				</c:forEach>
-				</c:otherwise>
-				</c:choose>
-				</div>
-			</div>
-								
+            <div class="container">
+                <div class="row">
+				<div class="col-md-6 pb-60">
+                        <!-- Contact FORM -->
+                        <!-- <form class="contact-form" id="contact" role="form" action="/gong/gongsubmit" method="post"> -->
+                        <form action="/gong/gongupdatesubmit" method="post">
+							<input type="hidden" name="gongIdx" value=${gong.gongIdx }>
+                            <!-- IF MAIL SENT SUCCESSFULLY -->
+                            <h6 class="successContent">
+                                <i class="fa fa-check left" style="color: #5cb45d;"></i>Your message has been sent successfully.
+                            </h6>
+                            <!-- END IF MAIL SENT SUCCESSFULLY -->
+
+                            <!-- MAIL SENDING UNSUCCESSFULL -->
+                            <h6 class="errorContent">
+                                <i class="fa fa-exclamation-circle left" style="color: #e1534f;"></i>There was a problem validating the form please check!
+                            </h6>
+                            <!-- END MAIL SENDING UNSUCCESSFULL -->
+
+                            <div class="form-field-wrapper">
+                                <input class="input-sm form-full" id="form-subject" type="text" name="gongTitle" value = "${gong.gongTitle }" required>
+                            </div>
+                            
+                            <!-- <div class="form-field-wrapper"> -->
+	                            <h6>작성자 : ${player.PId }</h6>	
+                                <!-- 쪽지 기능(버튼) 추가 예정 -->
+                            <!-- </div> -->
+
+                            <div class="form-field-wrapper">
+                                <textarea class="form-full" id="form-message" rows="7" name="gongContent" required>${gong.gongContent }</textarea>
+                            </div>
+
+                            <button class="btn btn-md btn-black" type="submit" id="form-submit" name="submit">수정하기</button>
+                            <button class="btn btn-md btn-black" type="button" onclick="location.href='gonglist'">취소하기</button>
+                        </form>
+                        <!-- END Contact FORM -->
+                    </div>
+                </div>
+            </div>
         </section>
-		
-        <!-- End Options Section -->
+        <!-- Contact Section -->
 
         <!-- End CONTENT ------------------------------------------------------------------------------>
 
@@ -181,16 +173,19 @@
     <script src="/js/plugin/jquery.viewportchecker.js" type="text/javascript"></script>
     <script src="/js/plugin/jquery.stellar.min.js" type="text/javascript"></script>
     <script src="/js/plugin/wow.min.js" type="text/javascript"></script>
-    <script src="/js/plugin/jquery.colorbox-min.js" type="text/javascript"></script>	
+    <script src="/js/plugin/jquery.colorbox-min.js" type="text/javascript"></script>
     <script src="/js/plugin/owl.carousel.min.js" type="text/javascript"></script>
     <script src="/js/plugin/isotope.pkgd.min.js" type="text/javascript"></script>
     <script src="/js/plugin/masonry.pkgd.min.js" type="text/javascript"></script>
     <script src="/js/plugin/imagesloaded.pkgd.min.js" type="text/javascript"></script>
     <script src="/js/plugin/jquery.fs.tipper.min.js" type="text/javascript"></script>
     <script src="/js/plugin/mediaelement-and-player.min.js"></script>
+    <script src="/js/plugin/jquery.validate.min.js" type="text/javascript"></script>
     <script src="/js/plugin/sidebar-menu.js" type="text/javascript"></script>
     <script src="/js/theme.js" type="text/javascript"></script>
     <script src="/js/navigation.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+    <script src="/js/contact-form.js" type="text/javascript"></script>
 </body>
 </html>
-

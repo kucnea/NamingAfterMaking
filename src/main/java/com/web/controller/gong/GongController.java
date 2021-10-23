@@ -1,5 +1,6 @@
 package com.web.controller.gong;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -69,9 +69,53 @@ public class GongController {
 		
 		System.out.println("gongIdx : "+gongIdx);
 		
+		//읽기전 조회수 증가 처리
 		Gong gong = gongService.searchOne(gongIdx);
+		gong.setGongCnt(gong.getGongCnt()+1);		
+		gongService.update(gong);
+		gong = gongService.searchOne(gongIdx);
 		model.addAttribute("gong",gong);
+		
+		Gong gong1 = gongService.searchOne(gongIdx-1);
+		Gong gong2 = gongService.searchOne(gongIdx+1);
+		
+		if(gong1!=null) model.addAttribute("gong1",gong1);
+		if(gong2!=null) model.addAttribute("gong2",gong2);
 		
 		return "gong.gongDetail";
 	}
+	
+	@RequestMapping("gongupdate")
+	public String gongUpdate(@RequestParam("gongIdx") int gongIdx, Model model) {
+		
+		Gong gong = gongService.searchOne(gongIdx);
+		model.addAttribute("gong",gong);
+		
+		return "gong.gongUpdate";
+//		return "redirect:gongdetail?gongIdx="+gongIdx;
+	}
+	
+	
+	@PostMapping("gongupdatesubmit")
+	public String gongUpdateSubmit(Model model, @ModelAttribute("gong") Gong gong,HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		Player player = (Player) session.getAttribute("player");
+		
+		System.out.println("gongUpdateSubmit Stage");
+		System.out.println("gong toString : "+gong.toString());
+		
+		Gong gongUpdated = gongService.searchOne(gong.getGongIdx());
+		gongUpdated.setGongTitle(gong.getGongTitle());
+		gongUpdated.setGongContent(gong.getGongContent());
+		gongUpdated.setGongWTime(new Date());
+		gongService.update(gongUpdated);
+		gongUpdated = gongService.searchOne(gong.getGongIdx());
+		model.addAttribute("gong",gongUpdated);
+		
+		
+		
+		return "redirect:gongdetail?gongIdx="+gongUpdated.getGongIdx();
+	}
+	
 }

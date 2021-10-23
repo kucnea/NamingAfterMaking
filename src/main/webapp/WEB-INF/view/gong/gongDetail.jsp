@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 
 <!DOCTYPE html>
 <html>
@@ -103,12 +104,21 @@
             <div class="container">
                 <div class="row text-center">
                     <div class="col-md-12">
-                        <h3 class="h4">${gong.gongTitle }</h3>
+                        <h2 class="h4">${gong.gongTitle }</h2>
                         <div class="spacer-15">
-						<a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/gong/gongwrite"><i class="fa fa-filter"></i><span> 수정 </span></a>
-						<a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/gong/gongwrite"><i class="fa fa-filter"></i><span> 삭제 </span></a>
+                        <c:set var="pIdx" value="${player.PIdx }"/>
+                        <c:set var="gongPIdx" value="${gong.player.getPIdx() }"/>
+                        <c:if test="${pIdx eq gongPIdx }">
+						<a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/gong/gongdelete"><i class="fa fa-filter"></i><span> 삭제 </span></a>
+						<a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/gong/gongupdate?gongIdx=${gong.gongIdx }"><i class="fa fa-filter"></i><span> 수정 </span></a>
+						</c:if>
+						<a class="btn btn-md btn-black float-right float-none-xs">작성자 : ${gong.player.getPNick() }</a>
+						<a class="btn btn-md btn-black float-right float-none-xs">조회수 : ${gong.gongCnt }</a>
 						</div>
-                        <p>${gong.gongContent }</p>
+                    </div>
+                    <div class="col-md-12">
+                    	<br><br><br>
+                    	<p align="left" style="font-size:1.3em;">${gong.gongContent }</p>
                     </div>
                 </div>
             </div>
@@ -148,7 +158,7 @@
         <!-- gongIdx로 앞뒤 게시글? -->
         <section class="ptb-80 ptb-sm-80">
             <div class="container text-center">
-                <h3>The Team Behind The Scenes</h3>
+                <h3>다른 글도 읽어보실래요?</h3>
                 <div class="spacer-60"></div>
                 <!--Team Carousel -->
                 <div class="row">
@@ -160,8 +170,17 @@
                                     <img src="/img/team/people-1.jpg" alt="" />
                                     <div class="team-item-detail">
                                         <div class="team-item-detail-inner light-color">
-                                            <h5>John Doe</h5>
-                                            <p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
+                                            <h5>${gong1.gongTitle }</h5>
+                                            <p>
+											<c:choose>
+											<c:when test="${gong1.gongContent.length() >= 60 }">
+											${gong1.gongContent.substring(0,60) }...
+											</c:when>
+											<c:otherwise>
+											${gong1.gongContent }
+											</c:otherwise>
+											</c:choose>
+											</p>	
                                             <ul class="social">
                                                 <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                                 <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
@@ -173,8 +192,8 @@
                                     </div>
                                 </div>
                                 <div class="team-item-info">
-                                    <h5>John Doe</h5>
-                                    <p class="">Designer</p>
+                                    <h5>${gong1.player.getPNick() }</h5>
+                                    <p class="">${gong1.gongTitle }</p>
                                 </div>
                             </div>
                         </div>
@@ -185,8 +204,17 @@
                                     <img src="/img/team/people-2.jpg" alt="" />
                                     <div class="team-item-detail">
                                         <div class="team-item-detail-inner light-color">
-                                            <h5>John Doe</h5>
-                                            <p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
+                                            <h5>${gong2.gongTitle }</h5>
+                                            <p>
+											<c:choose>
+											<c:when test="${gong2.gongContent.length() >= 60 }">
+											${gong2.gongContent.substring(0,60) }...
+											</c:when>
+											<c:otherwise>
+											${gong2.gongContent }
+											</c:otherwise>
+											</c:choose>
+											</p>	
                                             <ul class="social">
                                                 <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                                 <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
@@ -198,58 +226,8 @@
                                     </div>
                                 </div>
                                 <div class="team-item-info">
-                                    <h5>John Doe</h5>
-                                    <p class="">Artist</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="team-item nf-col-padding">
-                                <div class="team-item-img">
-                                    <img src="/img/team/people-3.jpg" alt="" />
-                                    <div class="team-item-detail">
-                                        <div class="team-item-detail-inner light-color">
-                                            <h5>Jane Doe</h5>
-                                            <p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
-                                            <ul class="social">
-                                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="https://www.dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-                                                <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team-item-info">
-                                    <h5>Jane Doe</h5>
-                                    <p class="">Project Manager</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="team-item nf-col-padding">
-                                <div class="team-item-img">
-                                    <img src="/img/team/people-4.jpg" alt="" />
-                                    <div class="team-item-detail">
-                                        <div class="team-item-detail-inner light-color">
-                                            <h5>John Doe</h5>
-                                            <p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
-                                            <ul class="social">
-                                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="https://www.dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-                                                <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team-item-info">
-                                    <h5>John Doe</h5>
-                                    <p class="">Photographer</p>
+                                    <h5>${gong2.player.getPNick() }</h5>
+                                    <p class="">${gong2.gongTitle }</p>
                                 </div>
                             </div>
                         </div>

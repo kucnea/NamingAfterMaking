@@ -41,4 +41,11 @@ public class GongService {
 	public Gong searchOne(int gongIdx) {
 		return gongRepository.findOne(gongIdx);
 	}
+
+	public void update(Gong gong) {
+		gongRepository.save(gong);
+	}
+
+
+
 }

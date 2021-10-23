@@ -85,11 +85,11 @@
         <section class="inner-intro dark-bg overlay-dark">
             <div class="container">
                 <div class="row title">
-                    <h2 class="h2">Contact Us</h2>
-					<p>We'd love to hear from you </p>
+                    <h2 class="h2">공략게시글</h2>
+					<h6>여러분이 알고계신 공략을 모두에게 자랑해보세요!</h6>
 					<div class="spacer-15"></div>
                     <div class="page-breadcrumb">
-                        <a href="/index">Home</a>/<span>Contact</span>
+                        <a href="/index">Home</a>/<a href="/gong/gonglist">공략게시판</a>/<span>글쓰기</span>
                     </div>
                 </div>
             </div>
@@ -118,7 +118,7 @@
                             <!-- END MAIL SENDING UNSUCCESSFULL -->
 
                             <div class="form-field-wrapper">
-                                <input class="input-sm form-full" id="form-subject" type="text" name="gongTitle" placeholder="제목">
+                                <input class="input-sm form-full" id="form-subject" type="text" name="gongTitle" placeholder="제목" required>
                             </div>
                             
                             <!-- <div class="form-field-wrapper"> -->
@@ -130,7 +130,8 @@
                                 <textarea class="form-full" id="form-message" rows="7" name="gongContent" placeholder="내용" required></textarea>
                             </div>
 
-                            <button class="btn btn-md btn-black" type="submit" id="form-submit" name="submit">Send Message</button>
+                            <button class="btn btn-md btn-black" type="submit" id="form-submit" name="submit">작성하기</button>
+                            <button class="btn btn-md btn-black" type="button" onclick="location.href='gonglist'">취소하기</button>
                         </form>
                         <!-- END Contact FORM -->
                     </div>

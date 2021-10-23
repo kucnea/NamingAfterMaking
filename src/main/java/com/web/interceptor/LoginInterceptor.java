@@ -46,7 +46,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter implements Sessi
 		
 		if(player!=null) {
 			session.setAttribute(login, player);
-			
+			session.setAttribute("player", player);
 			Cookie lgCookie = new Cookie(loginCookie, session.getId());
 			lgCookie.setPath("/");
 			lgCookie.setMaxAge(24*60*60);
