@@ -109,7 +109,7 @@
 					<hr>
 				</div>	
 				<c:choose>
-				<c:when test="${list eq null }">
+				<c:when test="${msg eq '조회된 결과가 없습니다.' }">
 					<div class="col-md-8 col-sm-8 col-xs-12">
 						<a href="artist-profile.html"><h6>${msg }</h6></a>
 						<p> 다른 플레이어를 위해 새로운 공략을 작성해보시는 건 어떨까요? </p>								
@@ -123,9 +123,9 @@
 					</div>
 					<div class="col-md-8 col-sm-8 col-xs-12">
 						<a href="artist-profile.html"><h6>${vo.gongTitle }</h6></a>
-						<p class="color"><%-- ${vo.player.pNick } --%></p>
+						<p class="color">${vo.player.getPNick() }</p>
 						<p>조회수 : ${vo.gongCnt } 작성시간 : ${vo.gongWTime }</p>
-						<p>${vo.gongContent }
+						<p>${vo.gongContent } ${vo.gongContent.length() }
 						</p>								
 					</div>
 				</div>	

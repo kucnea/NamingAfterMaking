@@ -30,7 +30,10 @@ public class GongController {
 		
 		List<Gong> list = gongService.searchAll();
 		
-		if(list!=null) model.addAttribute("list", list);
+		System.out.println("list의 사이즈 :"+list.size());
+		System.out.println(list.get(0).getPlayer().getPNick());
+		
+		if(list.size()!=0) model.addAttribute("list", list);
 		else model.addAttribute("msg", "조회된 결과가 없습니다.");
 		
 		return "gong.gongList";

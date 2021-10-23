@@ -40,7 +40,7 @@ public class Player {
 	@Column(nullable = false, length = 16)
 	private String pId;
 	
-	@Column(nullable = false, length = 16)
+	@Column(name = "pNick", nullable = false, length = 16)
 	private String pNick;
 	
 	@Column(nullable = false, length = 16)
