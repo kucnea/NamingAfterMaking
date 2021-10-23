@@ -37,4 +37,8 @@ public class GongService {
 		}
 		
 	}
+
+	public Gong searchOne(int gongIdx) {
+		return gongRepository.findOne(gongIdx);
+	}
 }

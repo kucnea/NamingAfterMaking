@@ -122,10 +122,10 @@
 						<a href="artist-profile.html"><img alt="1" src="/img/portfolio/1.jpg" class="item-container"></a>                           
 					</div>
 					<div class="col-md-8 col-sm-8 col-xs-12">
-						<a href="artist-profile.html"><h6>${vo.gongTitle }</h6></a>
+						<a href="/gong/gongdetail?gongIdx=${vo.gongIdx}"><h6>${vo.gongTitle }</h6></a>
 						<p class="color">${vo.player.getPNick() }</p>
 						<p>조회수 : ${vo.gongCnt } 작성시간 : ${vo.gongWTime }</p>
-						<p>${vo.gongContent } ${vo.gongContent.length() }
+						<p href="/gong/gongdetail?gongIdx=${vo.gongIdx}"">${vo.gongContent } ${vo.gongContent.length() }
 						</p>								
 					</div>
 				</div>	
