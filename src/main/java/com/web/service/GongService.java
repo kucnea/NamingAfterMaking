@@ -23,10 +23,10 @@ public class GongService {
 		
 		List<Gong> list = gongRepository.findAll();
 		
-		for(Gong g : list) {
-			System.out.println("받아오는 리스트 확인");
-			System.out.println("Gong : "+g.toString());
-		}
+//		for(Gong g : list) {
+//			System.out.println("받아오는 리스트 확인");
+//			System.out.println("Gong : "+g.toString());
+//		}
 		
 		return list;
 	}
