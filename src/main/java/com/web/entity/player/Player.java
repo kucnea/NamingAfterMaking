@@ -73,8 +73,9 @@ public class Player {
 
 	
 	//연관관계
-	@OneToMany(cascade = CascadeType.ALL,
-				mappedBy = "player")
+//	@OneToMany(cascade = CascadeType.ALL,
+//				mappedBy = "player")
+	@OneToMany(mappedBy = "player")
 	private List<Gong> gong;
 	
 	

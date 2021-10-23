@@ -105,7 +105,7 @@
 			<div class="container text-left">
                 <div class="mb-30">	
                 	<a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/gong/gongwrite"><i class="fa fa-filter"></i><span> 글쓰기 </span></a>
-					<h2> 1000 Artists </h2>	
+					<h2> 공략게시글 </h2>	
 					<hr>
 				</div>	
 				<c:choose>
@@ -123,12 +123,9 @@
 					</div>
 					<div class="col-md-8 col-sm-8 col-xs-12">
 						<a href="artist-profile.html"><h6>${vo.gongTitle }</h6></a>
-						<p class="color">Singer, Musician</p>
-						<p>Pune, India</p>
-						<p>Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor 
-						vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec 
-						orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.
-						<a class="btn" href="artist-profile.html">View Profile</a>
+						<p class="color"><%-- ${vo.player.pNick } --%></p>
+						<p>조회수 : ${vo.gongCnt } 작성시간 : ${vo.gongWTime }</p>
+						<p>${vo.gongContent }
 						</p>								
 					</div>
 				</div>	

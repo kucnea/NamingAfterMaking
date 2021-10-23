@@ -54,7 +54,7 @@ public class GongController {
 		if(result) {
 			return "gong.gongList";	
 		}else {
-			return "gong.gonWrite";
+			return "gong.gongWrite";
 		}
 		
 	}
