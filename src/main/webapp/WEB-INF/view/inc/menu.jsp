@@ -58,7 +58,7 @@
                             <a class="" href="/introduce/nam">게임소개</a>                         
                         </li>
                         <li>
-                            <a class="" href="/gong/gonglist">공략게시판</a>
+                            <a class="" href="/gong/gonglist?page=1&size=10">공략게시판</a>
                         </li>
                         <li>
                             <a class="" href="/rank/page">랭킹페이지</a>

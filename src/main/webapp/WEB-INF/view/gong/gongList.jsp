@@ -28,6 +28,60 @@
     <link href="/css/plugin/animate.css" rel="stylesheet" type="text/css" />
     <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 </head>
+	<script type="text/javascript">
+		function changeSize(){
+		}
+	</script>
+<!-- <script type="text/javascript">
+	var page = 1;
+	
+	$(function(){
+		getList(page);
+		page++;
+	});
+	
+	$(window).scroll(function(){
+		if($(window).scrollTop() >= $(document).height() - $(window).height()){
+			getList(page);
+			page++;
+		}
+	});
+	
+	function getList(page){
+		
+		$.ajvax({
+			type : 'POST',
+			dataType : 'json',
+			data : {"page" : page},
+			url : '주소'
+			success : function(returnDate){
+				var data = returnData.rows;
+				var html = "";
+				if(page==1){
+					$("#list").html("");
+				}
+				if(returnData.startNum<=returnData.totCnt){
+					if(data.length>0){
+						
+					}else{
+						
+					}
+				}
+				html = html.replace(/%20/gi, " ");
+				if(page==1){
+					$("#list").html(html);
+				}else{
+					$("#busStopList").append(html);
+				}
+			},error:function(e){
+				if(e.status==300){
+					alert("데이터를 가져오는데 실패했습니다.");					
+				};
+			}
+		});
+		
+	}
+</script> -->
 
 <body>
 
@@ -105,6 +159,16 @@
 			<div class="container text-left">
                 <div class="mb-30">	
                 	<a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/gong/gongwrite"><i class="fa fa-filter"></i><span> 글쓰기 </span></a>
+                	<form id="frm" action="/gong/gonglist" method="get">
+                	<select id="sizeSelect" name="size" class="btn btn-md btn-black float-right float-none-xs" onchange="submit()">
+                		<option value="${size1 }">현재 ${size1 }개씩</option>
+                		<option value="10">10개씩</option>
+                		<option value="20">20개씩</option>
+                		<option value="30">30개씩</option>
+                	</select>
+                	<a style="float:right">페이지로</a>
+                	<input type="number" name="page" min="1" max="${maxPage }" style="float:right" value="${page1 }">
+                	</form>
 					<h2> 공략게시글 </h2>	
 					<hr>
 				</div>	

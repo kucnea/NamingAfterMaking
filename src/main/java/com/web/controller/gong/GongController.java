@@ -1,12 +1,13 @@
 package com.web.controller.gong;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,17 +27,33 @@ public class GongController {
 	
 	
 	@RequestMapping("gonglist")
-	public String gongList(Model model) {	//url과 method명을 맞추는 것이 관리에 용이
+	public String gongList(Model model,@RequestParam("page") int page, @RequestParam("size") int size) {	//url과 method명을 맞추는 것이 관리에 용이
 		
 		System.out.println("gong Controller : gongList stage");
 		
-		List<Gong> list = gongService.searchAll();
+		//여기부터
 		
-		System.out.println("list의 사이즈 :"+list.size());
-		System.out.println(list.get(0).getPlayer().getPNick());
+//		List<Gong> list = gongService.searchAll();
+//		
+//		System.out.println("list의 사이즈 :"+list.size());
+//		System.out.println(list.get(0).getPlayer().getPNick());
+//		
+//		if(list.size()!=0) model.addAttribute("list", list);
+//		else model.addAttribute("msg", "조회된 결과가 없습니다.");
 		
+		//여기까지는 기존의 전체를 불러오는 코드. 하기는 페이징을 위해 만들 코드
+		page-=1;
+		Page<Gong> pages = gongService.searchList(page, size);
+		System.out.println("Page의 사이즈 : "+pages.getSize());
+		System.out.println("Page의 page수 : "+pages.getTotalPages());
+		model.addAttribute("maxPage",pages.getTotalPages());
+		model.addAttribute("page1",page+1);
+		model.addAttribute("size1",size);
+		List<Gong> list = pages.getContent();
 		if(list.size()!=0) model.addAttribute("list", list);
 		else model.addAttribute("msg", "조회된 결과가 없습니다.");
+		
+		//여기까지
 		
 		return "gong.gongList";
 	}
@@ -107,7 +124,7 @@ public class GongController {
 		
 		gongService.update(gong);
 		
-//		Gong gongUpdated = gongService.searchOne(gong.getGongIdx());
+//		Gong gongUpdated = gongService.searchOne(gong.getGongIdx()); gongService로 옮김.
 //		gongUpdated.setGongTitle(gong.getGongTitle());
 //		gongUpdated.setGongContent(gong.getGongContent());
 //		gongUpdated.setGongWTime(new Date());

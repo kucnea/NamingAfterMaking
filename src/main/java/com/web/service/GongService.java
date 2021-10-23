@@ -4,6 +4,11 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -66,6 +71,18 @@ public class GongService {
 	public void delete(int gongIdx) {
 		gongRepository.delete(gongIdx);
 	}
+
+	/* 페이징 */
+	public Page<Gong> searchList(int page, int size) {
+		
+		PageRequest pageRequest = 
+				new PageRequest(page, size, new Sort(Direction.DESC, "gongIdx"));
+		
+		Page<Gong> list = gongRepository.findAll(pageRequest);
+		
+		return list;
+	}
+
 
 
 
