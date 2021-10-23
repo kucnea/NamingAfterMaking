@@ -29,7 +29,8 @@ public class GongController {
 		System.out.println("gong Controller : gongList stage");
 		
 		List<Gong> list = gongService.searchAll();
-		if(list==null) model.addAttribute("list", list);
+		
+		if(list!=null) model.addAttribute("list", list);
 		else model.addAttribute("msg", "조회된 결과가 없습니다.");
 		
 		return "gong.gongList";

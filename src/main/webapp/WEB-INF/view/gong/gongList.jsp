@@ -122,7 +122,7 @@
 						<a href="artist-profile.html"><img alt="1" src="/img/portfolio/1.jpg" class="item-container"></a>                           
 					</div>
 					<div class="col-md-8 col-sm-8 col-xs-12">
-						<a href="artist-profile.html"><h6>${vo.GongTitle }</h6></a>
+						<a href="artist-profile.html"><h6>${vo.gongTitle }</h6></a>
 						<p class="color">Singer, Musician</p>
 						<p>Pune, India</p>
 						<p>Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor 
