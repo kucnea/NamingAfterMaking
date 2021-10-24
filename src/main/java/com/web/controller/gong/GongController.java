@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,7 +28,11 @@ public class GongController {
 	
 	
 	@RequestMapping("gonglist")
-	public String gongList(Model model,@RequestParam("page") int page, @RequestParam("size") int size) {	//url과 method명을 맞추는 것이 관리에 용이
+	public String gongList(Model model,
+			@RequestParam("page") int page, 
+			@RequestParam("size") int size,
+			@RequestParam("searchObject") @Nullable String searchObject,
+			@RequestParam("searchTarget") @Nullable String searchTarget) {	//url과 method명을 맞추는 것이 관리에 용이
 		
 		System.out.println("gong Controller : gongList stage");
 		
@@ -43,15 +48,18 @@ public class GongController {
 		
 		//여기까지는 기존의 전체를 불러오는 코드. 하기는 페이징을 위해 만들 코드
 		page-=1;
+		Page<Gong> pages = null;
+		System.out.println("gongList stage searchObject : "+searchObject);
+		System.out.println("gongList stage searchTarget : "+searchTarget);
+		if(searchObject!=null) pages = gongService.searchListByObject(page,size,searchObject,searchTarget);
+		else pages = gongService.searchList(page, size);
 		
-		
-		Page<Gong> pages = gongService.searchList(page, size);
+//		Page<Gong> pages = gongService.searchList(page, size);
 		if(page<0) page=0;
 		else if(page>pages.getTotalPages()) page=pages.getTotalPages();
 		
 		System.out.println("Page의 사이즈 : "+pages.getSize());
 		System.out.println("Page의 page수 : "+pages.getTotalPages());
-		System.out.println("Page의 첫 page : ");
 		
 		model.addAttribute("maxPage",pages.getTotalPages());
 		model.addAttribute("page1",page+1);

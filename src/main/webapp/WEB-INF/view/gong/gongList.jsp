@@ -218,18 +218,21 @@
 					<a href="?page=${page1+1 }&size=${size1 }">&gt;</a> 
 					<a href="?page=${maxPage }&size=${size1 }">&gt;&gt;</a>
 				</div>
-				<form action="/gong/gongsearch" method="get">
+				<form action="/gong/gonglist" method="get">
+				<input type="hidden" name="page" value="${page1 }">
+				<input type="hidden" name="size" value="${size1 }">
 				<table>
 					<tr>
 						<th>
-						<select name="searchList">
+						<select name="searchObject">
 							<option value="subject">제목</option>
 							<option value="content">내용</option>
-							<option value="subject || content">제목+내용</option>
+							<option value="subjectContent">제목+내용</option>
+							<option value="writer">작성자</option>
 						</select>
 						</th>
 						<th>
-						<input type="text" name="search" placeholder="검색어를 입력하세요" required><input type="submit" value="검색">
+						<input type="text" name="searchTarget" placeholder="검색어를 입력하세요" required><input type="submit" value="검색">
 						</th>
 					</tr>
 				</table>

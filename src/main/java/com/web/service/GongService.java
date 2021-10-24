@@ -83,6 +83,26 @@ public class GongService {
 		return list;
 	}
 
+	public Page<Gong> searchListByObject(int page, int size, String searchObject, String searchTarget) {
+
+		PageRequest pageRequest = 
+				new PageRequest(page, size, new Sort(Direction.DESC, "gongIdx"));
+		
+		Page<Gong> list = null;
+		
+		System.out.println("gongService stage searchObject : "+searchObject);
+		System.out.println("gongService stage searchTarget : "+searchTarget);
+		if(searchObject.equals("subject")) {
+			list = gongRepository.findByGongTitleContaining(searchTarget, pageRequest);
+			System.out.println("searchListByObject Object=subject stage");
+		}
+		else if(searchObject.equals("content")) list = gongRepository.findByGongContentContaining(searchTarget, pageRequest);
+		else if(searchObject.equals("subjectContent")) list = gongRepository.findByGongTitleAndGongContentContaining(searchTarget, pageRequest);
+		else if(searchObject.equals("writer")) list = gongRepository.findByPlayer_PNickContaining(searchTarget, pageRequest);
+		
+		return list;
+	}
+
 
 
 
