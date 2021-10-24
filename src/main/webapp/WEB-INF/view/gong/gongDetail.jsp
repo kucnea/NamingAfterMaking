@@ -179,12 +179,12 @@
                         <td align="left">${cmt.gongCmtContent }</td>
                         <td class="cmtW">${cmt.gongCmtWTime }</td>
                         <td>
-                        	<%-- <c:set var="pIdx" value="${player.PIdx }"/>
+                        	<c:set var="pIdx" value="${player.PIdx }"/>
 	                        <c:set var="gongCmtPIdx" value="${cmt.player.getPIdx() }"/>
 	                        <c:if test="${pIdx eq gongCmtPIdx }">
-                        	<a href="/gong/gongcmtupdate?gongIdx=${gong.gongIdx }&gongCmtIdx=${cmt.gongCmtIdx }">수정</a>
+                        	<%-- <a href="/gong/gongcmtupdate?gongIdx=${gong.gongIdx }&gongCmtIdx=${cmt.gongCmtIdx }">수정</a> --%>
                         	<a href="/gong/gongcmtdelete?gongIdx=${gong.gongIdx }&gongCmtIdx=${cmt.gongCmtIdx }">삭제</a>
-                        	</c:if> --%>
+                        	</c:if>
                        	</td>
                         	
                        	</tr>

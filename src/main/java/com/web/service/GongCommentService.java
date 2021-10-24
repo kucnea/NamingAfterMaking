@@ -41,9 +41,9 @@ public class GongCommentService {
 	}
 	
 	/* 한 건 삭제 */
-//	public void delete(int gongCmtIdx) {
-//		gongCommentRepository.delete(gongCmtIdx);
-//	}
+	public void delete(int gongCmtIdx) {
+		gongCommentRepository.delete(gongCmtIdx);
+	}
 	
 
 

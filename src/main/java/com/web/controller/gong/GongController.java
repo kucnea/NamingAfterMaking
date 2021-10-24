@@ -201,13 +201,13 @@ public class GongController {
 		return "redirect:gongdetail?gongIdx="+gongIdx;
 	}
 	
-//	@RequestMapping("gongcmtdelete")
-//	public String gongCmtDelete(
-//			@RequestParam("gongIdx") int gongIdx,
-//			@RequestParam("gongCmtIdx") int gongCmtIdx) {
-//		
-//		gongCmtService.delete(gongCmtIdx);
-//		
-//		return "redirect:gongdetail?gongIdx="+gongIdx;
-//	}
+	@RequestMapping("gongcmtdelete")
+	public String gongCmtDelete(
+			@RequestParam("gongIdx") int gongIdx,
+			@RequestParam("gongCmtIdx") int gongCmtIdx) {
+		
+		gongCmtService.delete(gongCmtIdx);
+		
+		return "redirect:gongdetail?gongIdx="+gongIdx;
+	}
 }
