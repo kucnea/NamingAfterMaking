@@ -183,7 +183,7 @@
 	                        <c:set var="gongCmtPIdx" value="${cmt.player.getPIdx() }"/>
 	                        <c:if test="${pIdx eq gongCmtPIdx }">
                         	<%-- <a href="/gong/gongcmtupdate?gongIdx=${gong.gongIdx }&gongCmtIdx=${cmt.gongCmtIdx }">수정</a> --%>
-                        	<a href="/gong/gongcmtdelete?gongIdx=${gong.gongIdx }&gongCmtIdx=${cmt.gongCmtIdx }">삭제</a>
+                        	<a href="/gong/gongcmtdelete?gongIdx=${gong.gongIdx }&gongCmtIdx=${cmt.gongCmtIdx }" onclick="return confirm('댓글을 정말로 지우시겠습니까?')">삭제</a>
                         	</c:if>
                        	</td>
                         	
