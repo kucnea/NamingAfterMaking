@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.web.entity.gong.Gong;
+import com.web.entity.gong.GongComment;
 import com.web.entity.player.Player;
+import com.web.service.GongCommentService;
 import com.web.service.GongService;
 
 @Controller
@@ -25,6 +26,8 @@ import com.web.service.GongService;
 public class GongController {
 
 	@Autowired GongService gongService;
+	@Autowired GongCommentService gongCmtService;
+			   	
 	
 	
 	@RequestMapping("gonglist")
@@ -108,16 +111,25 @@ public class GongController {
 		
 		System.out.println("gongIdx : "+gongIdx);
 		
-		//읽기전 조회수 증가 처리
+		//읽기전 조회수 증가 처리, model에 저장
 		Gong gong = gongService.searchOne(gongIdx);
 		gong.setGongCnt(gong.getGongCnt()+1);		
 		gongService.update(gong);
 		gong = gongService.searchOne(gongIdx);
 		model.addAttribute("gong",gong);
+
+		//댓글
+		List<GongComment> cmt = gongCmtService.searchByGongIdx(gongIdx);
+		model.addAttribute("cmt", cmt);
+		//댓글갯수
+		int cmtCnt = cmt.size();
+		model.addAttribute("cmtCnt", cmtCnt);
 		
+		//이전글, 다음글
 		Gong gong1 = gongService.searchOne(gongIdx-1);
 		Gong gong2 = gongService.searchOne(gongIdx+1);
 		
+		//프로퍼티 관리
 		if(gong1!=null) model.addAttribute("gong1",gong1);
 		if(gong2!=null) model.addAttribute("gong2",gong2);
 		if(page!=null) model.addAttribute("page1",page);
@@ -169,6 +181,23 @@ public class GongController {
 		gongService.delete(gongIdx);
 		
 		return "redirect:gonglist";
+	}
+	
+	@PostMapping("gongcmtsubmit")
+	public String gongCmtSubmit(
+			@ModelAttribute("gongComment") GongComment gongComment,
+			@ModelAttribute("gong") Gong gong,
+			HttpServletRequest request,
+			Model model) {
+		
+		HttpSession session = request.getSession();
+		Player player = (Player) session.getAttribute("player");
+		int gongIdx = gong.getGongIdx();
+		
+//		gongCmtService.write(gongComment, gong, player);
+		
+		
+		return "redirect:gongdetail?gongIdx="+gongIdx;
 	}
 	
 }

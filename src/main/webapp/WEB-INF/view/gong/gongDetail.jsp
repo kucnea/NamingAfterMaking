@@ -27,9 +27,16 @@
     <link href="/css/plugin/sidebar-menu.css" rel="stylesheet" type="text/css" />
     <link href="/css/plugin/animate.css" rel="stylesheet" type="text/css" />
     <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-
-
+	
+	<!-- 제이쿼리 -->
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
+	<style type="text/css">
+		.cmtW{
+			text-align:center;
+		}
+	</style>
+	<!-- 왜 가운데 정렬이 안되니 ㅠㅠ -->
 	<script type="text/javascript">
 	
 		function confirmDelete(){
@@ -40,6 +47,16 @@
 			}
 		}
 		
+		$(document).ready(function(){
+			$('#gongContent').on('keyup',function(){
+				$('#gongContent_cnt').html("("+$(this).val().length+"/100)");
+				
+				if($(this).val().length > 100){
+					$(this).val($(this).val().substring(0,100));
+					$('#gongContent_cnt').html("(100 / 100)");
+				}
+			});
+		});
 	</script>
 <body>
 
@@ -119,9 +136,9 @@
                 		<a class="btn btn-md btn-black float-right float-none-xs">작성자 : ${gong.player.getPNick() }</a>
 						<a class="btn btn-md btn-black float-right float-none-xs">조회수 : ${gong.gongCnt }</a>
                 	</div>
+                	<p align="right">작성시간(수정시간) : ${gong.gongWTime }</p>
                     <div class="col-md-12">
                         <div class="spacer-15">
-                        <br>
                         <a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/gong/gonglist?page=${page1 }&size=${size1 }"><i class="fa fa-filter"></i><span> 목록 </span></a>
                         <c:set var="pIdx" value="${player.PIdx }"/>
                         <c:set var="gongPIdx" value="${gong.player.getPIdx() }"/>
@@ -138,15 +155,24 @@
                     	<br><br><br>
                     	<hr>
                     	<h4> 댓글 </h4>
-                    	<form>
-                    	<input type="hidden" value="${gong.gongIdx }">
-                    	<input type="hidden" value="${player.PIdx }">
+                    	<form action="/gong/gongcmtsubmit" method="post">
+                    	<%-- <input type="hidden" name="gong" value="${gong }"> --%>
                     	<div class="form-field-wrapper">
-                                <textarea class="form-full" id="gongComent" rows="7" name="gongComent" placeholder="댓글을 남겨주세요" required></textarea>
+                                <textarea class="form-full" id="gongContent" rows="7" name="gongContent" placeholder="댓글을 남겨주세요" required></textarea>
+                                <div id="gongContent_cnt">(0 / 100)</div>
                                 <br>
                                 <a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" onclick="submit()"><span> 작성하기 </span></a>
                         </div>
                         </form>
+                        <br>
+                        <hr>
+                        <h5>총 ${cmtCnt }개</h5>
+                        <table>
+                        <tr><td width="40%" class="cmtW">작성자</td><td class="cmtW">내용</td></tr>
+                        <c:forEach var="cmt" items="${cmt }">
+                        <tr><td id="cmtW">${cmt.player.getPNick() }</td><td>${cmt.gongCmtContent }</td></tr>
+                        </c:forEach>
+                        </table>
                     </div>
                 </div>
             </div>
