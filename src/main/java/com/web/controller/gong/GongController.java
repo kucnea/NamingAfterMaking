@@ -210,4 +210,21 @@ public class GongController {
 		
 		return "redirect:gongdetail?gongIdx="+gongIdx;
 	}
+	
+	@RequestMapping("gongcmtupdate")
+	public String gongCmtUpate(
+			@RequestParam("gongIdx") int gongIdx,
+			@ModelAttribute("gongComment") GongComment gongComment) {
+		
+		//textarea에서 알 수 없는 이유로 ,,, 이 뒤에 추가돼서 와 후처리로 제거.
+		int length = gongComment.getGongCmtContent().length();
+		gongComment.setGongCmtContent(gongComment.getGongCmtContent().substring(0, length-3));
+		
+		
+		System.out.println("gongCmtUpdate stage");
+		System.out.println("gongComment.getGongCmtContent() : "+gongComment.getGongCmtContent());
+		gongCmtService.update(gongComment);
+		
+		return "redirect:gongdetail?gongIdx="+gongIdx;
+	}
 }

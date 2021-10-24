@@ -1,5 +1,6 @@
 package com.web.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,14 @@ public class GongCommentService {
 	/* 한 건 삭제 */
 	public void delete(int gongCmtIdx) {
 		gongCommentRepository.delete(gongCmtIdx);
+	}
+
+
+	public void update(GongComment gongComment) {
+		GongComment update = gongCommentRepository.findOne(gongComment.getGongCmtIdx());
+		update.setGongCmtContent(gongComment.getGongCmtContent());
+		update.setGongCmtWTime(new Date());
+		gongCommentRepository.save(update);
 	}
 	
 
