@@ -186,18 +186,28 @@ public class GongController {
 	@PostMapping("gongcmtsubmit")
 	public String gongCmtSubmit(
 			@ModelAttribute("gongComment") GongComment gongComment,
-			@ModelAttribute("gong") Gong gong,
+			@RequestParam("gongIdx") int gongIdx,
 			HttpServletRequest request,
 			Model model) {
 		
+		System.out.println("gongComment_gongCmtContent : "+gongComment.getGongCmtContent());
 		HttpSession session = request.getSession();
 		Player player = (Player) session.getAttribute("player");
-		int gongIdx = gong.getGongIdx();
 		
-//		gongCmtService.write(gongComment, gong, player);
+		Gong gong = gongService.searchOne(gongIdx);
+		gongCmtService.write(gongComment, gong, player);
 		
 		
 		return "redirect:gongdetail?gongIdx="+gongIdx;
 	}
 	
+//	@RequestMapping("gongcmtdelete")
+//	public String gongCmtDelete(
+//			@RequestParam("gongIdx") int gongIdx,
+//			@RequestParam("gongCmtIdx") int gongCmtIdx) {
+//		
+//		gongCmtService.delete(gongCmtIdx);
+//		
+//		return "redirect:gongdetail?gongIdx="+gongIdx;
+//	}
 }

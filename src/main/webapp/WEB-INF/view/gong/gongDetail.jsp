@@ -36,8 +36,12 @@
 			text-align:center;
 		}
 	</style>
-	<!-- 왜 가운데 정렬이 안되니 ㅠㅠ -->
 	<script type="text/javascript">
+		
+		function fromSubmit(){
+			document.getElementById("cmtForm").submit()
+		}
+		
 	
 		function confirmDelete(){
 			if(window.confirm("정말 삭제하시겠습니까?")){
@@ -48,12 +52,12 @@
 		}
 		
 		$(document).ready(function(){
-			$('#gongContent').on('keyup',function(){
-				$('#gongContent_cnt').html("("+$(this).val().length+"/100)");
+			$('#gongCmtContent').on('keyup',function(){
+				$('#gongCmtContent_cnt').html("("+$(this).val().length+"/100)");
 				
 				if($(this).val().length > 100){
 					$(this).val($(this).val().substring(0,100));
-					$('#gongContent_cnt').html("(100 / 100)");
+					$('#gongCmtContent_cnt').html("(100 / 100)");
 				}
 			});
 		});
@@ -155,22 +159,35 @@
                     	<br><br><br>
                     	<hr>
                     	<h4> 댓글 </h4>
-                    	<form action="/gong/gongcmtsubmit" method="post">
-                    	<%-- <input type="hidden" name="gong" value="${gong }"> --%>
+                    	<form action="/gong/gongcmtsubmit" method="post" id="cmtForm">
+                    	<input type="hidden" name="gongIdx" value="${gong.gongIdx }">
                     	<div class="form-field-wrapper">
-                                <textarea class="form-full" id="gongContent" rows="7" name="gongContent" placeholder="댓글을 남겨주세요" required></textarea>
-                                <div id="gongContent_cnt">(0 / 100)</div>
+                                <textarea class="form-full" id="gongCmtContent" rows="7" name="gongCmtContent" placeholder="댓글을 남겨주세요" required></textarea>
+                                <div id="gongCmtContent_cnt">(0 / 100)</div>
                                 <br>
-                                <a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" onclick="submit()"><span> 작성하기 </span></a>
+                                <a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" onclick="fromSubmit()"><span> 작성하기 </span></a>
                         </div>
                         </form>
                         <br>
                         <hr>
                         <h5>총 ${cmtCnt }개</h5>
                         <table>
-                        <tr><td width="40%" class="cmtW">작성자</td><td class="cmtW">내용</td></tr>
+                        <tr><td width="15%" class="cmtW">작성자</td><td width="50%" class="cmtW">내용</td><td width="25%">작성시간</td><td width="10%">수정/삭제</td></tr>
                         <c:forEach var="cmt" items="${cmt }">
-                        <tr><td id="cmtW">${cmt.player.getPNick() }</td><td>${cmt.gongCmtContent }</td></tr>
+                        <tr>
+                        <td class="cmtW">${cmt.player.getPNick() }</td>
+                        <td align="left">${cmt.gongCmtContent }</td>
+                        <td class="cmtW">${cmt.gongCmtWTime }</td>
+                        <td>
+                        	<%-- <c:set var="pIdx" value="${player.PIdx }"/>
+	                        <c:set var="gongCmtPIdx" value="${cmt.player.getPIdx() }"/>
+	                        <c:if test="${pIdx eq gongCmtPIdx }">
+                        	<a href="/gong/gongcmtupdate?gongIdx=${gong.gongIdx }&gongCmtIdx=${cmt.gongCmtIdx }">수정</a>
+                        	<a href="/gong/gongcmtdelete?gongIdx=${gong.gongIdx }&gongCmtIdx=${cmt.gongCmtIdx }">삭제</a>
+                        	</c:if> --%>
+                       	</td>
+                        	
+                       	</tr>
                         </c:forEach>
                         </table>
                     </div>

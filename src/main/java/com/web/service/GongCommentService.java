@@ -28,16 +28,21 @@ public class GongCommentService {
 	}
 
 
-
-//	public void write(GongComment gongComment, Gong gong, Player player) {
-//		
-//		if(gongComment!=null && gong!=null && player!=null) {
-//			gongComment.setGong(gong);
-//			gongComment.setPlayer(player);
-//			gongCommentRepository.save(gongComment);
-//		}else {
-//		}
-//		
+	/* 댓글 작성 */
+	public void write(GongComment gongComment, Gong gong, Player player) {
+		
+		if(gongComment!=null && gong!=null && player!=null) {
+			gongComment.setGong(gong);
+			gongComment.setPlayer(player);
+			gongCommentRepository.save(gongComment);
+		}else {
+		}
+		
+	}
+	
+	/* 한 건 삭제 */
+//	public void delete(int gongCmtIdx) {
+//		gongCommentRepository.delete(gongCmtIdx);
 //	}
 	
 

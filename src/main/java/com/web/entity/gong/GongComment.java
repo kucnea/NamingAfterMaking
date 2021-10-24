@@ -43,7 +43,7 @@ public class GongComment {
 	private Date gongCmtWTime = new Date();
 	
 	@ManyToOne
-	@JoinColumn(name="gongIdx", referencedColumnName = "pIdx")
+	@JoinColumn(name="gongIdx", referencedColumnName = "gongIdx")
 	private Gong gong;
 	
 	@ManyToOne
