@@ -102,7 +102,7 @@
 					<h6>여러분이 알고계신 공략을 모두에게 자랑해보세요!</h6>
 					<div class="spacer-15"></div>
                     <div class="page-breadcrumb">
-                        <a href="/index">Home</a>/<a href="/gong/gonglist">공략게시판</a>/<span>${gong.gongTitle }</span>
+                        <a href="/index">Home</a>/<a href="/gong/gonglist?page=${page1 }&size=${size1 }">공략게시판</a>/<span>${gong.gongTitle }</span>
                     </div>
                 </div>
             </div>
@@ -122,7 +122,7 @@
                     <div class="col-md-12">
                         <div class="spacer-15">
                         <br>
-                        <a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/gong/gonglist"><i class="fa fa-filter"></i><span> 목록 </span></a>
+                        <a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/gong/gonglist?page=${page1 }&size=${size1 }"><i class="fa fa-filter"></i><span> 목록 </span></a>
                         <c:set var="pIdx" value="${player.PIdx }"/>
                         <c:set var="gongPIdx" value="${gong.player.getPIdx() }"/>
                         <c:if test="${pIdx eq gongPIdx }">
@@ -135,6 +135,18 @@
                     <div class="col-md-12">
                     	<br><br><br>
                     	<p align="left" style="font-size:1.3em;">${gong.gongContent }</p>
+                    	<br><br><br>
+                    	<hr>
+                    	<h4> 댓글 </h4>
+                    	<form>
+                    	<input type="hidden" value="${gong.gongIdx }">
+                    	<input type="hidden" value="${player.PIdx }">
+                    	<div class="form-field-wrapper">
+                                <textarea class="form-full" id="gongComent" rows="7" name="gongComent" placeholder="댓글을 남겨주세요" required></textarea>
+                                <br>
+                                <a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" onclick="submit()"><span> 작성하기 </span></a>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

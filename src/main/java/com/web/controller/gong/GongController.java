@@ -29,8 +29,8 @@ public class GongController {
 	
 	@RequestMapping("gonglist")
 	public String gongList(Model model,
-			@RequestParam("page") int page, 
-			@RequestParam("size") int size,
+			@RequestParam("page") Integer page, 
+			@RequestParam("size") Integer size,
 			@RequestParam("searchObject") @Nullable String searchObject,
 			@RequestParam("searchTarget") @Nullable String searchTarget) {	//url과 method명을 맞추는 것이 관리에 용이
 		
@@ -46,6 +46,8 @@ public class GongController {
 //		if(list.size()!=0) model.addAttribute("list", list);
 //		else model.addAttribute("msg", "조회된 결과가 없습니다.");
 		
+		if(page==null) page=1;
+		if(size==null) size=10;
 		//여기까지는 기존의 전체를 불러오는 코드. 하기는 페이징을 위해 만들 코드
 		page-=1;
 		Page<Gong> pages = null;
@@ -98,7 +100,11 @@ public class GongController {
 	}
 	
 	@RequestMapping("gongdetail")
-	public String gongDetail(@RequestParam("gongIdx") int gongIdx, Model model) {
+	public String gongDetail(
+			@RequestParam("gongIdx") int gongIdx,
+			@RequestParam("page") @Nullable Integer page, 
+			@RequestParam("size") @Nullable Integer size,
+			Model model) {
 		
 		System.out.println("gongIdx : "+gongIdx);
 		
@@ -114,6 +120,10 @@ public class GongController {
 		
 		if(gong1!=null) model.addAttribute("gong1",gong1);
 		if(gong2!=null) model.addAttribute("gong2",gong2);
+		if(page!=null) model.addAttribute("page1",page);
+		else model.addAttribute("page1",1);
+		if(size!=null) model.addAttribute("size1",size);
+		else model.addAttribute("size1",10);
 		
 		return "gong.gongDetail";
 	}

@@ -186,10 +186,10 @@
 						<a href="artist-profile.html"><img alt="1" src="/img/portfolio/1.jpg" class="item-container"></a>                           
 					</div>
 					<div class="col-md-8 col-sm-8 col-xs-12">
-						<a href="/gong/gongdetail?gongIdx=${vo.gongIdx}"><h6>${vo.gongTitle }</h6></a>
+						<a href="/gong/gongdetail?gongIdx=${vo.gongIdx}&page=${page1 }&size="${size1 }"><h6>${vo.gongTitle }</h6></a>
 						<p class="color">${vo.player.getPNick() }</p>
 						<p>조회수 : ${vo.gongCnt } 작성시간 : ${vo.gongWTime }</p>
-						<p><a href="/gong/gongdetail?gongIdx=${vo.gongIdx}">
+						<p><a href="/gong/gongdetail?gongIdx=${vo.gongIdx}&page=${page1 }&size="${size1 }">
 						<c:choose>
 						<c:when test="${vo.gongContent.length() >= 60 }">
 						${vo.gongContent.substring(0,60) }...
