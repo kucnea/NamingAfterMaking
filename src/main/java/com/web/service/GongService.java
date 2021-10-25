@@ -69,7 +69,9 @@ public class GongService {
 
 	/* 한 건 삭제*/
 	public void delete(int gongIdx) {
+		
 		gongRepository.delete(gongIdx);
+		
 	}
 
 	/* 페이징 */

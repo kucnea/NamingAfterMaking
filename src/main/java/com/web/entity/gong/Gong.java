@@ -3,6 +3,7 @@ package com.web.entity.gong;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -55,10 +56,10 @@ public class Gong {
 	private Player player;									// referencedColumnName을 정해야 정확하게 maaping이 되고,
 															// 그래야 여러컬럼을 join해도 순서가 맞게 될 수 있음.
 	
-	@OneToMany(mappedBy = "gong", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "gong", fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<GongComment> gongComment;
 	
-	@OneToMany(mappedBy = "gong", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "gong", fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<GongImg> gongImg;
 	
 //	public void setPlayer(Player player) {

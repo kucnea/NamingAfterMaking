@@ -32,7 +32,7 @@ public class GongImg {
 	
 	private String fileOriName;
 	private String filePath;
-	private long fileSize;
+	private Long fileSize;
 	
 	@ManyToOne
 	@JoinColumn(name="gongIdx", referencedColumnName = "gongIdx")
