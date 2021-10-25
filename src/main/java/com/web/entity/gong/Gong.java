@@ -1,13 +1,16 @@
 package com.web.entity.gong;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -51,6 +54,10 @@ public class Gong {
 	@JoinColumn(name="pIdx", referencedColumnName = "pIdx") // 추가하면 컬럼하나가 더 적게 join할 수 있대서 했는데 결과가 동일..
 	private Player player;									// referencedColumnName을 정해야 정확하게 maaping이 되고,
 															// 그래야 여러컬럼을 join해도 순서가 맞게 될 수 있음.
+	
+	@OneToMany(mappedBy = "gong", fetch = FetchType.EAGER)
+	private List<GongComment> gongComment;
+	
 //	public void setPlayer(Player player) {
 //		this.player = player;
 //	}

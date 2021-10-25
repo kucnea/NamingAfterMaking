@@ -192,10 +192,10 @@
 						<p><a href="/gong/gongdetail?gongIdx=${vo.gongIdx}&page=${page1 }&size="${size1 }">
 						<c:choose>
 						<c:when test="${vo.gongContent.length() >= 60 }">
-						${vo.gongContent.substring(0,60) }...
+						${vo.gongContent.substring(0,60) }... <font size="0.7em"; color="orange";> 댓글 [${vo.getGongComment().size() }]</font>
 						</c:when>
 						<c:otherwise>
-						${vo.gongContent }
+						${vo.gongContent } <font size="0.7em"; color="orange";> 댓글 [${vo.getGongComment().size() }]</font>
 						</c:otherwise>
 						</c:choose>
 						</a></p>								
