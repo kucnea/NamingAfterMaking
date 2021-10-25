@@ -35,14 +35,24 @@
 		.cmtW{
 			text-align:center;
 		}
+		ul{
+			overflow:auto;
+			list-style:none;
+		}
+		li{
+			text-align:left;
+		}
 	</style>
 	<script type="text/javascript">
 		
 		function cmtFormSubmit(){
 			document.getElementById("cmtForm").submit()
 		}
-		function cmtUpdateSubmit(){
+		/* function cmtUpdateSubmit(){
 			document.getElementById("cmtUpdateForm").submit()
+		} */
+		function cmtUpdateSubmit(x){
+			document.getElementById("cmtUpdateForm_"+x).submit()
 		}
 		
 	
@@ -65,11 +75,11 @@
 			});
 		});
 		
-		function openCmtArea(){
-			document.getElementById("field").style.display='table-row';
+		function openCmtArea(x){
+			document.getElementById("field_"+x).style.display='table-row';
 		}
-		function closeCmtArea(){
-			document.getElementById("field").style.display='none';
+		function closeCmtArea(x){
+			document.getElementById("field_"+x).style.display='none';
 		}
 		/* function openCmtArea(){
 			const target = document.getElementById("intext")
@@ -185,7 +195,7 @@
                         <br>
                         <hr>
                         <h5>총 ${cmtCnt }개</h5>
-                        <form action="/gong/gongcmtupdate" method="post" id="cmtUpdateForm">
+                        <%-- <form action="/gong/gongcmtupdate" method="post" id="cmtUpdateForm">
                         <input type="hidden" name="gongIdx" value="${gong.gongIdx }">
                         <table>
                         <tr>
@@ -194,7 +204,7 @@
                         	<td width="25%">작성시간</td>
                         	<td width="10%">수정/삭제</td>
                         </tr>
-                        <c:forEach var="cmt" items="${cmt }">
+                        <c:forEach var="cmt" varStatus="status" items="${cmt }">
                         <tr>
 	                        <td class="cmtW">${cmt.player.getPNick() }</td>
 	                        <td align="left">${cmt.gongCmtContent }</td>
@@ -203,25 +213,44 @@
 	                        	<c:set var="pIdx" value="${player.PIdx }"/>
 		                        <c:set var="gongCmtPIdx" value="${cmt.player.getPIdx() }"/>
 		                        <c:if test="${pIdx eq gongCmtPIdx }">
-	                        	<%-- <a href="/gong/gongcmtupdate?gongIdx=${gong.gongIdx }&gongCmtIdx=${cmt.gongCmtIdx }">수정</a> --%>
-	                        	<a href="javascript:openCmtArea();">수정</a>
+	                        	<a href="/gong/gongcmtupdate?gongIdx=${gong.gongIdx }&gongCmtIdx=${cmt.gongCmtIdx }">수정</a>
+	                        	<a href="javascript:openCmtArea(${status.count });">수정</a>
 	                        	<a href="/gong/gongcmtdelete?gongIdx=${gong.gongIdx }&gongCmtIdx=${cmt.gongCmtIdx }" onclick="return confirm('댓글을 정말로 지우시겠습니까?')">삭제</a>
 	                        	</c:if>
 	                       	</td>
                        	</tr>
                        	<!-- <tr id="intext"></tr> -->
-                      	<tr id="field" style="display:none">
+                      	<tr id="field_${status.count }" style="display:none">
 	                       	<td colspan="3">
 	                       	<textarea class="form-full" name="gongCmtContent" rows="2"></textarea>
 	                       	</td>
 	                       	<td>
 	                       	<input type="hidden" name="gongCmtIdx" value="${cmt.gongCmtIdx }">
-	                       	<a onclick="cmtUpdateSubmit()">작성</a> <a href="javascript:closeCmtArea();">취소</a>
+	                       	<a onclick="cmtUpdateSubmit()">작성</a> <a href="javascript:closeCmtArea(${status.count });">취소</a>
 	                       	</td>
                        	</tr>
                         </c:forEach>
                         </table>
+                        </form> --%>
+                        <c:forEach var="cmt" varStatus="status" items="${cmt }">
+                        <form action="/gong/gongcmtupdate" id="cmtUpdateForm_${status.count }">
+                        <input type="hidden" name="gongIdx" value="${gong.gongIdx }">
+                        <input type="hidden" name="gongCmtIdx" value="${cmt.gongCmtIdx }">
+                        <ul>
+                        	<li><h6>${cmt.player.getPNick() }</h6></li>
+                        	<li>${cmt.gongCmtContent }</li>
+                        	<li>${cmt.gongCmtWTime }</li>
+                        	<li style="text-align:right;">
+                        		<a href="javascript:openCmtArea(${status.count });">수정</a>
+                        		<a href="/gong/gongcmtdelete?gongIdx=${gong.gongIdx }&gongCmtIdx=${cmt.gongCmtIdx }" onclick="return confirm('댓글을 정말로 지우시겠습니까?')">삭제</a>                        	
+                        	</li>
+							<li id="field_${status.count }" style="display:none; text-align:right; width:100%;">
+								<textarea class="form-full" name="gongCmtContent" style="resize:vertical;"></textarea><br>
+								<a onclick="cmtUpdateSubmit(${status.count })">작성</a> <a href="javascript:closeCmtArea(${status.count });">취소</a>
+							</li>
+                        </ul>
                         </form>
+                        </c:forEach>
                     </div>
                 </div>
             </div>

@@ -32,8 +32,8 @@ public class GongController {
 	
 	@RequestMapping("gonglist")
 	public String gongList(Model model,
-			@RequestParam("page") Integer page, 
-			@RequestParam("size") Integer size,
+			@RequestParam("page") @Nullable Integer page, 
+			@RequestParam("size") @Nullable Integer size,
 			@RequestParam("searchObject") @Nullable String searchObject,
 			@RequestParam("searchTarget") @Nullable String searchTarget) {	//url과 method명을 맞추는 것이 관리에 용이
 		
@@ -215,11 +215,6 @@ public class GongController {
 	public String gongCmtUpate(
 			@RequestParam("gongIdx") int gongIdx,
 			@ModelAttribute("gongComment") GongComment gongComment) {
-		
-		//textarea에서 알 수 없는 이유로 ,,, 이 뒤에 추가돼서 와 후처리로 제거.
-		int length = gongComment.getGongCmtContent().length();
-		gongComment.setGongCmtContent(gongComment.getGongCmtContent().substring(0, length-3));
-		
 		
 		System.out.println("gongCmtUpdate stage");
 		System.out.println("gongComment.getGongCmtContent() : "+gongComment.getGongCmtContent());
