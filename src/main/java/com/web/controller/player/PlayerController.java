@@ -1,16 +1,21 @@
 package com.web.controller.player;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.WebUtils;
 
 import com.web.entity.player.Player;
+import com.web.interceptor.SessionNames;
 import com.web.service.PlayerService;
 
 @Controller
@@ -24,8 +29,17 @@ public class PlayerController {
 //	EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaoracle");
 
 	@RequestMapping("login")
-	public String loginPage() {	//url과 method명을 맞추는 것이 관리에 용이
-	
+	public String loginPage(HttpServletRequest request,Model model) {	//url과 method명을 맞추는 것이 관리에 용이
+		
+		Cookie lgCookie = WebUtils.getCookie(request, SessionNames.loginCookie);
+		if(lgCookie!=null) {
+			String pId = lgCookie.getValue();
+			model.addAttribute("pId",pId);
+			model.addAttribute("checked","check");
+		}else {
+			model.addAttribute("checked","uncheck");	
+		}
+		
 		return "player.login";
 	}
 	
@@ -38,17 +52,20 @@ public class PlayerController {
 	
 //	@RequestMapping(value="logedin", method = RequestMethod.POST)
 	@PostMapping("logedin")
-	public String logedIn(@ModelAttribute("player") Player player,Model model, HttpServletRequest request) {
+	public String logedIn(
+			@ModelAttribute("player") Player player,
+			@RequestParam("remember") @Nullable String remember,
+			Model model, 
+			HttpServletRequest request) {
 		
-//		HttpSession session = request.getSession();
-		
+		HttpSession session = request.getSession();
 		System.out.println("logedin Controller insert player // pId : "+player.getPId()+", pPw : "+player.getPPw());
 		
 		player = playerService.login(player); //player로 그대로 사용하는 경우 하기 조건문에서 null이 제대로 걸러지지 않을거같음.
 		
-//		System.out.println("player Controller : "+player.toString());
-//		System.out.println("player Controller : "+p.toString());
-		
+		//Id 기억하기
+		if(remember!=null) session.setAttribute("remember", remember);
+			
 		if(player!=null)	{
 			System.out.println("logedin Controller output player // pId : "+player.getPId()+", pPw : "+player.getPPw());
 			model.addAttribute("player", player);

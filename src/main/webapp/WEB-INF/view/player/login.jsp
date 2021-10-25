@@ -114,13 +114,21 @@
                             <form action="/player/logedin" method="post">
                                 <div class="form-field-wrapper">
                                     <label for="pId">Your Id</label>
-                                    <input type="text" required="" placeholder="Enter your Id" name="pId" id="pId" class="input-sm form-full" aria-required="true">
+                                    <input type="text" required="" placeholder="Enter your Id" name="pId" id="pId" class="input-sm form-full" aria-required="true" value="${pId }">
                                 </div>
                                 <div class="form-field-wrapper">
                                     <label for="pPw">Password</label>
                                     <input type="password" required="" placeholder="Enter your Password" name="pPw" id="pPw" class="input-sm form-full" aria-required="true">
                                 </div>
                                 <button name="submit" id="form-submit" type="submit" class="btn btn-md btn-black">Log In</button>
+                                <c:choose>
+                                <c:when test="${checked eq 'check' }">
+                                <input type="checkbox" name="remember" value="remember" checked>Id 기억하기
+                                </c:when>
+                                <c:otherwise>
+                                <input type="checkbox" name="remember" value="remember">Id 기억하기
+                                </c:otherwise>
+                                </c:choose>
                                 <a class="float-right">Forgot password?</a>
                             </form>
                         </div>

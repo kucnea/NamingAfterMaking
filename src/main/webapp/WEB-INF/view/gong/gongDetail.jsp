@@ -46,7 +46,12 @@
 	<script type="text/javascript">
 		
 		function cmtFormSubmit(){
-			document.getElementById("cmtForm").submit()
+			if(${player != null}){
+				document.getElementById("cmtForm").submit();	
+			}else{
+				alert("로그인이 필요합니다.");
+			}
+			
 		}
 		/* function cmtUpdateSubmit(){
 			document.getElementById("cmtUpdateForm").submit()
@@ -195,6 +200,9 @@
                         <br>
                         <hr>
                         <h5>총 ${cmtCnt }개</h5>
+                        
+                        <!-- 댓글창 table로 구현하려했을때의 코드 -->
+                        
                         <%-- <form action="/gong/gongcmtupdate" method="post" id="cmtUpdateForm">
                         <input type="hidden" name="gongIdx" value="${gong.gongIdx }">
                         <table>
@@ -232,6 +240,9 @@
                         </c:forEach>
                         </table>
                         </form> --%>
+                        
+                        <!-- 댓글창 table로 구현하려했을때의 코드 -->
+                        
                         <c:forEach var="cmt" varStatus="status" items="${cmt }">
                         <form action="/gong/gongcmtupdate" id="cmtUpdateForm_${status.count }">
                         <input type="hidden" name="gongIdx" value="${gong.gongIdx }">
@@ -240,10 +251,14 @@
                         	<li><h6>${cmt.player.getPNick() }</h6></li>
                         	<li>${cmt.gongCmtContent }</li>
                         	<li>${cmt.gongCmtWTime }</li>
+                        	<c:set var="pIdx" value="${player.PIdx }"/>
+		                    <c:set var="gongCmtPIdx" value="${cmt.player.getPIdx() }"/>
+		                    <c:if test="${pIdx eq gongCmtPIdx }">
                         	<li style="text-align:right;">
                         		<a href="javascript:openCmtArea(${status.count });">수정</a>
                         		<a href="/gong/gongcmtdelete?gongIdx=${gong.gongIdx }&gongCmtIdx=${cmt.gongCmtIdx }" onclick="return confirm('댓글을 정말로 지우시겠습니까?')">삭제</a>                        	
                         	</li>
+                        	</c:if>
 							<li id="field_${status.count }" style="display:none; text-align:right; width:100%;">
 								<textarea class="form-full" name="gongCmtContent" style="resize:vertical;"></textarea><br>
 								<a onclick="cmtUpdateSubmit(${status.count })">작성</a> <a href="javascript:closeCmtArea(${status.count });">취소</a>

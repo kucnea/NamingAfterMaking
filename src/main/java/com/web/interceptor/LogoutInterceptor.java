@@ -22,13 +22,13 @@ public class LogoutInterceptor extends HandlerInterceptorAdapter implements Sess
 //		if(session.getAttribute(login)!=null) session.removeAttribute(login);
 		if(session.getAttribute(login)!=null) session.invalidate();
 		
-		Cookie lgCookie = WebUtils.getCookie(request, SessionNames.loginCookie);
-		if(lgCookie != null) {
-			lgCookie.setPath("/");
-			lgCookie.setMaxAge(0);
-			
-			response.addCookie(lgCookie);
-		}
+		//로그인 검증 쿠키로 했을때, 로그아웃시 쿠키 삭제하던 코드
+//		Cookie lgCookie = WebUtils.getCookie(request, SessionNames.loginCookie);
+//		if(lgCookie != null) {
+//			lgCookie.setPath("/");
+//			lgCookie.setMaxAge(0);
+//			response.addCookie(lgCookie);
+//		}
 		
 		return true;
 	}

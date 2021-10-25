@@ -38,23 +38,25 @@ public class LoginInterceptor extends HandlerInterceptorAdapter implements Sessi
 		session.setMaxInactiveInterval(18000);
 		System.out.println("login postHandle");
 		
-		Object player = mv.getModelMap().get("player");
-
-//		Player p = (Player) mv.getModelMap().get("p");
-//		System.out.println(player.toString());
-//		System.out.println(p.toString());
+//		Object player = mv.getModelMap().get("player");
+		Player player = (Player) mv.getModelMap().get("player");
 		
+		Object remember = session.getAttribute("remember");
 		if(player!=null) {
 			session.setAttribute(login, player);
 			session.setAttribute("player", player);
-			Cookie lgCookie = new Cookie(loginCookie, session.getId());
-			lgCookie.setPath("/");
-			lgCookie.setMaxAge(24*60*60);
+			if(remember!=null) {
+				Cookie lgCookie = new Cookie(loginCookie, player.getPId());
+				lgCookie.setPath("/");
+				lgCookie.setMaxAge(24*60*60);
+				response.addCookie(lgCookie);
+			}
 			
-			response.addCookie(lgCookie);
+			//쿠키로 로그인 검증했던 코드
+//			Cookie lgCookie = new Cookie(loginCookie, session.getId());
 			
 		}
-		
+		session.removeAttribute("remember");
 		mv.getModelMap().remove("player"); 
 		mv.getModelMap().remove("p"); 
 		mv.getModelMap().remove("result");

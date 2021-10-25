@@ -20,16 +20,17 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter implemen
 		
 		System.out.println("Authorization preHandle");
 		
-		Cookie lgCookie = WebUtils.getCookie(request, SessionNames.loginCookie); 
-		if(lgCookie == null) response.sendRedirect("/player/login");
+		// 로그인 검증으로 쿠키를 사용하려 했으나 보안문제로 사용하지 않기로 함.
+//		Cookie lgCookie = WebUtils.getCookie(request, SessionNames.loginCookie); 
+//		if(lgCookie == null) response.sendRedirect("/player/login");
 		
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(18000);
 		
 		Player player = (Player) session.getAttribute(login);
-		session.setAttribute("player", player);
-//		System.out.println(p.toString());
+		if(player==null) response.sendRedirect("/player/login");
 		
+		session.setAttribute("player", player);
 		return true;
 	}
 
