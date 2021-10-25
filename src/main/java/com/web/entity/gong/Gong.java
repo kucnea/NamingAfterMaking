@@ -58,6 +58,9 @@ public class Gong {
 	@OneToMany(mappedBy = "gong", fetch = FetchType.EAGER)
 	private List<GongComment> gongComment;
 	
+	@OneToMany(mappedBy = "gong", fetch = FetchType.EAGER)
+	private List<GongImg> gongImg;
+	
 //	public void setPlayer(Player player) {
 //		this.player = player;
 //	}

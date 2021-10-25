@@ -33,14 +33,14 @@ public class GongService {
 	}
 	
 	/* 게시글 작성 */
-	public boolean write(Gong gong, Player player) {
+	public Gong write(Gong gong, Player player) {
 		
 		if(gong!=null && player!=null) {
 			gong.setPlayer(player);
-			gongRepository.save(gong);
-			return true;
+			
+			return gongRepository.save(gong);
 		}else {
-			return false;
+			return null;
 		}
 		
 	}

@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Global Talent House - hub for creative minds</title>
+    <title>Name After Making - Game For Creative Funs</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="Vrinda Maru Kansal">

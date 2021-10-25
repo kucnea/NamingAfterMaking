@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Global Talent House - hub for creative minds</title>
+    <title>Name After Making - Game For Creative Funs</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="Vrinda Maru Kansal">
@@ -28,7 +28,14 @@
     <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 
 </head>
-
+	<!-- <script type="text/javascript">
+		var cnt=2;
+		function addImgbox(){
+			document.getElementById("fileArea").innerHTML = "";
+			document.getElementById("fileArea").innerHTML = document.getElementById(fileArea).innerHTML+"<input type='file' name='file"+cnt+"'/>";
+			cnt++;
+		}
+	</script> -->
 <body>
 
     <!-- Preloader -->
@@ -103,7 +110,7 @@
 				<div class="col-md-6 pb-60">
                         <!-- Contact FORM -->
                         <!-- <form class="contact-form" id="contact" role="form" action="/gong/gongsubmit" method="post"> -->
-                        <form action="/gong/gongsubmit" method="post">
+                        <form action="/gong/gongsubmit" method="post" enctype="multipart/form-data">
 
                             <!-- IF MAIL SENT SUCCESSFULLY -->
                             <h6 class="successContent">
@@ -129,7 +136,16 @@
                             <div class="form-field-wrapper">
                                 <textarea class="form-full" id="form-message" rows="7" name="gongContent" placeholder="내용" required></textarea>
                             </div>
-
+							
+							<!-- 이미지 첨부 파일 설정 위치 -->
+							<input type="file" name="file" /> <font size="0.8em" color="orange"> - 이미지 파일의 최대용랑은 15MB입니다. </font>
+							
+							<!-- input file 추가시도중 -->
+							<!-- <a onclick="javascript:addImgbox()">+</a>
+							<div id="fileArea">
+							
+							</div> -->
+							
                             <button class="btn btn-md btn-black" type="submit" id="form-submit" name="submit">작성하기</button>
                             <button class="btn btn-md btn-black" type="button" onclick="location.href='gonglist'">취소하기</button>
                         </form>

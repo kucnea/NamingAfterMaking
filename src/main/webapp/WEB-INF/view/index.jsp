@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Global Talent House - hub for creative minds</title>
+    <title>Name After Making - Game For Creative Funs</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="Vrinda Maru Kansal">
@@ -142,7 +142,7 @@
                                     data-customin="x:-0;y:-100;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"
                                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
                                     data-easing="Linear.easeNone"
-                                    data-elementdelay="0.1">Hub For Creative Minds
+                                    data-elementdelay="0.1">Game For Creative Funs
                                 </h5>
 
                                 <!-- LAYER NR. 2 -->
@@ -158,7 +158,7 @@
                                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
                                     data-easing="Linear.easeNone"
                                     data-elementdelay="0.1"
-                                    data-endeasing="Linear.easeNone">Global Talent House
+                                    data-endeasing="Linear.easeNone">Name After Making : N.A.M.
                                 </h1>
 
                                 <!-- LAYER NR. 3 -->
