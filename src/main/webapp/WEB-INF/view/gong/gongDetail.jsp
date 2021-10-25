@@ -69,6 +69,18 @@
 			}
 		}
 		
+		function countCmtUpdate(x){
+			const textVal = document.getElementById("gongCmtUpdate"+x).value;
+			const subVal = document.getElementById("gongCmtUpdate_cnt"+x);
+			const textLength = textVal.length;
+			subVal.innerHTML="("+textVal.length+"/ 100)"
+			
+			if(textLength > 100){
+				document.getElementById("gongCmtUpdate"+x).value = document.getElementById("gongCmtUpdate"+x).value.substring(0,100);
+				subVal.innerHTML="(100 / 100)"
+			}
+		}
+		
 		$(document).ready(function(){
 			$('#gongCmtContent').on('keyup',function(){
 				$('#gongCmtContent_cnt').html("("+$(this).val().length+"/100)");
@@ -265,8 +277,9 @@
                         	</li>
                         	</c:if>
 							<li id="field_${status.count }" style="display:none; text-align:right; width:100%;">
-								<textarea class="form-full" name="gongCmtContent" style="resize:vertical;"></textarea><br>
+								<textarea class="form-full" id="gongCmtUpdate${status.count }" name="gongCmtContent" style="resize:vertical;" onkeyup="javascript:countCmtUpdate(${status.count })"></textarea><br>
 								<a onclick="cmtUpdateSubmit(${status.count })">작성</a> <a href="javascript:closeCmtArea(${status.count });">취소</a>
+                                <div id="gongCmtUpdate_cnt${status.count }">(0 / 100)</div>
 							</li>
                         </ul>
                         </form>
