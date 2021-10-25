@@ -189,7 +189,6 @@
 							<img alt="Thumnail" src="/img/portfolio/1.jpg" class="item-container">
 							</c:when>
 							<c:otherwise>
-							<%-- <img alt="Thumnail" src="${realPath }${vo.gongImg.get(0).getFileOriName() }" class="item-container"> --%>
 							<img alt="Thumnail" src="/upload/${vo.gongImg.get(0).getFileOriName() }" class="item-container">
 							</c:otherwise>
 						</c:choose>

@@ -184,7 +184,12 @@
                     </div>
                     <div class="col-md-12">
                     	<br><br><br>
-                    	<p align="left" style="font-size:1.3em;">${gong.gongContent }</p>
+                    	<p align="left" style="font-size:1.3em;">
+	                    	<c:if test="${gong.getGongImg().size() ne 0 }">
+	                    		<img alt="MainPic" src="/upload/${gong.gongImg.get(0).getFileOriName() }">
+	                    	</c:if>
+                    	${gong.gongContent }
+                    	</p>
                     	<br><br><br>
                     	<hr>
                     	<h4> 댓글 </h4>
