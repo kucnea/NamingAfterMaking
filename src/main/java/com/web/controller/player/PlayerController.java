@@ -65,6 +65,7 @@ public class PlayerController {
 		
 		//Id 기억하기
 		if(remember!=null) session.setAttribute("remember", remember);
+		else session.setAttribute("remember", "unremember");
 			
 		if(player!=null)	{
 			System.out.println("logedin Controller output player // pId : "+player.getPId()+", pPw : "+player.getPPw());

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.util.WebUtils;
 
 import com.web.entity.player.Player;
 
@@ -41,15 +42,22 @@ public class LoginInterceptor extends HandlerInterceptorAdapter implements Sessi
 //		Object player = mv.getModelMap().get("player");
 		Player player = (Player) mv.getModelMap().get("player");
 		
-		Object remember = session.getAttribute("remember");
+		String remember = (String) session.getAttribute("remember");
 		if(player!=null) {
 			session.setAttribute(login, player);
 			session.setAttribute("player", player);
-			if(remember!=null) {
+			if(remember.equals("remember")) {
 				Cookie lgCookie = new Cookie(loginCookie, player.getPId());
 				lgCookie.setPath("/");
 				lgCookie.setMaxAge(24*60*60);
 				response.addCookie(lgCookie);
+			}else {
+				Cookie lgCookie = WebUtils.getCookie(request, SessionNames.loginCookie);
+				if(lgCookie != null) {
+					lgCookie.setPath("/");
+					lgCookie.setMaxAge(0);
+					response.addCookie(lgCookie);
+				}
 			}
 			
 			//쿠키로 로그인 검증했던 코드
