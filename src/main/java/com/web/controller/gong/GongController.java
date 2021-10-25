@@ -47,13 +47,7 @@ public class GongController {
 		
 		System.out.println("gong Controller : gongList stage");
 		
-		//이미지 파일
-		
-		
-		
-		
 		//여기부터
-		
 //		List<Gong> list = gongService.searchAll();
 //		
 //		System.out.println("list의 사이즈 :"+list.size());
@@ -71,7 +65,7 @@ public class GongController {
 		System.out.println("gongList stage searchTarget : "+searchTarget);
 		if(searchObject!=null) pages = gongService.searchListByObject(page,size,searchObject,searchTarget);
 		else pages = gongService.searchList(page, size);
-		
+
 //		Page<Gong> pages = gongService.searchList(page, size);
 		if(page<0) page=0;
 		else if(page>pages.getTotalPages()) page=pages.getTotalPages();
@@ -112,7 +106,7 @@ public class GongController {
 		GongImg gongImg = new GongImg();
 		System.out.println(file);
 		//이미지파일
-		if(file!=null) {
+		if(file.getSize()!=0) {
 			
 				long fileSize = file.getSize();
 				String fileOriName = file.getOriginalFilename();
@@ -150,7 +144,7 @@ public class GongController {
 		HttpSession session = request.getSession();
 		Player player = (Player) session.getAttribute("player");
 		Gong result = gongService.write(gong,player);
-		if(file!=null) gongImgService.save(gongImg,result);
+		if(file.getSize()!=0) gongImgService.save(gongImg,result);
 		
 		if(result!=null) {
 			return "redirect:gonglist";	

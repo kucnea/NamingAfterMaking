@@ -183,7 +183,17 @@
 				<c:forEach var="vo" items="${list }">
 				<div class="row mtb-30">
 					<div class="item-box col-md-4 col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2 mb-sm-30">
-						<a href="artist-profile.html"><img alt="1" src="/img/portfolio/1.jpg" class="item-container"></a>                           
+						<a href="/gong/gongdetail?gongIdx=${vo.gongIdx}&page=${page1 }&size="${size1 }">
+						<c:choose>
+							<c:when test="${vo.getGongImg().size() == 0 }">
+							<img alt="Thumnail" src="/img/portfolio/1.jpg" class="item-container">
+							</c:when>
+							<c:otherwise>
+							<%-- <img alt="Thumnail" src="${realPath }${vo.gongImg.get(0).getFileOriName() }" class="item-container"> --%>
+							<img alt="Thumnail" src="/upload/${vo.gongImg.get(0).getFileOriName() }" class="item-container">
+							</c:otherwise>
+						</c:choose>
+						</a>                           
 					</div>
 					<div class="col-md-8 col-sm-8 col-xs-12">
 						<a href="/gong/gongdetail?gongIdx=${vo.gongIdx}&page=${page1 }&size="${size1 }"><h6>${vo.gongTitle }</h6></a>
