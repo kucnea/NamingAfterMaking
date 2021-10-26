@@ -16,10 +16,10 @@ import lombok.ToString;
 
 @Entity
 @Table(name="GONGIMG")
-@SequenceGenerator(						// 오라클 사용시
-		name = "GONGIMG_SEQ_GENERATOR",
-		sequenceName = "GONGIMG_SEQ",
-		initialValue = 1, allocationSize = 1)
+//@SequenceGenerator(						// 오라클 사용시
+//		name = "GONGIMG_SEQ_GENERATOR",
+//		sequenceName = "GONGIMG_SEQ",
+//		initialValue = 1, allocationSize = 1)
 @NoArgsConstructor
 @Getter
 @Setter
@@ -27,7 +27,8 @@ import lombok.ToString;
 public class GongImg {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GONGIMG_SEQ_GENERATOR") // 오라클 사용시
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GONGIMG_SEQ_GENERATOR") // 오라클 사용시
+	@GeneratedValue(strategy=GenerationType.IDENTITY)	// MySQL 사용시
 	private int gongImgIdx;
 	
 	private String fileOriName;

@@ -22,10 +22,10 @@ import lombok.ToString;
 
 @Entity
 @Table(name="GONGCOMMENT")
-@SequenceGenerator(						// 오라클 사용시
-		name = "GONGCOMMENT_SEQ_GENERATOR",
-		sequenceName = "GONGCOMMENT_SEQ",
-		initialValue = 1, allocationSize = 1)
+//@SequenceGenerator(						// 오라클 사용시
+//		name = "GONGCOMMENT_SEQ_GENERATOR",
+//		sequenceName = "GONGCOMMENT_SEQ",
+//		initialValue = 1, allocationSize = 1)
 @NoArgsConstructor
 @Getter
 @Setter
@@ -34,7 +34,8 @@ public class GongComment {
 
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GONGCOMMENT_SEQ_GENERATOR") // 오라클 사용시
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GONGCOMMENT_SEQ_GENERATOR") // 오라클 사용시
+	@GeneratedValue(strategy=GenerationType.IDENTITY)	// MySQL 사용시
 	private int gongCmtIdx;
 	
 	private String gongCmtContent;
