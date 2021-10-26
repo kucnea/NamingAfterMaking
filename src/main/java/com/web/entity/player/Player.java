@@ -22,10 +22,10 @@ import lombok.ToString;
 
 @Entity
 @Table(name="PLAYER")
-//@SequenceGenerator(						// 오라클 사용시
-//		name = "PLAYER_SEQ_GENERATOR",
-//		sequenceName = "PLAYER_SEQ",
-//		initialValue = 1, allocationSize = 1)
+@SequenceGenerator(						// 오라클 사용시
+		name = "PLAYER_SEQ_GENERATOR",
+		sequenceName = "PLAYER_SEQ",
+		initialValue = 1, allocationSize = 1)
 @NoArgsConstructor
 @Getter
 @Setter
@@ -34,8 +34,8 @@ public class Player {
 	
 	//jpa에게 테이블 자동생성하는건 책 124p,145p를 참고하자.
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)  // MYSQL 사용시
-//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PLAYER_SEQ_GENERATOR") // 오라클 사용시
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)  // MYSQL 사용시
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PLAYER_SEQ_GENERATOR") // 오라클 사용시
 	private int pIdx;
 	
 	@Column(nullable = false, length = 16)

@@ -13,6 +13,12 @@ public class HomeController{
 	
 		return "root.index";
 	}
+	
+	@RequestMapping("")
+	public String home() {	//url과 method명을 맞추는 것이 관리에 용이
+		
+		return "root.index";
+	}
 
 }
  
