@@ -120,6 +120,7 @@ public class PlayerController {
 	public String validId(
 			@RequestParam("pId") @Nullable String pId,
 			@RequestParam("pNick") @Nullable String pNick,
+			@RequestParam("result2") @Nullable String result2,
 			Model model) {
 		System.out.println("valid stage");
 		System.out.println("pId : "+pId);
@@ -138,6 +139,8 @@ public class PlayerController {
 		}
 		model.addAttribute("pId1",pId);
 		model.addAttribute("pNick1",pNick);
+		model.addAttribute("result2",result2);
+		
 		
 		
 //		return "redirect:join";
@@ -148,6 +151,7 @@ public class PlayerController {
 	public String validPNick(
 			@RequestParam("pId") @Nullable String pId,
 			@RequestParam("pNick") @Nullable String pNick,
+			@RequestParam("result1") @Nullable String result1,
 			Model model) {
 		
 		
@@ -156,20 +160,21 @@ public class PlayerController {
 		System.out.println("pNick : "+pNick);
 		if(pNick.startsWith("@")) {
 			pNick = pNick.substring(1,pNick.length());
-			model.addAttribute("result1", 5);		// 중복되진 않으나, 규약에 맞지 않아 추천 Id 제공
+			model.addAttribute("result2", 1);		// 중복되진 않으나, 규약에 맞지 않아 추천 Id 제공
 		}else if(pNick.startsWith("#")) {
 			pNick = pNick.substring(1,pNick.length());
-			model.addAttribute("result1", 6);		// 중복이거나, 규약에 맞지 않아 추천 Id 제공
+			model.addAttribute("result2", 2);		// 중복이거나, 규약에 맞지 않아 추천 Id 제공
 		}else if(pNick.startsWith("$")) {
 			pNick = "";
-			model.addAttribute("result1", 7);		// 추천 아이디 알고리즘의 100가지 이상의 시도가 있었으나 사용중으로 추천 Id 제공불가
+			model.addAttribute("result2", 3);		// 추천 아이디 알고리즘의 100가지 이상의 시도가 있었으나 사용중으로 추천 Id 제공불가
 		}else {
-			model.addAttribute("result1", 4);			// 사용가능
+			model.addAttribute("result2", 0);			// 사용가능
 		}
 		
 		
 		model.addAttribute("pId1",pId);
 		model.addAttribute("pNick1",pNick);
+		model.addAttribute("result1",result1);
 		
 		
 		return"player.join";
