@@ -31,6 +31,7 @@ public class GongImg {
 	private int gongImgIdx;
 	
 	private String fileOriName;
+	private String fileUseName;
 	private String filePath;
 	private Long fileSize;
 	

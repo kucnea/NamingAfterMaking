@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>   
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,9 +30,17 @@
 
 
 </head>
-
+	<script type="text/javascript">
+	function validId(){
+		if(document.getElementById("pId").value.length > 0){
+			location.href="/player/valid?pId="+document.getElementById("pId").value+"&pNick="+document.getElementById("pNick").value+"&pPw="+document.getElementById("pPw").value;	
+		}else{
+			alert("입력된 아이디가 없습니다.");
+		}
+		
+	}
+	</script>
 <body>
-
     <!-- Preloader -->
     <section id="preloader">
         <div class="loader" id="loader">
@@ -106,16 +115,31 @@
                             <h4> 함께할 준비 됐나요? </h4>
                             <form action="/player/create" method="post">
                                 <div class="form-field-wrapper">
-                                    <label for="pId">당신의 용사의 Id를 정해주세요. <p style="font-size:0.8em;";>( 해당 코드네임 규칙은 한글, 대문자, 특수문자 사용이 불가합니다. )</p></label>
-                                    <input type="text" required="" placeholder="Enter your Id" name="pId" id="pId" class="input-sm form-full" aria-required="true">
+                                    <label for="pId">당신의 용사의 ID를 정해주세요. <p style="font-size:0.8em;";>( 해당 코드네임 규칙은 한글, 대문자, 특수문자(-,_ 2가지 제외) 사용이 불가합니다. )</p><p style="font-size:0.8em;";>( 또한 특수문자 -는 맨앞과 맨뒤에 사용이 불가합니다. )</p></label>
+                                    <input type="text" required="" placeholder="Enter your Id" name="pId" id="pId" class="input-sm form-full" aria-required="true" value="${pId1 }">
+									<input type="button" onclick="validId()" value="중복체크">
+									<c:choose>
+                                    	<c:when test="${result eq 0 }">
+                                    		<font size="0.7em" color="red"> 사용 가능한 ID 입니다.</font>
+                                    	</c:when>
+                                    	<c:when test="${result eq 1 }">
+                                    		<font size="0.7em" color="red"> 중복되진 않지만, 규약에 맞지 않습니다. ${pId1 } 어떠신가요?</font>
+                                    	</c:when>
+                                    	<c:when test="${result eq 2 }">
+                                    		<font size="0.7em" color="red"> 중복이거나, 규약에 맞지 않습니다. ${pId1 } 어떠신가요?</font>
+                                    	</c:when>
+                                    	<c:when test="${result eq 3 }">
+                                    		<font size="0.7em" color="red"> 아이디 추천 알고리즘의 100가지 이상의 시도가 있었으나 모두 사용중으로 추천이 어렵습니다. 다른 아이디는 어떠세요?</font>
+                                    	</c:when>
+                                    </c:choose>
                                 </div>
                                 <div class="form-field-wrapper">
                                     <label for="pNick">당신의 용사의 이름을 정해주세요. <p style="font-size:0.8em;";>( 사람의 이름은 특수문자 사용이 불가합니다. )</p></label>
-                                    <input type="text" required="" placeholder="Enter Hero's Name" name="pNick" id="pNick" class="input-sm form-full" aria-required="true">
+                                    <input type="text" required="" placeholder="Enter Hero's Name" name="pNick" id="pNick" class="input-sm form-full" aria-required="true" value="${pNick1 }">
                                 </div>
                                 <div class="form-field-wrapper">
                                     <label for="pPw">당신과 용사가 서로 알아 볼 수 있는 비밀번호를 정해주세요. <p style="font-size:0.8em;";>( 비밀번호 규칙은 한글, 대문자, 특수문자 사용이 불가합니다. )</p></label>
-                                    <input type="password" required="" placeholder="Enter your Password" name="pPw" id="pPw" class="input-sm form-full" aria-required="true">
+                                    <input type="password" required="" placeholder="Enter your Password" name="pPw" id="pPw" class="input-sm form-full" aria-required="true" value="${pPw1 }">
                                 </div>
                                 <div class="form-field-wrapper">
                                     <label for="pAgree">세계와의 약속 ( 이용약관 )에 동의하십니까?</label>

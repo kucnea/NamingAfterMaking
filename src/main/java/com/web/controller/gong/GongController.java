@@ -3,6 +3,7 @@ package com.web.controller.gong;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -107,35 +108,40 @@ public class GongController {
 		System.out.println(file);
 		//이미지파일
 		if(file.getSize()!=0) {
+			UUID uuidTemp = UUID.randomUUID();
+			String imgId = uuidTemp.toString().replace("-", "");
+		
+			long fileSize = file.getSize();
+			String fileOriName = file.getOriginalFilename();
+			String fileUseName = imgId+file.getOriginalFilename();
+			String filePath = "";
 			
-				long fileSize = file.getSize();
-				String fileOriName = file.getOriginalFilename();
-				String filePath = "";
-				
-				System.out.printf("fileName : %s, fileSize : %d\n", fileOriName, fileSize);
-				
-				//파일 저장 경로 ( 호스팅시 수정 필요 )
-				String webPath = "/static/upload";
-				String realPath = ctx.getRealPath(webPath);
-				System.out.println("realPath : "+realPath);
-				
-				//업로드하기위한 경로 없을경우
-				File savePath = new File(realPath);
-				if(!savePath.exists()) savePath.mkdirs();
-				
-				//separator : 파일구분자, 윈도우는 \\ 리눅스는 / 로 사용하는걸 구분지어줌.
-				realPath += File.separator + fileOriName;
-				filePath = realPath;
-				File saveFile = new File(realPath);
-				
-				try {
-					file.transferTo(saveFile);
-					gongImg.setFileOriName(fileOriName);
-					gongImg.setFilePath(filePath);
-					gongImg.setFileSize(fileSize);
-				} catch (IllegalStateException | IOException e) {
-					e.printStackTrace();
-				}
+			System.out.printf("fileOriName : %s, fileSize : %d\n", fileOriName, fileSize);
+			System.out.printf("fileUseName : %s\n", fileUseName);
+			
+			//파일 저장 경로 ( 호스팅시 수정 필요 )
+			String webPath = "/static/upload";
+			String realPath = ctx.getRealPath(webPath);
+			System.out.println("realPath : "+realPath);
+			
+			//업로드하기위한 경로 없을경우
+			File savePath = new File(realPath);
+			if(!savePath.exists()) savePath.mkdirs();
+			
+			//separator : 파일구분자, 윈도우는 \\ 리눅스는 / 로 사용하는걸 구분지어줌.
+			realPath += File.separator + fileUseName;
+			filePath = realPath;
+			File saveFile = new File(realPath);
+			
+			try {
+				file.transferTo(saveFile);
+				gongImg.setFileOriName(fileOriName);
+				gongImg.setFileUseName(fileUseName);
+				gongImg.setFilePath(filePath);
+				gongImg.setFileSize(fileSize);
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

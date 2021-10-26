@@ -115,4 +115,33 @@ public class PlayerController {
 		
 		return "player.login";
 	}
+	
+	@RequestMapping("valid")
+	public String valid(
+			@RequestParam("pId") @Nullable String pId,
+			@RequestParam("pNick") @Nullable String pNick,
+			@RequestParam("pPw") @Nullable String pPw,
+			Model model) {
+		System.out.println("valid stage");
+		System.out.println("pId : "+pId);
+		pId = playerService.valid(pId);
+		if(pId.startsWith("@")) {
+			pId = pId.substring(1,pId.length());
+			model.addAttribute("result", 1);	// 중복되진 않으나, 규약에 맞지 않아 추천 Id 제공
+		}else if(pId.startsWith("#")) {
+			pId = pId.substring(1,pId.length());
+			model.addAttribute("result", 2);	// 중복이거나, 규약에 맞지 않아 추천 Id 제공
+		}else if(pId.startsWith("$")) {
+			pId = "";
+			model.addAttribute("result", 3);	// 추천 아이디 알고리즘의 100가지 이상의 시도가 있었으나 사용중으로 추천 Id 제공불가
+		}else {
+			model.addAttribute("result",0);		// 사용가능
+		}
+		model.addAttribute("pId1",pId);
+		model.addAttribute("pNick1",pNick);
+		model.addAttribute("pPw1",pPw);
+		
+		
+		return "redirect:join";
+	}
 }
