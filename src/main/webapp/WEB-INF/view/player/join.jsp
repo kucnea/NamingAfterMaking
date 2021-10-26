@@ -33,11 +33,19 @@
 	<script type="text/javascript">
 	function validId(){
 		if(document.getElementById("pId").value.length > 0){
-			location.href="/player/valid?pId="+document.getElementById("pId").value+"&pNick="+document.getElementById("pNick").value+"&pPw="+document.getElementById("pPw").value;	
+			location.href="/player/validId?pId="+document.getElementById("pId").value+"&pNick="+document.getElementById("pNick").value+"&pPw="+document.getElementById("pPw").value;	
 		}else{
 			alert("입력된 아이디가 없습니다.");
 		}
 		
+	}
+	
+	function validPNick(){
+		if(document.getElementById("pNick").value.length > 0){
+			location.href="/player/validPNick?pId="+document.getElementById("pId").value+"&pNick="+document.getElementById("pNick").value+"&pPw="+document.getElementById("pPw").value;	
+		}else{
+			alert("입력된 용사의 이름이 없습니다.");
+		}	
 	}
 	</script>
 <body>
@@ -141,12 +149,33 @@
                                     </c:choose>
                                 </div>
                                 <div class="form-field-wrapper">
-                                    <label for="pNick">당신의 용사의 이름을 정해주세요. <p style="font-size:0.8em;";>( 사람의 이름은 특수문자 사용이 불가합니다. )</p></label>
+                                    <label for="pNick">당신의 용사의 이름을 정해주세요. 
+                                    <p style="font-size:0.8em;";>
+                                    ( 사람의 이름은 특수문자 사용이 불가합니다. -,_은 가능하고 연속으로 사용이 불가합니다. )
+                                    ( 한글의 경우 완전한 글자만 가능합니다. )
+                                    ( 1~10 글자로 사용이 가능합니다. )
+                                    </p>
+                                    </label>
                                     <input type="text" required="" placeholder="Enter Hero's Name" name="pNick" id="pNick" class="input-sm form-full" aria-required="true" value="${pNick1 }">
+                                    <input type="button" onclick="validPNick()" value="중복체크">
+                                    <c:choose>
+                                    	<c:when test="${result1 == 4 }">
+                                    		<font size="0.7em" color="red"> 사용 가능한 이름 입니다.</font>
+                                    	</c:when>
+                                    	<c:when test="${result1 == 5 }">
+                                    		<font size="0.7em" color="red"> 중복되진 않지만, 규약에 맞지 않습니다. ${pNick1 } 어떠신가요?</font>
+                                    	</c:when>
+                                    	<c:when test="${result1 == 6 }">
+                                    		<font size="0.7em" color="red"> 중복이거나, 규약에 맞지 않습니다. ${pNick1 } 어떠신가요?</font>
+                                    	</c:when>
+                                    	<c:when test="${result1 == 7 }">
+                                    		<font size="0.7em" color="red"> 아이디 추천 알고리즘의 100가지 이상의 시도가 있었으나 모두 사용중으로 추천이 어렵습니다. 다른 아이디는 어떠세요?</font>
+                                    	</c:when>
+                                    </c:choose>
                                 </div>
                                 <div class="form-field-wrapper">
                                     <label for="pPw">당신과 용사가 서로 알아 볼 수 있는 비밀번호를 정해주세요. <p style="font-size:0.8em;";>( 비밀번호 규칙은 한글, 대문자, 특수문자 사용이 불가합니다. )</p></label>
-                                    <input type="password" required="" placeholder="Enter your Password" name="pPw" id="pPw" class="input-sm form-full" aria-required="true" value="${pPw1 }">
+                                    <input type="password" required="" placeholder="Enter your Password" name="pPw" id="pPw" class="input-sm form-full" aria-required="true">
                                 </div>
                                 <div class="form-field-wrapper">
                                     <label for="pAgree">세계와의 약속 ( 이용약관 )에 동의하십니까?</label>

@@ -57,9 +57,9 @@ public class PlayerService {
 		
 	}
 
-	public String valid(String pId) {
+	public String validId(String pId) {
 		String old = pId;
-		System.out.println("player Service valid Stage");
+		System.out.println("player Service validPId Stage");
 		
 		pId = pId.toLowerCase()
 				.replaceAll(" ", "")
@@ -109,5 +109,51 @@ public class PlayerService {
 	}
 	
 	
+	public String validPNick(String pNick) {
+		
+		String old = pNick;
+		System.out.println("player Service validPNick Stage");
+		
+		pNick = pNick
+				.replaceAll(" ", "")
+				.trim()
+				.replaceAll("[^가-힣0-9a-zA-Z-_]", "") 							// -, _이 두개 제외하고 제거
+				.replaceAll("[-]{2,}", "-")
+				.replaceAll("[_]{2,}", "_");
+		if(pNick=="") pNick+="a";
+		if(pNick.isEmpty()) pNick = "a";
+		if(pNick.length()>=11) pNick = pNick.substring(0, 10);
+		
+		if(playerRepository.findByPNick(pNick)==null) {
+			if(old.equals(pNick)) {
+				return pNick;		// 중복 X, 규약에 맞음 = 사용가능
+			}else {
+				return "@"+pNick; // 중복 X, 규약에 안맞음 = 추천 Id제공
+			}
+		}else {
+			while(playerRepository.findByPNick(pNick)!=null) {
+				SimpleDateFormat format = new SimpleDateFormat("yyMMdd");
+				Date date = new Date();
+				String dS = format.format(date);
+				System.out.println("valid() stage dateFormat yyMMdd : "+dS);
+				if(pNick.length()<5) pNick = pNick+dS;
+				else {
+					if(10-pNick.length()>0) {
+						dS.substring(0,10-pNick.length());
+						pNick += dS;
+					}else {
+						pNick = pNick.substring(0,pNick.length()-2);
+						int t = 0;
+						pNick += t;
+						t++;
+						if(t==99) return "$";	// 입력한 Id에서 99가지 이상의 추천아이디 알고리즘이 있었으나 사용가능한 아이디가 없음.
+					}
+				}
+			}
+			return "#"+pNick; // 중복 O, 규약에 안맞음 = 추천 Id제공
+	}
+	
+	
+}
 	
 }
