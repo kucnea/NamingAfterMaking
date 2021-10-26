@@ -115,20 +115,26 @@
                             <h4> 함께할 준비 됐나요? </h4>
                             <form action="/player/create" method="post">
                                 <div class="form-field-wrapper">
-                                    <label for="pId">당신의 용사의 ID를 정해주세요. <p style="font-size:0.8em;";>( 해당 코드네임 규칙은 한글, 대문자, 특수문자(-,_ 2가지 제외) 사용이 불가합니다. )</p><p style="font-size:0.8em;";>( 또한 특수문자 -는 맨앞과 맨뒤에 사용이 불가합니다. )</p></label>
+                                    <label for="pId">당신의 용사의 ID를 정해주세요. 
+	                                    <p style="font-size:0.8em;";>
+	                                    ( 해당 코드네임 규칙은 한글, 대문자, 특수문자(-,_ 2가지 제외) 사용이 불가합니다. )<br>
+	                                    ( 또한 특수문자 -는 맨앞과 맨뒤에 사용이 불가합니다. )<br>
+	                                    ( 4~12 글자로 사용이 가능합니다. )
+	                                    </p>
+                                    </label>
                                     <input type="text" required="" placeholder="Enter your Id" name="pId" id="pId" class="input-sm form-full" aria-required="true" value="${pId1 }">
 									<input type="button" onclick="validId()" value="중복체크">
 									<c:choose>
-                                    	<c:when test="${result eq 0 }">
+                                    	<c:when test="${result1 == 0 }">
                                     		<font size="0.7em" color="red"> 사용 가능한 ID 입니다.</font>
                                     	</c:when>
-                                    	<c:when test="${result eq 1 }">
+                                    	<c:when test="${result1 == 1 }">
                                     		<font size="0.7em" color="red"> 중복되진 않지만, 규약에 맞지 않습니다. ${pId1 } 어떠신가요?</font>
                                     	</c:when>
-                                    	<c:when test="${result eq 2 }">
+                                    	<c:when test="${result1 == 2 }">
                                     		<font size="0.7em" color="red"> 중복이거나, 규약에 맞지 않습니다. ${pId1 } 어떠신가요?</font>
                                     	</c:when>
-                                    	<c:when test="${result eq 3 }">
+                                    	<c:when test="${result1 == 3 }">
                                     		<font size="0.7em" color="red"> 아이디 추천 알고리즘의 100가지 이상의 시도가 있었으나 모두 사용중으로 추천이 어렵습니다. 다른 아이디는 어떠세요?</font>
                                     	</c:when>
                                     </c:choose>
