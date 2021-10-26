@@ -119,7 +119,8 @@
 	                                    <p style="font-size:0.8em;";>
 	                                    ( 해당 코드네임 규칙은 한글, 대문자, 특수문자(-,_ 2가지 제외) 사용이 불가합니다. )<br>
 	                                    ( 또한 특수문자 -는 맨앞과 맨뒤에 사용이 불가합니다. )<br>
-	                                    ( 4~12 글자로 사용이 가능합니다. )
+	                                    ( 또한 특수문자 -,_는 연속으로 사용이 불가합니다. )<br>
+	                                    ( 마지막으로 4~12 글자로 사용이 가능합니다. )
 	                                    </p>
                                     </label>
                                     <input type="text" required="" placeholder="Enter your Id" name="pId" id="pId" class="input-sm form-full" aria-required="true" value="${pId1 }">

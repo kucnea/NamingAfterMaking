@@ -60,13 +60,14 @@ public class PlayerService {
 	public String valid(String pId) {
 		String old = pId;
 		System.out.println("player Service valid Stage");
+		
 		pId = pId.toLowerCase()
 				.replaceAll(" ", "")
 				.trim()
 				.replaceAll("[^0-9a-z-_]", "") 							// -, _이 두개 제외하고 제거
 				.replaceAll("[-]{2,}", "-")
 				.replaceAll("[_]{2,}", "_");
-		
+		if(pId=="") pId+="a";
 		if(pId.startsWith("-")) pId = pId.substring(1, pId.length());
 		if(pId.endsWith("-")) pId = pId.substring(1, pId.length());  	// 처음과 마지막에는 - 사용불가
 		if(pId.isEmpty()) pId = "a";
