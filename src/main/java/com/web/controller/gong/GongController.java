@@ -38,7 +38,10 @@ public class GongController {
 	@Autowired GongImgService gongImgService;
 	@Autowired private ServletContext ctx;
 	
-	
+	//파일 저장 경로 ( 로컬용 )
+//	final String webPath = "/static/upload";
+	//파일 저장 경로 ( 호스팅용 )
+	final String webPath = "/var/webapps/upload/forNAM";
 	
 	@RequestMapping("gonglist")
 	public String gongList(Model model,
@@ -120,8 +123,11 @@ public class GongController {
 			System.out.printf("fileOriName : %s, fileSize : %d\n", fileOriName, fileSize);
 			System.out.printf("fileUseName : %s\n", fileUseName);
 			
-			//파일 저장 경로 ( 호스팅시 수정 필요 )
-			String webPath = "/static/upload";
+			//파일 저장 경로 ( 로컬용 ) //final로 걸어둠.
+//			String webPath = "/static/upload";
+			//파일 저장 경로 ( 호스팅용 )
+//			String webPath = "/var/webapps/upload/forNAM";
+			
 			String realPath = ctx.getRealPath(webPath);
 			System.out.println("realPath : "+realPath);
 			
@@ -239,8 +245,9 @@ public class GongController {
 			System.out.printf("fileOriName : %s, fileSize : %d\n", fileOriName, fileSize);
 			System.out.printf("fileUseName : %s\n", fileUseName);
 			
-			//파일 저장 경로 ( 호스팅시 수정 필요 )
-			String webPath = "/static/upload";
+//			//파일 저장 경로 ( 호스팅시 수정 필요 ) //final로 걸어둠
+//			String webPath = "/static/upload";
+			
 			String realPath = ctx.getRealPath(webPath);
 			System.out.println("realPath : "+realPath);
 			
