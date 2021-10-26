@@ -135,7 +135,7 @@ public class PlayerController {
 			pId = "";
 			model.addAttribute("result1", 3);	// 추천 아이디 알고리즘의 100가지 이상의 시도가 있었으나 사용중으로 추천 Id 제공불가
 		}else {
-			model.addAttribute("result1",0);		// 사용가능
+			model.addAttribute("result1",4);		// 사용가능
 		}
 		model.addAttribute("pId1",pId);
 		model.addAttribute("pNick1",pNick);
@@ -168,7 +168,7 @@ public class PlayerController {
 			pNick = "";
 			model.addAttribute("result2", 3);		// 추천 아이디 알고리즘의 100가지 이상의 시도가 있었으나 사용중으로 추천 Id 제공불가
 		}else {
-			model.addAttribute("result2", 0);			// 사용가능
+			model.addAttribute("result2", 4);			// 사용가능
 		}
 		
 		

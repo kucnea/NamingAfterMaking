@@ -50,7 +50,13 @@
 	
 	function joinFormSubmit(){
 		if(${result1 != 0}) alert("Id의 중복여부를 확인하세요");
+		else{
+			if(document.getElementById("dCPId").value != document.getElementById("pId").value) return alert("중복확인한 아이디가 입력되어 있지 않습니다.")
+		}
 		if(${result2 != 0}) alert("용사의 이름의 중복여부를 확인하세요");
+		else{
+			if(document.getElementById("dCPNick").value != document.getElementById("pNick").value) return alert("중복확인한 용사의 이름이 입력되어 있지 않습니다.")
+		}
 		if(document.getElementById("pPw").value.length > 3){
 			
 			if(document.getElementById("pPw").value.length < 11){
@@ -146,9 +152,10 @@
 	                                    </p>
                                     </label>
                                     <input type="text" required="" placeholder="Enter your Id" name="pId" id="pId" class="input-sm form-full" aria-required="true" value="${pId1 }">
+                                    <input type="hidden" id="dCPId" value="${pId1 }">
 									<input type="button" onclick="validId()" value="중복확인">
 									<c:choose>
-                                    	<c:when test="${result1 == 0 }">
+                                    	<c:when test="${result1 == 4 }">
                                     		<font size="0.7em" color="red"> 사용 가능한 ID 입니다.</font>
                                     	</c:when>
                                     	<c:when test="${result1 == 1 }">
@@ -172,9 +179,10 @@
                                     </p>
                                     </label>
                                     <input type="text" required="" placeholder="Enter Hero's Name" name="pNick" id="pNick" class="input-sm form-full" aria-required="true" value="${pNick1 }">
+                                    <input type="hidden" id="dCPNick" value="${pNick1 }">
                                     <input type="button" onclick="validPNick()" value="중복확인">
                                     <c:choose>
-                                    	<c:when test="${result2 == 0 }">
+                                    	<c:when test="${result2 == 4 }">
                                     		<font size="0.7em" color="red"> 사용 가능한 이름 입니다.</font>
                                     	</c:when>
                                     	<c:when test="${result2 == 1 }">
