@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 
 <!DOCTYPE html>
 <html>
@@ -103,7 +104,7 @@
 				<div class="col-md-6 pb-60">
                         <!-- Contact FORM -->
                         <!-- <form class="contact-form" id="contact" role="form" action="/gong/gongsubmit" method="post"> -->
-                        <form action="/gong/gongupdatesubmit" method="post">
+                        <form action="/gong/gongupdatesubmit" method="post" enctype="multipart/form-data">
 							<input type="hidden" name="gongIdx" value=${gong.gongIdx }>
 							<input type="hidden" name="gongCnt" value=${gong.gongCnt }>
                             <!-- IF MAIL SENT SUCCESSFULLY -->
@@ -126,11 +127,18 @@
 	                            <h6>작성자 : ${player.PId }</h6>	
                                 <!-- 쪽지 기능(버튼) 추가 예정 -->
                             <!-- </div> -->
-
+							<div class="form-field-wrapper">
+							<c:if test="${gong.getGongImg().size() ne 0 }">
+								<img alt="MainPic" src="/upload/${gong.gongImg.get(0).getFileUseName() }">
+							</c:if>
+							</div>
                             <div class="form-field-wrapper">
                                 <textarea class="form-full" id="form-message" rows="7" name="gongContent" required>${gong.gongContent }</textarea>
                             </div>
-
+							
+							<!-- 이미지 첨부 파일 설정 위치 -->
+							<input type="file" name="file"/> <font size="0.8em" color="orange"> - 이미지 파일의 최대용랑은 15MB입니다. </font>
+							
                             <button class="btn btn-md btn-black" type="submit" id="form-submit" name="submit">수정하기</button>
                             <button class="btn btn-md btn-black" type="button" onclick="location.href='gonglist'">취소하기</button>
                         </form>

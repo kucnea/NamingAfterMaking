@@ -58,13 +58,13 @@ public class GongService {
 	}
 
 	/* 업데이트 */
-	public void update(Gong gong) {
+	public Gong update(Gong gong) {
 		Gong gongUpdate = gongRepository.findOne(gong.getGongIdx());
 		gongUpdate.setGongTitle(gong.getGongTitle());
 		gongUpdate.setGongContent(gong.getGongContent());
 		gongUpdate.setGongWTime(new Date());
 		gongUpdate.setGongCnt(gong.getGongCnt());
-		gongRepository.save(gongUpdate);
+		return gongRepository.save(gongUpdate);
 	}
 
 	/* 한 건 삭제*/

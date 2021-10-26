@@ -46,7 +46,7 @@ public class GongCommentService {
 		gongCommentRepository.delete(gongCmtIdx);
 	}
 
-
+	/* 댓글 수정 */
 	public void update(GongComment gongComment) {
 		GongComment update = gongCommentRepository.findOne(gongComment.getGongCmtIdx());
 		update.setGongCmtContent(gongComment.getGongCmtContent());

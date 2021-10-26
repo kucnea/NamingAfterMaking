@@ -2,6 +2,7 @@ package com.web.controller.gong;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -150,6 +151,7 @@ public class GongController {
 		HttpSession session = request.getSession();
 		Player player = (Player) session.getAttribute("player");
 		Gong result = gongService.write(gong,player);
+		//그림 포함
 		if(file.getSize()!=0) gongImgService.save(gongImg,result);
 		
 		if(result!=null) {
@@ -210,7 +212,11 @@ public class GongController {
 	
 	
 	@PostMapping("gongupdatesubmit")
-	public String gongUpdateSubmit(Model model, @ModelAttribute("gong") Gong gong,HttpServletRequest request) {
+	public String gongUpdateSubmit(
+			@ModelAttribute("gong") Gong gong,
+			@RequestParam("file") @Nullable MultipartFile file,
+			HttpServletRequest request,
+			Model model) {
 		
 		HttpSession session = request.getSession();
 		Player player = (Player) session.getAttribute("player");
@@ -218,8 +224,59 @@ public class GongController {
 		System.out.println("gongUpdateSubmit Stage");
 		System.out.println("gong toString : "+gong.toString());
 		
-		gongService.update(gong);
+		GongImg gongImg = new GongImg();
+		System.out.println(file);
+		//이미지파일
+		if(file.getSize()!=0) {
+			UUID uuidTemp = UUID.randomUUID();
+			String imgId = uuidTemp.toString().replace("-", "");
 		
+			long fileSize = file.getSize();
+			String fileOriName = file.getOriginalFilename();
+			String fileUseName = imgId+file.getOriginalFilename();
+			String filePath = "";
+			
+			System.out.printf("fileOriName : %s, fileSize : %d\n", fileOriName, fileSize);
+			System.out.printf("fileUseName : %s\n", fileUseName);
+			
+			//파일 저장 경로 ( 호스팅시 수정 필요 )
+			String webPath = "/static/upload";
+			String realPath = ctx.getRealPath(webPath);
+			System.out.println("realPath : "+realPath);
+			
+			//업로드하기위한 경로 없을경우
+			File savePath = new File(realPath);
+			if(!savePath.exists()) savePath.mkdirs();
+			
+			//separator : 파일구분자, 윈도우는 \\ 리눅스는 / 로 사용하는걸 구분지어줌.
+			realPath += File.separator + fileUseName;
+			filePath = realPath;
+			File saveFile = new File(realPath);
+			
+			try {
+				file.transferTo(saveFile);
+				gongImg.setFileOriName(fileOriName);
+				gongImg.setFileUseName(fileUseName);
+				gongImg.setFilePath(filePath);
+				gongImg.setFileSize(fileSize);
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+		}
+//		List<GongImg> list = new ArrayList<GongImg>();
+//		list.add(gongImg);
+//		gong.setGongImg(list);
+		
+		Gong result = gongService.update(gong);
+		
+		System.out.println("===file null Test===");
+		System.out.println(file);
+		System.out.println("===gongImg null Test===");
+		System.out.println(gongImg);
+		System.out.println("===gong null Test===");
+//		System.out.println(result); 오버플로우 발생.
+		
+		if(file.getSize()!=0) gongImgService.update(gongImg,result);
 //		Gong gongUpdated = gongService.searchOne(gong.getGongIdx()); gongService로 옮김.
 //		gongUpdated.setGongTitle(gong.getGongTitle());
 //		gongUpdated.setGongContent(gong.getGongContent());
