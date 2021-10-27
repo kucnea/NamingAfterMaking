@@ -129,7 +129,7 @@
                             <!-- </div> -->
 							<div class="form-field-wrapper">
 							<c:if test="${gong.getGongImg().size() ne 0 }">
-								<img alt="MainPic" src="/upload/${gong.gongImg.get(0).getFileUseName() }">
+								<img alt="MainPic" src="/upload/${gong.gongImg.iterator().next().getFileUseName() }">
 							</c:if>
 							</div>
                             <div class="form-field-wrapper">

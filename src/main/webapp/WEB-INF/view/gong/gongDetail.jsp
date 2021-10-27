@@ -198,7 +198,7 @@
                     	<br><br><br>
                     	<p align="left" style="font-size:1.3em;">
 	                    	<c:if test="${gong.getGongImg().size() ne 0 }">
-	                    		<img alt="MainPic" src="/upload/${gong.gongImg.get(0).getFileUseName() }"><br>
+	                    		<img alt="MainPic" src="/upload/${gong.gongImg.iterator().next().getFileUseName() }"><br>
 	                    	</c:if>
                     	${gong.gongContent }
                     	</p>

@@ -117,7 +117,7 @@
                     <div class="col-md-6">
                         <div class="border-box">
                                <div class="form-field-wrapper">
-                                    <label>${player.PNick }와 쇼핑이 필요하신가요? 아래의 버튼으로 떠나볼까요?</label>
+                                    <label>${player.PNick }와 쇼핑이 필요하신가요? 아래의 버튼으로 떠나볼까요?</label><br>
 									<button onclick="location.href='/store/storelist'" class="btn btn-md btn-black">쇼핑하기</button>
                                 </div>
                                 <div class="form-field-wrapper">

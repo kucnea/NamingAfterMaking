@@ -26,7 +26,7 @@ public class GongImgService {
 	public void update(GongImg gongImg, Gong gong) {
 		// 원래 사용하던 코드
 //		gongImg.setGongImgIdx(gong.getGongImg().get(0).getGongImgIdx());
-		
+		gong.getGongImg().iterator().next().getFileOriName();
 		// Set으로 변경 후 사용해보는 코드
 		Iterator<GongImg> i = gong.getGongImg().iterator();
 		gongImg.setGongImgIdx(i.next().getGongImgIdx());
