@@ -1,8 +1,7 @@
 package com.web.entity.player;
 
-import java.util.List;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.web.entity.gong.Gong;
@@ -22,10 +20,10 @@ import lombok.ToString;
 
 @Entity
 @Table(name="PLAYER")
-@SequenceGenerator(						// 오라클 사용시
-		name = "PLAYER_SEQ_GENERATOR",
-		sequenceName = "PLAYER_SEQ",
-		initialValue = 1, allocationSize = 1)
+//@SequenceGenerator(						// 오라클 사용시
+//		name = "PLAYER_SEQ_GENERATOR",
+//		sequenceName = "PLAYER_SEQ",
+//		initialValue = 1, allocationSize = 1)
 @NoArgsConstructor
 @Getter
 @Setter
@@ -34,8 +32,8 @@ public class Player {
 	
 	//jpa에게 테이블 자동생성하는건 책 124p,145p를 참고하자.
 	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)  // MYSQL 사용시
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PLAYER_SEQ_GENERATOR") // 오라클 사용시
+	@GeneratedValue(strategy = GenerationType.IDENTITY)  // MYSQL 사용시
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PLAYER_SEQ_GENERATOR") // 오라클 사용시
 	private int pIdx;
 	
 	@Column(nullable = false, length = 16)
@@ -77,7 +75,7 @@ public class Player {
 //	@OneToMany(cascade = CascadeType.ALL,
 //				mappedBy = "player")
 	@OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
-	private List<Gong> gong;
+	private Set<Gong> gong;
 	
 	
 	public Player(String pId, String pPw) { 	// test를 위한 생성자

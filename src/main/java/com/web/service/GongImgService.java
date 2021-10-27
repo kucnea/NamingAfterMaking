@@ -1,5 +1,7 @@
 package com.web.service;
 
+import java.util.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +24,13 @@ public class GongImgService {
 	}
 	
 	public void update(GongImg gongImg, Gong gong) {
-		gongImg.setGongImgIdx(gong.getGongImg().get(0).getGongImgIdx());
+		// 원래 사용하던 코드
+//		gongImg.setGongImgIdx(gong.getGongImg().get(0).getGongImgIdx());
+		
+		// Set으로 변경 후 사용해보는 코드
+		Iterator<GongImg> i = gong.getGongImg().iterator();
+		gongImg.setGongImgIdx(i.next().getGongImgIdx());
+		
 		GongImg update = gongImgRepository.findOne(gongImg.getGongImgIdx());
 
 //		System.out.println("GongImgService update stage");

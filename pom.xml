@@ -27,18 +27,17 @@
 
   <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-api -->
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-api</artifactId>
-      <version>9.0.52</version>
+	    <groupId>org.apache.tomcat</groupId>
+	    <artifactId>tomcat-api</artifactId>
+	    <version>9.0.5</version>
 	</dependency>
 	
 	<dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-jdbc</artifactId>
       <version>7.0.57</version>
-      <scope>compile</scope>
 	</dependency>
-  
+  	<!--<scope>compile</scope> -->
 	<!-- spring -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
@@ -111,9 +110,9 @@
 	    <groupId>org.projectlombok</groupId>
 	    <artifactId>lombok</artifactId>
 	    <version>1.18.22</version>
-	    <scope>provided</scope>
 	</dependency>
-
+	
+	<!-- <scope>provided</scope> -->
 
 		<!-- 로깅 SLF4J & LogBack -->
 	<dependency>
@@ -249,6 +248,12 @@
 			    <version>4.1.4</version>
 			</dependency> -->
 			
+			<!-- 웹 호스팅시 mysql-connector가 필요하다는 이야기가 있었음 -->
+			<dependency>
+			    <groupId>mysql</groupId>
+			    <artifactId>mysql-connector-java</artifactId>
+			    <version>8.0.26</version>
+			</dependency>
   </dependencies>
 
 
@@ -292,6 +297,15 @@
 	<build>
 	<pluginManagement>
 		<plugins>
+		
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-war-plugin</artifactId>
+			<configuration>
+				<warSourceDirectory>webapp</warSourceDirectory>
+				<webxml>webapp/WEB-INF/web.xml</webxml>
+			</configuration>
+		</plugin>
 		
 		<plugin>
 		    <groupId>org.codehaus.mojo</groupId>
