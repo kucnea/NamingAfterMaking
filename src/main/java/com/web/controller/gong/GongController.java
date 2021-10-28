@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -39,9 +40,9 @@ public class GongController {
 	@Autowired private ServletContext ctx;
 	
 	//파일 저장 경로 ( 로컬용 )
-//	final String webPath = "/static/upload";
+	final String webPath = "/static/upload";
 	//파일 저장 경로 ( 호스팅용 )
-	final String webPath = "/var/webapps/upload/forNAM";
+//	final String webPath = "/var/webapps/upload/forNAM";
 //	final String webPath = "/upload/";
 	
 	
@@ -128,7 +129,6 @@ public class GongController {
 			//파일 저장 경로 ( 로컬용 ) //final로 걸어둠.
 //			String webPath = "/static/upload";
 			//파일 저장 경로 ( 호스팅용 )
-//			String webPath = "/var/webapps/upload/forNAM";
 			
 			String realPath = ctx.getRealPath(webPath);
 			System.out.println("realPath : "+realPath);

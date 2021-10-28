@@ -49,11 +49,11 @@
 	}
 	
 	function joinFormSubmit(){
-		if(${result1 != 0}) alert("Id의 중복여부를 확인하세요");
+		if(${result1 != 4}) alert("Id의 중복여부를 확인하세요");
 		else{
 			if(document.getElementById("dCPId").value != document.getElementById("pId").value) return alert("중복확인한 아이디가 입력되어 있지 않습니다.")
 		}
-		if(${result2 != 0}) alert("용사의 이름의 중복여부를 확인하세요");
+		if(${result2 != 4}) alert("용사의 이름의 중복여부를 확인하세요");
 		else{
 			if(document.getElementById("dCPNick").value != document.getElementById("pNick").value) return alert("중복확인한 용사의 이름이 입력되어 있지 않습니다.")
 		}
