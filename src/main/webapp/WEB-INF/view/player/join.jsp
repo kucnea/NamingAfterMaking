@@ -30,6 +30,7 @@
 
 
 </head>
+<tiles:insertAttribute name="title"/>
 	<script type="text/javascript">
 	function validId(){
 		if(document.getElementById("pId").value.length > 0){

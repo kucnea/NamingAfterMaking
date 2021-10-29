@@ -29,7 +29,7 @@
     <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<link href="/css/plugin/smoothproducts.css" rel="stylesheet" />	
 </head>
-
+<tiles:insertAttribute name="title"/>
 <body>
 
     <!-- Preloader -->

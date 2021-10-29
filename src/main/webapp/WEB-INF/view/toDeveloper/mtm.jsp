@@ -28,7 +28,7 @@
     <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="#">
 </head>
-
+<tiles:insertAttribute name="title"/>
 
 <body>
 

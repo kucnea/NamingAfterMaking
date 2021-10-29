@@ -31,6 +31,7 @@
 	<!-- 제이쿼리 -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
+	<tiles:insertAttribute name="title"/>
 	<style type="text/css">
 		.cmtW{
 			text-align:center;
@@ -103,6 +104,7 @@
 			target.innerHTML = "<td colspan='3'><textarea class='form-full' name='gongCmtContent' rows='2'></textarea></td><td><a>작성</a> <a href='javascript:closeCmtArea();'>취소</a></td>";
 		} */
 	</script>
+	
 <body>
 
     <!-- Preloader -->

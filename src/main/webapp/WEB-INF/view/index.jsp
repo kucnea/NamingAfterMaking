@@ -31,7 +31,7 @@
     <link href="plugin/rs-plugin/css/settings.css" rel="stylesheet" type="text/css" media="screen" />
 
 </head>
-
+<tiles:insertAttribute name="title"/>
 <body style="overflow:hidden;">
 
     <!-- Preloader -->

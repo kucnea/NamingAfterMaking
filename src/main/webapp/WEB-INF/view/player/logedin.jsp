@@ -29,7 +29,7 @@
 
 
 </head>
-
+<tiles:insertAttribute name="title"/>
 <body>
 
     <!-- Preloader -->

@@ -29,7 +29,7 @@
     <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 
 </head>
-
+<tiles:insertAttribute name="title"/>
 <body>
 
     <!-- Preloader -->
