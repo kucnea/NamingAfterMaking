@@ -30,6 +30,34 @@
 
 </head>
 
+<script type="text/javascript">
+	
+	/* 로컬 경로( 자동으로 127.0.0.1 ) */
+	var ws = new WebSocket("ws://localhost:8083/replyEcho");
+	/* 웹 경로( 공인 ip ) */
+	
+	
+	ws.onopen = function (){
+		console.log('Info : connection opened.');
+		setTimeout( function(){ connect(); }, 1000);
+	};
+	
+	ws.onmessage = function(){
+		console.log(event.data+'\n');
+	}
+	
+	ws.onclose = function (event) { console.log('Info : connection closed.');};
+	ws.onerror = function (err) { console.log('Error : ', err);};
+	
+	$('#btnSend').on('click', function(evt){
+		evt.preventDefault();
+		if(socket.readyState != 1) return;
+		let msg = $('input#msg').val();
+		ws.send(msg);
+	})
+	
+</script>
+
 <body>
 
     <!-- Preloader -->
@@ -103,15 +131,21 @@
             <div class="container">
                 <div class="row text-center">
                     <div class="col-md-12">
-                        <h3 class="h4">Welcome to Global Talent House</h3>
+                    
+                        <h3 class="h4">같은 용사분들과 실시간 채팅을 나눠보세요!</h3>
                         <div class="spacer-15"></div>
-                        <p>With the Indian advertising entertainment, event & Fashion industry changing and running full stem and opening its doors to global 
-						markets & talents, the need to gear up to face stiff competition has never been more felt than now, more so for the creative community 
-						which include Graphic designer, Dancers, Singers, Photographers, etc..</p>
-
-						<p>Being In a Vibrant Advertising, Films (Bollywood), T.V, Entertainment and fashion capital city of Mumbai, Global Talent house is the 
-						first place you look for your promotional needs and we are confident it will be the last to end your search.</p>
-
+						<input type="button" id="enterBtn" value="ENTER"/>
+						<input type="button" id="exitBtn" value="EXIT"/>
+						<p>
+						Session ID : <input type="text" id="sessionid" value="" size="50"/>
+						<p>
+						<input type="text" id="message" size="50"/>
+						<input type="button" id="sendBtn" value="SEND"/>
+						
+						<div id="data">
+						
+						</div>
+						
 						<p>We at Global talent house understand your needs, your foresight and….you. Thus we take you ahead confirming your presence in style 
 						with our sweat our toil. Firming your grip on every industry, securing a spot in every event, here we are, not just to give and take, 
 						but to participate.</p>

@@ -6,6 +6,7 @@
     xmlns:p="http://www.springframework.org/schema/p"
     xmlns:tx="http://www.springframework.org/schema/tx"
     xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+    xmlns:websocket="http://www.springframework.org/schema/websocket"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc
@@ -15,7 +16,10 @@
         http://www.springframework.org/schema/tx 
        	http://www.springframework.org/schema/tx/spring-tx.xsd
        	http://www.springframework.org/schema/data/jpa 
-        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        http://www.springframework.org/schema/websocket
+        http://www.springframework.org/schema/websocket/spring-websocket.xsd
+        ">
 
 	<!-- <context:annotation-config/>	 -->
 	<!-- 이게 있어야 어노테이션으로 처리한 것을 읽을 수 있음 -->
@@ -28,6 +32,7 @@
 	<context:component-scan base-package="com.web" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
+	
 	
 	
 	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -72,6 +77,21 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
+	
+	<!-- websocket handler -->
+	<bean id="replyEchoHandler" class="com.web.handler.ReplyEchoHandler"/>
+	
+	<websocket:handlers>
+		<websocket:mapping handler="replyEchoHandler" path="/replyEcho"/>
+		<websocket:handshake-interceptors>
+			<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+		</websocket:handshake-interceptors>
+	</websocket:handlers>
+	
+	
+	
+	
+	<!-- 기존 파일 경로 -->
 	<mvc:resources location="/static/" mapping="/**"></mvc:resources>
 	
 	<!-- 로컬용( 파일 저장 경로 ) -->

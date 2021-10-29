@@ -26,9 +26,9 @@
     <link href="/css/plugin/sidebar-menu.css" rel="stylesheet" type="text/css" />
     <link href="/css/plugin/animate.css" rel="stylesheet" type="text/css" />
     <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-
-
+    <link rel="shortcut icon" href="#">
 </head>
+
 
 <body>
 
@@ -103,14 +103,19 @@
             <div class="container">
                 <div class="row text-center">
                     <div class="col-md-12">
-                        <h3 class="h4">Welcome to Global Talent House</h3>
+                        <h3 class="h4">개발자 대리 챗봇과의 1:1 대화</h3>
                         <div class="spacer-15"></div>
-                        <p>With the Indian advertising entertainment, event & Fashion industry changing and running full stem and opening its doors to global 
-						markets & talents, the need to gear up to face stiff competition has never been more felt than now, more so for the creative community 
-						which include Graphic designer, Dancers, Singers, Photographers, etc..</p>
-
-						<p>Being In a Vibrant Advertising, Films (Bollywood), T.V, Entertainment and fashion capital city of Mumbai, Global Talent house is the 
-						first place you look for your promotional needs and we are confident it will be the last to end your search.</p>
+						<input type="button" id="enterBtn" value="ENTER"/>
+						<input type="button" id="exitBtn" value="EXIT"/>
+						<p>
+						Session ID : <input type="text" id="sessionid" value="" size="50"/>
+						<p>
+						<input type="text" id="message" size="50"/>
+						<input type="button" id="sendBtn" value="SEND"/>
+						
+						<div id="data">
+						
+						</div>
 
 						<p>We at Global talent house understand your needs, your foresight and….you. Thus we take you ahead confirming your presence in style 
 						with our sweat our toil. Firming your grip on every industry, securing a spot in every event, here we are, not just to give and take, 
@@ -156,7 +161,7 @@
 
 
         <!-- Vision -->
-        <section id="testimonial" class="overlay-dark80 dark-bg ptb-80 ptb-sm-80" style="background-image: url('img/full/25.jpg');" data-stellar-background-ratio="0.4">
+        <section id="testimonial" class="overlay-dark80 dark-bg ptb-80 ptb-sm-80" style="background-image: url('/img/full/25.jpg');" data-stellar-background-ratio="0.4">
             <div class="container">
                 <div class="owl-carousel testimonial-carousel nf-carousel-theme white">
                     <div class="item">
