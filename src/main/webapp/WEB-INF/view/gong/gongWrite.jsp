@@ -33,11 +33,14 @@
 		function submitValid(){
 			if(document.getElementById("gongTitle").value.length > 70){
 				alert("제목은 70자 이하로 작성가능합니다.")
+				return false;
 			} else if(document.getElementById("gongTitle").value.length < 1){
 				alert("제목을 입력해주세요.")
+				return false;
 			} else{
 				if(document.getElementById("gongContent").value.length < 1){
 					alert("내용을 입력해주세요.")
+					return false;
 				}else{
 					return true;
 				}
