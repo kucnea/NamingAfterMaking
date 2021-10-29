@@ -27,7 +27,7 @@
     <link href="/css/plugin/animate.css" rel="stylesheet" type="text/css" />
     <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 
-
+	<script src="/js/jquery-1.11.2.min.js" type="text/javascript"></script>
 </head>
 
 <script type="text/javascript">
@@ -39,22 +39,31 @@
 	
 	ws.onopen = function (){
 		console.log('Info : connection opened.');
-		setTimeout( function(){ connect(); }, 1000);
+		
 	};
 	
 	ws.onmessage = function(){
-		console.log(event.data+'\n');
+		console.log("ReceiveMessage : "+event.data+'\n');
 	}
 	
-	ws.onclose = function (event) { console.log('Info : connection closed.');};
+	ws.onclose = function (event) { 
+		console.log('Info : connection closed.');
+		/* setTimeout( function(){ connect(); }, 1000); */
+		};
 	ws.onerror = function (err) { console.log('Error : ', err);};
+		
 	
-	$('#btnSend').on('click', function(evt){
+	$('#sendBtn').on('click', function(evt){
 		evt.preventDefault();
-		if(socket.readyState != 1) return;
-		let msg = $('input#msg').val();
+		if(socket.readyState !== 1) return;
+		let msg = $('input#message').val();
 		ws.send(msg);
 	})
+	
+	function sendMessage(){
+		var msg = document.getElementById("message").value;
+		ws.send(msg);
+	}
 	
 </script>
 
@@ -140,7 +149,7 @@
 						Session ID : <input type="text" id="sessionid" value="" size="50"/>
 						<p>
 						<input type="text" id="message" size="50"/>
-						<input type="button" id="sendBtn" value="SEND"/>
+						<input type="button" id="sendBtn" value="SEND" onclick="sendMessage()"/>
 						
 						<div id="data">
 						
@@ -190,7 +199,7 @@
 
 
         <!-- Vision -->
-        <section id="testimonial" class="overlay-dark80 dark-bg ptb-80 ptb-sm-80" style="background-image: url('img/full/25.jpg');" data-stellar-background-ratio="0.4">
+        <section id="testimonial" class="overlay-dark80 dark-bg ptb-80 ptb-sm-80" style="background-image: url('/img/full/25.jpg');" data-stellar-background-ratio="0.4">
             <div class="container">
                 <div class="owl-carousel testimonial-carousel nf-carousel-theme white">
                     <div class="item">
@@ -362,7 +371,7 @@
 
     <!-- JS -->
 
-    <script src="/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    
     <script src="/js/jquery-ui.min.js" type="text/javascript"></script>
     <script src="/js/plugin/jquery.easing.js" type="text/javascript"></script>
     <script src="/js/bootstrap.min.js" type="text/javascript"></script>
