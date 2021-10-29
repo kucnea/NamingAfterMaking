@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<web-app id="servlet-2_5" version="2.5"
+<web-app id="servlet-2_5" version="3.0"
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xmlns="http://java.sun.com/xml/ns/javaee"
-		 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-
+		 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+		 					http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+		 					
+<!-- servlet 버전 문제시 2.5로 수정. 
+	근데 동기화가 3.0부터 제공됨 -->
+	
   <listener>
  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
  </listener>
@@ -27,26 +31,9 @@
  		<param-value>/WEB-INF/spring/servlet-context.xml</param-value>
  	</init-param>
  	<load-on-startup>1</load-on-startup>
+ 	<async-supported>true</async-supported>
  </servlet> 
- 
-	<!-- <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:appConfig.xml</param-value>
-    </context-param>
-
-    <servlet>
-        <servlet-name>dispatcher</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:webAppConfig.xml, classpath:appConfig.xml</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet> -->
- 
- 
- 
- <!-- async : 동기적/비동기적 구분 , true 비동기적-->
+ <!-- 동기화 servlet 3.0부터 제공 -->
  
  <servlet-mapping>
  	<servlet-name>dispatcher</servlet-name>

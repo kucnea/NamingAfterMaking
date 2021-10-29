@@ -40,10 +40,10 @@ public class GongController {
 	@Autowired private ServletContext ctx;
 	
 	//파일 저장 경로 ( 로컬용 )
-//	final String webPath = "/static/upload";
+	final String webPath = "/static/upload";
 	//파일 저장 경로 ( 호스팅용 )
-	final String webPath = "/var/webapps/upload/forNAM"; //외부 경로 저장 성공.
-	
+//	final String webPath = "/var/webapps/upload/forNAM"; //외부 경로 저장 성공.
+
 	
 	@RequestMapping("gonglist")
 	public String gongList(Model model,
@@ -51,7 +51,7 @@ public class GongController {
 			@RequestParam("size") @Nullable Integer size,
 			@RequestParam("searchObject") @Nullable String searchObject,
 			@RequestParam("searchTarget") @Nullable String searchTarget) {	//url과 method명을 맞추는 것이 관리에 용이
-		
+
 		System.out.println("gong Controller : gongList stage");
 		
 		//여기부터
