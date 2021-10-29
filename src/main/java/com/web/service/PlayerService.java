@@ -41,13 +41,13 @@ public class PlayerService {
 	public Player login(Player player) {
 
 		Player p = playerRepository.findByPId(player.getPId());
+		if(p!=null) {
+			System.out.println("player pass : "+player.getPPw());
+			System.out.println("p pass : "+p.getPPw());
+			if(player.getPPw().equals(p.getPPw())) return p;	
+		}else return null;
 		
-//		System.out.println("player pass : "+player.getPPw());
-//		System.out.println("p pass : "+p.getPPw());
-		
-		if(player.getPPw().equals(p.getPPw())) return p;
-		else return null;
-		
+		return null;
 	}
 
 	/* 로그아웃 */
