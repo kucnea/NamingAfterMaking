@@ -30,6 +30,24 @@
 
 </head>
 
+<script type="text/javascript">
+	
+	function submitValid(){
+		if(document.getElementById("gongTitle").value.length > 70){
+			alert("제목은 70자 이하로 작성가능합니다.")
+		} else if(document.getElementById("gongTitle").value.length < 1){
+			alert("제목을 입력해주세요.")
+		} else{
+			if(document.getElementById("gongContent").value.length < 1){
+				alert("내용을 입력해주세요.")
+			}else{
+				return true;
+			}
+		}
+	}
+	
+</script>
+
 <body>
 
     <!-- Preloader -->
@@ -120,7 +138,7 @@
                             <!-- END MAIL SENDING UNSUCCESSFULL -->
 
                             <div class="form-field-wrapper">
-                                <input class="input-sm form-full" id="form-subject" type="text" name="gongTitle" value = "${gong.gongTitle }" required>
+                                <input class="input-sm form-full" id="gongTitle" type="text" name="gongTitle" value = "${gong.gongTitle }" required>
                             </div>
                             
                             <!-- <div class="form-field-wrapper"> -->
@@ -133,7 +151,7 @@
 							</c:if>
 							</div>
                             <div class="form-field-wrapper">
-                                <textarea class="form-full" id="form-message" rows="7" name="gongContent" required>${gong.gongContent }</textarea>
+                                <textarea class="form-full" id="gongContent" rows="7" name="gongContent" required>${gong.gongContent }</textarea>
                             </div>
 							
 							<!-- 이미지 첨부 파일 설정 위치 -->

@@ -42,8 +42,8 @@ public class PlayerService {
 
 		Player p = playerRepository.findByPId(player.getPId());
 		
-		System.out.println("player pass : "+player.getPPw());
-		System.out.println("p pass : "+p.getPPw());
+//		System.out.println("player pass : "+player.getPPw());
+//		System.out.println("p pass : "+p.getPPw());
 		
 		if(player.getPPw().equals(p.getPPw())) return p;
 		else return null;

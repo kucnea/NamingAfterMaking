@@ -75,7 +75,7 @@
 	<mvc:resources location="/static/" mapping="/**"></mvc:resources>
 	
 	<!-- 로컬용( 파일 저장 경로 ) -->
-	<mvc:resources location="/static/upload" mapping="/upload"></mvc:resources>
+	<!-- <mvc:resources location="/static/upload" mapping="/upload"></mvc:resources> -->
 
 	<!-- 웹호스팅시( 파일 저장 경로 ) -->
 	<mvc:resources location="/var/webapps/upload/forNAM/" mapping="/upload/**"></mvc:resources>

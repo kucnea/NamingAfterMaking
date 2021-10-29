@@ -28,14 +28,23 @@
     <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 
 </head>
-	<!-- <script type="text/javascript">
-		var cnt=2;
-		function addImgbox(){
-			document.getElementById("fileArea").innerHTML = "";
-			document.getElementById("fileArea").innerHTML = document.getElementById(fileArea).innerHTML+"<input type='file' name='file"+cnt+"'/>";
-			cnt++;
+	<script type="text/javascript">
+		
+		function submitValid(){
+			if(document.getElementById("gongTitle").value.length > 70){
+				alert("제목은 70자 이하로 작성가능합니다.")
+			} else if(document.getElementById("gongTitle").value.length < 1){
+				alert("제목을 입력해주세요.")
+			} else{
+				if(document.getElementById("gongContent").value.length < 1){
+					alert("내용을 입력해주세요.")
+				}else{
+					return true;
+				}
+			}
 		}
-	</script> -->
+		
+	</script>
 <body>
 
     <!-- Preloader -->
@@ -110,7 +119,7 @@
 				<div class="col-md-6 pb-60">
                         <!-- Contact FORM -->
                         <!-- <form class="contact-form" id="contact" role="form" action="/gong/gongsubmit" method="post"> -->
-                        <form action="/gong/gongsubmit" method="post" enctype="multipart/form-data">
+                        <form action="/gong/gongsubmit" method="post" onsubmit="return submitValid()" enctype="multipart/form-data">
 
                             <!-- IF MAIL SENT SUCCESSFULLY -->
                             <h6 class="successContent">
@@ -125,7 +134,7 @@
                             <!-- END MAIL SENDING UNSUCCESSFULL -->
 
                             <div class="form-field-wrapper">
-                                <input class="input-sm form-full" id="form-subject" type="text" name="gongTitle" placeholder="제목" required>
+                                <input class="input-sm form-full" id="gongTitle" type="text" name="gongTitle" placeholder="제목" required>
                             </div>
                             
                             <!-- <div class="form-field-wrapper"> -->
@@ -134,7 +143,7 @@
                             <!-- </div> -->
 
                             <div class="form-field-wrapper">
-                                <textarea class="form-full" id="form-message" rows="7" name="gongContent" placeholder="내용" required></textarea>
+                                <textarea class="form-full" id="gongContent" rows="7" name="gongContent" placeholder="내용" required></textarea>
                             </div>
 							
 							<!-- 이미지 첨부 파일 설정 위치 -->

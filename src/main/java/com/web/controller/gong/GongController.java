@@ -40,9 +40,9 @@ public class GongController {
 	@Autowired private ServletContext ctx;
 	
 	//파일 저장 경로 ( 로컬용 )
-	final String webPath = "/static/upload";
+//	final String webPath = "/static/upload";
 	//파일 저장 경로 ( 호스팅용 )
-//	final String webPath = "/var/webapps/upload/forNAM";
+	final String webPath = "/var/webapps/upload/forNAM"; //외부 경로 저장 성공.
 //	final String webPath = "/upload/";
 	
 	
@@ -130,8 +130,11 @@ public class GongController {
 //			String webPath = "/static/upload";
 			//파일 저장 경로 ( 호스팅용 )
 			
-			String realPath = ctx.getRealPath(webPath);
-			System.out.println("realPath : "+realPath);
+			//로컬
+//			String realPath = ctx.getRealPath(webPath);
+//			System.out.println("realPath : "+realPath);
+			//호스팅
+			String realPath = webPath;
 			
 			//업로드하기위한 경로 없을경우
 			File savePath = new File(realPath);
@@ -250,8 +253,13 @@ public class GongController {
 //			//파일 저장 경로 ( 호스팅시 수정 필요 ) //final로 걸어둠
 //			String webPath = "/static/upload";
 			
-			String realPath = ctx.getRealPath(webPath);
-			System.out.println("realPath : "+realPath);
+			//로컬
+//			String realPath = ctx.getRealPath(webPath);
+//			System.out.println("realPath : "+realPath);
+			
+			//호스팅
+			String realPath = webPath;
+			
 			
 			//업로드하기위한 경로 없을경우
 			File savePath = new File(realPath);
