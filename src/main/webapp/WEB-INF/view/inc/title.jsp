@@ -6,10 +6,10 @@
 	var socket = null;
 	
 	$(document).ready( function () {
-		connect();
+		connectWS();
 	});
 	
-	function connect(){
+	function connectWS(){
 		
 		/* 로컬 경로( 자동으로 127.0.0.1 ) */
 		var ws = new WebSocket("ws://localhost:8083/replyEcho");

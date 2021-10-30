@@ -48,6 +48,18 @@
 		
 		function cmtFormSubmit(){
 			if(${player != null}){
+				/* var gongTitle = document.getElementById("gongTitle").value;
+				var replyWriter = document.getElementById("replyPId").value;
+				var boardWriter = document.getElementById("boardPId").value; */
+				
+				var gongTitle = "${gong.gongTitle }";
+				var replyWriter = "${player.getPId() }";
+				var boardWriter = "${gong.player.getPId() }";
+				
+				if(socket){
+					socket.send("reply,"+replyWriter+","+boardWriter+","+gongTitle);
+				}
+				
 				document.getElementById("cmtForm").submit();	
 			}else{
 				alert("로그인이 필요합니다.");
@@ -209,6 +221,9 @@
                     	<h4> 댓글 </h4>
                     	<form action="/gong/gongcmtsubmit" method="post" id="cmtForm">
                     	<input type="hidden" name="gongIdx" value="${gong.gongIdx }">
+                    	<input type="hidden" id="gongTitle" value="${gong.gongTitle }">
+                    	<input type="hidden" id="replyPId" value="${player.getPId() }">
+                    	<input type="hidden" id="boardPId" value="${gong.player.getPId() }">
                     	<div class="form-field-wrapper">
                                 <textarea class="form-full" id="gongCmtContent" rows="7" name="gongCmtContent" placeholder="댓글을 남겨주세요" required></textarea>
                                 <div id="gongCmtContent_cnt">(0 / 100)</div>
