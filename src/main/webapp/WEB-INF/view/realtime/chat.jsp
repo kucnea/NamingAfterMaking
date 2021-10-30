@@ -35,7 +35,7 @@
 		var msg = document.getElementById("message").value;
 		/* socket.send(msg); */
 		
-		if(${player.getPid() != null}) var user2 = "${player.getPId() }";
+		if(${player.getPId() != null}) var user2 = "${player.getPId() }";
 		else user2 = "unknown";
 		
 		var user1 = document.getElementById("targetP").value;
@@ -49,7 +49,7 @@
 	
 	
 	function connectChat(){
-		if(${player.getPid() != null}) var user2 = "${player.getPId() }";
+		if(${player.getPId() != null}) var user2 = "${player.getPId() }";
 		else user2 = "unknown";
 		
 		var user1 = "all";
@@ -143,7 +143,7 @@
 						<input type="button" id="exitBtn" value="EXIT"/>
 						<p>
 						Session ID : 
-						<textarea id="chatArea" cols="200" rows="60" style="display:none;"></textarea>
+						<div id="chatArea" style="display:none; text-align:left;"></div>
 						</p>
 						<input type="text" id="targetP" value=""/>
 						<input type="text" id="message" size="50"/>

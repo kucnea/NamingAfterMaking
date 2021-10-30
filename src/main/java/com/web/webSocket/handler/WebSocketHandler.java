@@ -84,7 +84,7 @@ public class WebSocketHandler extends TextWebSocketHandler{ // 스트리밍은 �
 						
 					WebSocketSession mySession = userSessions.get(senderId);
 					if(string2.equals("0")) {
-						TextMessage startMsg = new TextMessage("2"+user2+"님 반갑습니다. 채팅에 접속했습니다.\n");
+						TextMessage startMsg = new TextMessage("2"+"<a style='text-align:left; color:orange; font-size:1.2em;'>"+user2+"</a>"+"님 반갑습니다. 채팅에 접속했습니다.\n");
 						
 						chatSessions.put(user2, session);
 						
@@ -99,13 +99,14 @@ public class WebSocketHandler extends TextWebSocketHandler{ // 스트리밍은 �
 							mySession.sendMessage(new TextMessage(user2+" : "+string1));
 							urSession.sendMessage(new TextMessage(user2+" : "+string1));
 						}else {
-							System.out.println("OM stage");
+							System.out.println("OpenMessage stage");
 							Iterator<String> sessionIds = chatSessions.keySet().iterator();
 							
 							String sessionId = "";
 							while(sessionIds.hasNext()) {
 								sessionId = sessionIds.next();
-								chatSessions.get(sessionId).sendMessage(new TextMessage("2"+user2+" : "+string1));
+								if(sessionId.equals(user2)) chatSessions.get(sessionId).sendMessage(new TextMessage("2"+"<a style='text-align:left; color:orange;'>"+user2+" : "+string1+"</a>")); 
+								else chatSessions.get(sessionId).sendMessage(new TextMessage("2"+"<a style='text-align:left;'>"+user2+" : "+string1+"</a>"));
 							}
 						}
 						

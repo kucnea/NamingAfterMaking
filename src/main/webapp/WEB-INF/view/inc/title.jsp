@@ -68,10 +68,14 @@
 				
 			}else if(msg.indexOf('2') == 0){
 				
-				let $chatArea = $('textarea#chatArea');
-				$chatArea.text(event.data.substr(1,event.data.length));
+				/* let $chatArea = $('textarea#chatArea'); */
+				/* $chatArea.text(event.data.substr(1,event.data.length)); */
+				let $chatArea = $('div#chatArea');
+				var chatArea = document.getElementById("chatArea");
+				chatArea.innerHTML = chatArea.innerHTML + "<br>" + event.data.substr(1,event.data.length);
 				$chatArea.css('display', 'block');
 				$chatArea.css('width', '80%');
+				$chatArea.css('hight', '30%');
 				
 			}
 			
