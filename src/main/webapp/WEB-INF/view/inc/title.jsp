@@ -25,7 +25,18 @@
 		
 		ws.onmessage = function(){
 			console.log("ReceiveMessage : "+event.data+'\n');
-		}
+			/* document.getElementById("socketAlert").style.display='block'; */
+			
+			let $socketAlert = $('div#socketAlert');
+			/* $socketAlert.text(event.data); *//* 텍스트로감 */
+			$socketAlert.html(event.data);
+			$socketAlert.css('display', 'block');
+			
+			setTimeout( function(){
+				$socketAlert.css('display', 'none');	
+			},6000);
+			
+		} 
 		
 		ws.onclose = function (event) { 
 			console.log('Info : connection closed.');

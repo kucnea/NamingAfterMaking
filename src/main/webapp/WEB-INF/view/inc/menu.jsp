@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<div id="socketAlert" style="background-color:red; display:none;">
+ 알람이 도착했습니다.
+</div>
                 <!-- Logo -->
                 <div class="logo">
                     <a href="/index">

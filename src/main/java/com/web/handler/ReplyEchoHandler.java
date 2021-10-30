@@ -48,19 +48,21 @@ public class ReplyEchoHandler extends TextWebSocketHandler{ // 스트리밍은 �
 		String senderId = getId(session);
 		
 		//json이 제일 좋다함.
-		//protocol : cmd, 댓글작성자, 게시글작성자,gongTitle ( reply, user2, user1, gongTitle )
+		//protocol : cmd, 댓글작성자, 게시글작성자,gongTitle ( reply, user2, user1, gongTitle, gongIdx )
 		String msg = message.getPayload();
 		if(StringUtils.isNotEmpty(msg)) {
 			String[] strs = message.getPayload().split(",");
-			if(strs != null && strs.length == 4) {
+			if(strs != null && strs.length == 5) {
 				String cmd = strs[0];
 				String replyWriter = strs[1];
 				String boardWriter = strs[2];
 				String title = strs[3];
+				String gongIdx = strs[4];
 				
 				WebSocketSession boardWriterSession = userSessions.get(boardWriter);
 				if(boardWriterSession != null && cmd.equals("reply")) {
-					TextMessage tmsg = new TextMessage(replyWriter+"님이 "+title+" 게시글에 댓글을 달았습니다.");
+					TextMessage tmsg = new TextMessage("<a href='/gong/gongdetail?gongIdx="+gongIdx+"'>"+replyWriter+"님이 "+title+" 게시글에 댓글을 달았습니다.</a>");
+//					TextMessage tmsg = new TextMessage(replyWriter+"님이 "+title+" 게시글에 댓글을 달았습니다."+gongIdx);
 					boardWriterSession.sendMessage(tmsg);
 				}
 			}
