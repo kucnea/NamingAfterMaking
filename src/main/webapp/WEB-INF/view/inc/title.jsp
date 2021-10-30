@@ -12,9 +12,9 @@
 	function connectWS(){
 		
 		/* 로컬 경로( 자동으로 127.0.0.1 ) */
-		var ws = new WebSocket("ws://localhost:8083/replyEcho");
+		/* var ws = new WebSocket("ws://localhost:8083/replyEcho"); */
 		/* 웹 경로( 공인 ip ) */
-		
+		var ws = new WebSocket("ws://115.85.180.249:8080/replyEcho")
 		
 		socket=ws;
 		

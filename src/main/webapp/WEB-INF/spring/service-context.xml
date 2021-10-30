@@ -35,12 +35,12 @@
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<!-- oracle 버전 시작 -->
-		  
+		<!--   
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
 		<property name="username" value="gb2"/>
 		<property name="password" value="gb2"/>
-		
+		 -->
 		<!-- oracle 버전 끝 -->
 		<!-- h2 버전 시작 -->
 		<!--
@@ -51,12 +51,12 @@
 		-->
 		<!-- h2 버전 끝 -->
 		<!-- 호스팅용 시작 mysql -->
-		<!-- 
+		
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://115.85.180.249:3306/gb"/>
 		<property name="username" value="root"/>
 		<property name="password" value="12341!1!"/>
-		 -->
+		
 		<!-- 호스팅용 끝 -->
 	</bean>
 	
@@ -75,9 +75,9 @@
 		</property>
 		<property name="jpaProperties"> <!-- 하이버네이트 상세 설정 -->
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop> <!-- Oracle 방언 -->
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop> --> <!-- Oracle 방언 -->
 				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop> --><!-- H2 방언-->
-				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop> --> <!-- mySQL 방언 --> 
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop> <!-- mySQL 방언 --> 
 				<prop key="hibernate.show_sql">true</prop>                   <!-- SQL 보기 -->
 				<prop key="hibernate.format_sql">true</prop>                 <!-- SQL 정렬해서 보기 -->
 				<prop key="hibernate.use_sql_comments">true</prop>           <!-- SQL 코멘트 보기 -->

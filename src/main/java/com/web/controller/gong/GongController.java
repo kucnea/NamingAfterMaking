@@ -40,9 +40,9 @@ public class GongController {
 	@Autowired private ServletContext ctx;
 	
 	//파일 저장 경로 ( 로컬용 )
-	final String webPath = "/static/upload";
+//	final String webPath = "/static/upload";
 	//파일 저장 경로 ( 호스팅용 )
-//	final String webPath = "/var/webapps/upload/forNAM"; //외부 경로 저장 성공.
+	final String webPath = "/var/webapps/upload/forNAM"; //외부 경로 저장 성공.
 
 	
 	@RequestMapping("gonglist")
