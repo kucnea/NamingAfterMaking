@@ -58,12 +58,12 @@ public class ReplyEchoHandler extends TextWebSocketHandler{ // 스트리밍은 �
 				String boardWriter = strs[2];
 				String title = strs[3];
 				String gongIdx = strs[4];
-				
-				WebSocketSession boardWriterSession = userSessions.get(boardWriter);
-				if(boardWriterSession != null && cmd.equals("reply")) {
-					TextMessage tmsg = new TextMessage("<a href='/gong/gongdetail?gongIdx="+gongIdx+"'>"+replyWriter+"님이 "+title+" 게시글에 댓글을 달았습니다.</a>");
-//					TextMessage tmsg = new TextMessage(replyWriter+"님이 "+title+" 게시글에 댓글을 달았습니다."+gongIdx);
-					boardWriterSession.sendMessage(tmsg);
+				if(!replyWriter.equals(boardWriter)) {
+					WebSocketSession boardWriterSession = userSessions.get(boardWriter);
+					if(boardWriterSession != null && cmd.equals("reply")) {
+						TextMessage tmsg = new TextMessage("<a href='/gong/gongdetail?gongIdx="+gongIdx+"'>"+replyWriter+"님이 "+title+" 게시글에 댓글을 달았습니다. ( 클릭시 이동 )</a>");
+						boardWriterSession.sendMessage(tmsg);
+					}
 				}
 			}
 			

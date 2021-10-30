@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/free/")
 public class FreeController {
 
-	@RequestMapping("board")
+	@RequestMapping("freelist")
 	public String freeBoard() {	//url과 method명을 맞추는 것이 관리에 용이
 	
-		return "free.board";
+		return "free.freeList";
 	}
 	
 	
