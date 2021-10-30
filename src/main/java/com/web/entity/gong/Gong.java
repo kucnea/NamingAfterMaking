@@ -26,10 +26,10 @@ import lombok.ToString;
 
 @Entity
 @Table(name="GONG")
-//@SequenceGenerator(						// 오라클 사용시
-//		name = "GONG_SEQ_GENERATOR",
-//		sequenceName = "GONG_SEQ",
-//		initialValue = 1, allocationSize = 1)
+@SequenceGenerator(						// 오라클 사용시
+		name = "GONG_SEQ_GENERATOR",
+		sequenceName = "GONG_SEQ",
+		initialValue = 1, allocationSize = 1)
 @NoArgsConstructor
 @Getter
 @Setter
@@ -37,8 +37,8 @@ import lombok.ToString;
 public class Gong {
 
 	@Id
-//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GONG_SEQ_GENERATOR") // 오라클 사용시
-	@GeneratedValue(strategy=GenerationType.IDENTITY)	// MySQL 사용시
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GONG_SEQ_GENERATOR") // 오라클 사용시
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)	// MySQL 사용시
 //	@EmbeddedId									//이거는 시퀀스 자동증가를 사용할 수 없음.
 	private int gongIdx;
 	

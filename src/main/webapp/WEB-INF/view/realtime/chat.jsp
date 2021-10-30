@@ -29,9 +29,40 @@
 
 </head>
 <tiles:insertAttribute name="title"/>
-
-
-
+	<script type="text/javascript">
+	
+	function sendMessage(){
+		var msg = document.getElementById("message").value;
+		/* socket.send(msg); */
+		
+		if(${player.getPid() != null}) var user2 = "${player.getPId() }";
+		else user2 = "unknown";
+		
+		var user1 = document.getElementById("targetP").value;
+		if(user1.length == 0) user1="all";
+		
+		
+		if(socket){
+			socket.send("chat,"+user2+","+user1+","+msg+",1");
+		}
+	}
+	
+	
+	function connectChat(){
+		if(${player.getPid() != null}) var user2 = "${player.getPId() }";
+		else user2 = "unknown";
+		
+		var user1 = "all";
+		var string1 = "";
+		var string2 = "0";
+		
+		if(socket){
+			socket.send("chat,"+user2+","+user1+","+string1+","+string2);
+		}
+		
+	}
+	
+	</script>
 <body>
 
     <!-- Preloader -->
@@ -111,10 +142,13 @@
 						<input type="button" id="enterBtn" value="ENTER"/>
 						<input type="button" id="exitBtn" value="EXIT"/>
 						<p>
-						Session ID : <input type="text" id="sessionid" value="" size="50"/>
-						<p>
+						Session ID : 
+						<textarea id="chatArea" cols="200" rows="60" style="display:none;"></textarea>
+						</p>
+						<input type="text" id="targetP" value=""/>
 						<input type="text" id="message" size="50"/>
 						<input type="button" id="sendBtn" value="SEND" onclick="sendMessage()"/>
+						<input type="button" id="connectBtn" value="접속하기" onclick="connectChat()"/>
 						
 						<div id="data">
 						
