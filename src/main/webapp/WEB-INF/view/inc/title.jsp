@@ -74,7 +74,7 @@
 				var chatArea = document.getElementById("chatArea");
 				chatArea.innerHTML = chatArea.innerHTML + "<br>" + event.data.substr(1,event.data.length);
 				$chatArea.css('display', 'block');
-				
+				$chatArea.scrollTop($chatArea[0].scrollHeight);
 			}
 			
 			
