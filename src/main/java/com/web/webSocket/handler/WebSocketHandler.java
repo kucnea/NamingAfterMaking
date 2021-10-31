@@ -114,9 +114,10 @@ public class WebSocketHandler extends TextWebSocketHandler{ // 스트리밍은 �
 								else {
 									if(chatSessions.get(sessionId).isOpen()) {
 										chatSessions.get(sessionId).sendMessage(new TextMessage("2"+"<a style='text-align:left;'>"+user2+" : "+string1+"</a>"));
-									}else {
-										chatSessions.remove(sessionId);
 									}
+//									else {		// 채팅 도중 로그인시 문제 발생
+//										chatSessions.remove(sessionId);
+//									}
 										
 								}
 							}
