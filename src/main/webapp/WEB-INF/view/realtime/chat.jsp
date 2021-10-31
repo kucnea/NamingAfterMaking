@@ -143,7 +143,7 @@
 						<input type="button" id="exitBtn" value="EXIT"/>
 						<p>
 						Session ID : 
-						<div id="chatArea" style="display:none; text-align:left;"></div>
+						<div id="chatArea" style="display:none; text-align:left; width:80%; height:250px; overflow:auto;"></div>
 						</p>
 						<input type="text" id="targetP" value=""/>
 						<input type="text" id="message" size="50"/>

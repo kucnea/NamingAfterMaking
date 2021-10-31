@@ -74,8 +74,6 @@
 				var chatArea = document.getElementById("chatArea");
 				chatArea.innerHTML = chatArea.innerHTML + "<br>" + event.data.substr(1,event.data.length);
 				$chatArea.css('display', 'block');
-				$chatArea.css('width', '80%');
-				$chatArea.css('hight', '30%');
 				
 			}
 			
