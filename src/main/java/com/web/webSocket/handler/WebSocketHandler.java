@@ -95,13 +95,15 @@ public class WebSocketHandler extends TextWebSocketHandler{ // 스트리밍은 �
 						System.out.println("user1 : "+user1);
 						if(!user1.equals("all")) {		// 귓속말 ( Direct Message )
 							System.out.println("DM stage");
+							
 							WebSocketSession urSession = userSessions.get(user1);
-							mySession.sendMessage(new TextMessage(user2+" : "+string1));
-							urSession.sendMessage(new TextMessage(user2+" : "+string1));
+							
+							mySession.sendMessage(new TextMessage("2"+"<a style='text-align:left; color:green;'>"+user2+" : "+string1+"</a>"));
+							urSession.sendMessage(new TextMessage("2"+"<a style='text-align:left; color:green;'>"+user2+" : "+string1+"</a>"));
 						}else {
 							System.out.println("OpenMessage stage");
 							Iterator<String> sessionIds = chatSessions.keySet().iterator();
-							
+							System.out.println("OpenMessage stage2");
 							String sessionId = "";
 							while(sessionIds.hasNext()) {
 								sessionId = sessionIds.next();
