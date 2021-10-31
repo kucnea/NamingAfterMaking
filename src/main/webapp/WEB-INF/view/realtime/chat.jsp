@@ -41,10 +41,15 @@
 		var user1 = document.getElementById("targetP").value;
 		if(user1.length == 0) user1="all";
 		
-		
-		if(socket){
-			socket.send("chat,"+user2+","+user1+","+msg+",1");
+		if(msg.length > 0){
+			if(socket){
+				socket.send("chat,"+user2+","+user1+","+msg+",1");
+			}
 		}
+		
+		document.getElementById("message").value = "";
+		document.getElementById("message").focus();
+		
 	}
 	
 	
@@ -62,12 +67,13 @@
 		
 	}
 	
-	function press(f){
-		if(f.keyCode == 13){
-			if(document.getElementById("message").length > 0){
-				sendMessage();	
-			}
+	function enterkey(){
+	
+		if(event.keyCode ==13){
+			sendMessage();
 		}
+		
+	
 	}
 	
 	</script>
@@ -128,11 +134,11 @@
         <section class="inner-intro dark-bg overlay-dark ">
             <div class="container">
                 <div class="row title">
-                    <h2 class="h2">About Us</h2>
-					<h6>Hub for creative minds</h6>
+                    <h2 class="h2">실시간 채팅</h2>
+					<h6>Space for Free Talk</h6>
 					<div class="spacer-15"></div>
                     <div class="page-breadcrumb">
-                        <a href="/index">Home</a>/<span>About</span>
+                        <a href="/index">Home</a>/<span>RealTiem chat</span>
                     </div>
                 </div>
             </div>
@@ -153,7 +159,7 @@
 						<div id="chatArea" style="display:none; text-align:left; width:80%; height:250px; overflow:auto;"></div>
 						</p>
 						<input type="text" id="targetP" value=""/>
-						<input type="text" id="message" size="50"/>
+						<input type="text" id="message" size="50" onkeyup="enterkey()" />
 						<input type="button" id="sendBtn" value="SEND" onclick="sendMessage()"/>
 						<input type="button" id="connectBtn" value="접속하기" onclick="connectChat()"/>
 						
