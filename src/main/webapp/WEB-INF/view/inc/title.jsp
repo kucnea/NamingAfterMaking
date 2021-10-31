@@ -47,45 +47,46 @@
 		ws.onopen = function (){
 			console.log('Info : connection opened.');
 			
+			ws.onmessage = function(){
+				console.log("ReceiveMessage : "+event.data+'\n');
+				/* document.getElementById("socketAlert").style.display='block'; */
+				var msg = event.data;
+				
+				if(msg.indexOf('1') == 0){
+					
+					let $socketAlert = $('div#socketAlert');
+					/* $socketAlert.text(event.data); *//* 텍스트로감 */
+					/* $socketAlert.html(event.data); */
+					$socketAlert.html(event.data.substr(1,event.data.length));
+					$socketAlert.css('display', 'block');
+					
+					setTimeout( function(){
+						$socketAlert.css('display', 'none');	
+					},6000);
+					
+				}else if(msg.indexOf('2') == 0){
+					
+					/* let $chatArea = $('textarea#chatArea'); */
+					/* $chatArea.text(event.data.substr(1,event.data.length)); */
+					let $chatArea = $('div#chatArea');
+					var chatArea = document.getElementById("chatArea");
+					chatArea.innerHTML = chatArea.innerHTML + "<br>" + event.data.substr(1,event.data.length);
+					$chatArea.css('display', 'block');
+					$chatArea.scrollTop($chatArea[0].scrollHeight);
+				}
+				
+			} 
+			
+			ws.onclose = function (event) { 
+				console.log('Info : connection closed.');
+				setTimeout( function(){ connectWS(); }, 1000);
+				};
+				
+			ws.onerror = function (err) { console.log('Error : ', err);};	
+			
 		};
 		
-		ws.onmessage = function(){
-			console.log("ReceiveMessage : "+event.data+'\n');
-			/* document.getElementById("socketAlert").style.display='block'; */
-			var msg = event.data;
-			
-			if(msg.indexOf('1') == 0){
-				
-				let $socketAlert = $('div#socketAlert');
-				/* $socketAlert.text(event.data); *//* 텍스트로감 */
-				/* $socketAlert.html(event.data); */
-				$socketAlert.html(event.data.substr(1,event.data.length));
-				$socketAlert.css('display', 'block');
-				
-				setTimeout( function(){
-					$socketAlert.css('display', 'none');	
-				},6000);
-				
-			}else if(msg.indexOf('2') == 0){
-				
-				/* let $chatArea = $('textarea#chatArea'); */
-				/* $chatArea.text(event.data.substr(1,event.data.length)); */
-				let $chatArea = $('div#chatArea');
-				var chatArea = document.getElementById("chatArea");
-				chatArea.innerHTML = chatArea.innerHTML + "<br>" + event.data.substr(1,event.data.length);
-				$chatArea.css('display', 'block');
-				$chatArea.scrollTop($chatArea[0].scrollHeight);
-			}
-			
-			
-		} 
 		
-		ws.onclose = function (event) { 
-			console.log('Info : connection closed.');
-			/* setTimeout( function(){ connect(); }, 1000); */
-			};
-			
-		ws.onerror = function (err) { console.log('Error : ', err);};	
 	}
 	
 </script>

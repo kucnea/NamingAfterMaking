@@ -96,10 +96,13 @@ public class WebSocketHandler extends TextWebSocketHandler{ // 스트리밍은 �
 						if(!user1.equals("all")) {		// 귓속말 ( Direct Message )
 							System.out.println("DM stage");
 							
-							WebSocketSession urSession = userSessions.get(user1);
+							WebSocketSession urSession = chatSessions.get(user1);
+							if(urSession == null) mySession.sendMessage(new TextMessage("2"+"<a style='text-align:left; color:green;'>"+user2+"님 DM대상이 없습니다. 다시 한 번 확인해주세요."+"</a>")); 
+							else {
+								mySession.sendMessage(new TextMessage("2"+"<a style='text-align:left; color:green;'>"+user2+" : "+string1+"</a>"));
+								urSession.sendMessage(new TextMessage("2"+"<a style='text-align:left; color:green;'>"+user2+" : "+string1+"</a>"));
+							}
 							
-							mySession.sendMessage(new TextMessage("2"+"<a style='text-align:left; color:green;'>"+user2+" : "+string1+"</a>"));
-							urSession.sendMessage(new TextMessage("2"+"<a style='text-align:left; color:green;'>"+user2+" : "+string1+"</a>"));
 						}else {
 							System.out.println("OpenMessage stage");
 							Iterator<String> sessionIds = chatSessions.keySet().iterator();
@@ -108,7 +111,12 @@ public class WebSocketHandler extends TextWebSocketHandler{ // 스트리밍은 �
 							while(sessionIds.hasNext()) {
 								sessionId = sessionIds.next();
 								if(sessionId.equals(user2)) chatSessions.get(sessionId).sendMessage(new TextMessage("2"+"<a style='text-align:left; color:orange;'>"+user2+" : "+string1+"</a>")); 
-								else chatSessions.get(sessionId).sendMessage(new TextMessage("2"+"<a style='text-align:left;'>"+user2+" : "+string1+"</a>"));
+								else {
+									if(chatSessions.get(sessionId).isOpen()) {
+										chatSessions.get(sessionId).sendMessage(new TextMessage("2"+"<a style='text-align:left;'>"+user2+" : "+string1+"</a>"));
+									}
+										
+								}
 							}
 						}
 						

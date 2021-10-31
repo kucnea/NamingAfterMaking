@@ -62,6 +62,14 @@
 		
 	}
 	
+	function press(f){
+		if(f.keyCode == 13){
+			if(document.getElementById("message").length > 0){
+				sendMessage();	
+			}
+		}
+	}
+	
 	</script>
 <body>
 
@@ -139,6 +147,7 @@
                     
                         <h3 class="h4">같은 용사분들과 실시간 채팅을 나눠보세요!</h3>
                         <h5 class="h4"> ( DM( Direct Message )은 로그인하신 용사분들 끼리만 가능합니다. )</h5>
+                        <h5 class="h4"> ( DM 하고 싶은 상대의 아이디를 대화입력 좌측칸에 입력해주세요. )</h5>
                         <div class="spacer-15"></div>
 						<p>
 						<div id="chatArea" style="display:none; text-align:left; width:80%; height:250px; overflow:auto;"></div>
