@@ -97,16 +97,16 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4 mb-sm-30">
-                                <img class="box-shadow" src="/img/competitions/mock-1.jpg" alt="" />
+                                <img class="box-shadow" src="/img/competitions/knight1.jpg" alt="" />
                             </div>
                             <div class="col-md-7 col-md-offset-1">
-                                <h3>classical Voice of India</h3>
+                                <h3>강력한 용사를 키워보세요!</h3>
                                 <div class="spacer-15"></div>
-                                <p>Presented by Sangeet Milan</p>
-								<p>Grand Finals—14-15 December, 2016</p>
-								<p>Venue: Sant Gadge Auditorium, Gomtinagar, Lucknow</p>                                
+                                <p>용사는 당신을 기다리고 있습니다.</p>
+								<p>강인한 장비와 당신의 전략</p>
+								<p>무궁무진한 모험의 세계에 같이 뛰어들 준비가 되셨나요?</p>                                
                                 <div class="spacer-15"></div>
-                                <a href="http://sangeetmilon.org/" target="_blank"class="btn btn-md btn-black">Register Online</a>
+                                <a href="/player/login" target="_blank"class="btn btn-md btn-black" style="margin:50px;">용사와 합류하기</a>
                             </div>
                         </div>
                     </div>
@@ -115,15 +115,16 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-7 mb-sm-30">
-                                <h3>Auditions for singers</h3>
+                                <h3>숨겨진 보물들을 찾아보세요!</h3>
                                 <div class="spacer-15"></div>
-                                <p>Cras dapibus Vivamus elementum semper nisi Aenean vulputate eleifend tellus Aenean leo ligula, porttitor eu consequat vitae Phasellus viverra nulla ut metus varius laoreet.</p>
-                                <p>porttitor eu consequat vitae Phasellus viverra nulla.</p>
+                                <p>N.A.M의 세계에는 보물들이 숨겨져있습니다.</p>
+                                <p>용사를 더 강하게 만들어 줄 보물들을 찾아보세요!</p>
                                 <div class="spacer-15"></div>
-                                <a href="/single-event.html" class="btn btn-md btn-black">Read More</a>
+                                <img class="box-shadow" src="/img/competitions/mountain.jpg" alt="" style="margin:50px;"/>
+                                <br>
                             </div>
                             <div class="col-md-4 col-md-offset-1">
-                                <img class="box-shadow" src="/img/competitions/mock-1.jpg" alt="" />
+                                <a href="/gong/gonglist" class="btn btn-md btn-black" style="float:center;">공략게시판 </a>
                             </div>
 
                         </div>
@@ -133,15 +134,16 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4 mb-sm-30">
-                                <img class="box-shadow" src="/img/competitions/mock-2.jpg" alt="" />
+                                <img class="box-shadow" src="/img/competitions/colosseum.jpg" alt="" />
                             </div>
                             <div class="col-md-7 col-md-offset-1">
-                                <h3>college dance competitions</h3>
+                                <h3>최강의 용사를 가려보세요!</h3>
                                 <div class="spacer-15"></div>
-                                <p>Cras dapibus Vivamus elementum semper nisi Aenean vulputate eleifend tellus Aenean leo ligula, porttitor eu consequat vitae Phasellus viverra nulla ut metus varius laoreet.</p>
-                                <p>porttitor eu consequat vitae Phasellus viverra nulla ut metus varius laoreet</p>
+                                <p>많은 용사들이 최강의 용사가 되기위해 정진하고 있습니다.</p>
+                                <p>그들에게 최고가 누구인지 알려주는건 어떨까요?</p>
+                                <p>게임 내에서 다른 용사와 전투할 수 있습니다.</p>
                                 <div class="spacer-15"></div>
-                                <a href="/single-event.html" class="btn btn-md btn-black">Read More</a>
+                                <a href="/rank/page" class="btn btn-md btn-black" style="margin:50px;">렝킹페이지</a>
                             </div>
                         </div>
                     </div>
@@ -155,20 +157,44 @@
             <div class="container text-left">
                 <div class="row">
                     <div class="about-text col-md-7 mb-30">
-						<h3 class="padding-20 shadow" style="background-color:#8BC6CA;">EXPLORE GLOBAL TALENT HOUSE</h3>
+						<h3 class="padding-20 shadow" style="background-color:#8BC6CA;">N.A.M.의 이야기...</h3>
 						<div class="padding-20 shadow" style="margin:-10px 0 0 15px;background: rgba(255,255,255,0.08);">
-						<p>With the Indian advertising entertainment, event & Fashion industry changing and running full stem and opening its doors to 
-						global markets & talents, the need to gear up to face stiff competition has never been more felt than now, more so for the creative
-						community which include Graphic designer, Dancers, Singers, Photographers, etc..</p>
-
-						<p>Being In a Vibrant Advertising, Films (Bollywood), T.V, Entertainment and fashion capital city of Mumbai, Global Talent house is
-						the first place you look for your promotional needs and we are confident it will be the last to end your search.</p>
-						<a href="/about-us.html" class="btn btn-md btn-white">I WANT TO KNOW IT ALL</a>
+						<p>
+						아무도 끝을 모르는 <br>
+						이름은 나중에 지어질 대륙에 사람들은 평화롭게 살고 있었다. <br>
+						끝을 알 수 없는 대륙에 자원은 충분했고, <br>
+						누군가 욕심을 부려 남의 것을 뺏을 필요도 없었다. <br>
+						법도 필요하지 않아 제정되지 않았고,  <br>
+						더 효율적인 체계도, 누군가 누구를 부리는 일도 없었다. <br>
+						<br>
+						그런데 어느 날,<br> 
+						단지 심심했었던 한 이름은 나중에 지어질 사람이 <br>
+						본인의 이름이 없다는 것을 알아차렸고 <br>
+						그것에 대해 궁금해하기 시작했다. <br>
+						<br>
+						그때부터 대륙의 사람들은 이름에 대한 결핍을 느끼기 시작했고 <br>
+						끝없이 풍부했던 자원도 누군가의 것이라는 이름을 붙이고 싶어했다. <br>
+						<br>
+						그러던 중 어떤 이름은 나중에 지어질 노인이 <br>
+						<br>
+						"사실 옛날에는 모두에게 이름이 있었단다. 사람들의 이름은 천사가 가지고 갔단다. <br>
+						 그렇게 우리는 누군가의 것이라는 생각을 하지 않게되고, 욕심을 부리지 않아 평화로워 진 것이지." <br>
+						 <br>
+						라고 사람들에게 알려주었다.<br>
+						<br>
+						그렇게 사람들은 천사에게 이름을 돌려달라고 성화를 부렸고,<br>
+						천사는 이름을 갖고 있지도 않았고 노인에게 속은 사람들에게 실망해 대륙을 떠났다.<br>
+						그리고 왜인지 대륙 곳곳에서 괴물들이 출현하게되고<br>
+						<br>
+						사람들은 용사를 필요로 하게됐는데..<br>
+						<br>
+						...&lt;더보기&gt;
+						</p>
 						</div>
 						
 					</div>
 					<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-md-offset-0 col-md-5">
-						<img class="aligncenter" src="/img/wheel.png" />
+						<img class="aligncenter" src="/img/mystery.jpg" />
 					</div>
                 </div>
             </div>

@@ -138,7 +138,7 @@
 					<h6>Space for Free Talk</h6>
 					<div class="spacer-15"></div>
                     <div class="page-breadcrumb">
-                        <a href="/index">Home</a>/<span>RealTiem chat</span>
+                        <a href="/index">Home</a>/<span>RealTiem Chat</span>
                     </div>
                 </div>
             </div>

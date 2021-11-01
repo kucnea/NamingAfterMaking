@@ -8,8 +8,10 @@
                 <!-- Logo -->
                 <div class="logo">
                     <a href="/index">
-                        <img class="logo-light" src="/img/gth-logo-white.png" alt="Global Talent House" />
-                        <img class="logo-dark" src="/img/gth-logo-black.png" alt="Global Talent House" />
+                        <!-- <img class="logo-light" src="/img/gth-logo-white.png" alt="Global Talent House" /> -->
+                        <!-- <img class="logo-dark" src="/img/gth-logo-black.png" alt="Global Talent House" /> -->
+                        <img class="logo-light" src="/img/nam-logo-next.png" alt="Global Talent House" />
+                        <img class="logo-dark" src="/img/nam-logo-next.png" alt="Global Talent House" />
                     </a>
                 </div>
                 <!-- End Logo -->

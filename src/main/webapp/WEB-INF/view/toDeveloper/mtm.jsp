@@ -26,10 +26,56 @@
     <link href="/css/plugin/sidebar-menu.css" rel="stylesheet" type="text/css" />
     <link href="/css/plugin/animate.css" rel="stylesheet" type="text/css" />
     <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" href="#">
+
 </head>
 <tiles:insertAttribute name="title"/>
-
+	<script type="text/javascript">
+	
+	function sendMessage(){
+		var msg = document.getElementById("message").value;
+		/* socket.send(msg); */
+		
+		if(${player.getPId() != null}) var user2 = "${player.getPId() }";
+		else user2 = "unknown";
+		
+		var user1 = "admin";
+		
+		if(msg.length > 0){
+			if(socket){
+				socket.send("chat,"+user2+","+user1+","+msg+",2");
+			}
+		}
+		
+		document.getElementById("message").value = "";
+		document.getElementById("message").focus();
+		
+	}
+	
+	
+	function connectChat(){
+		if(${player.getPId() != null}) var user2 = "${player.getPId() }";
+		else user2 = "unknown";
+		
+		var user1 = "all";
+		var string1 = "";
+		var string2 = "0";
+		
+		if(socket){
+			socket.send("chat,"+user2+","+user1+","+string1+","+string2);
+		}
+		
+	}
+	
+	function enterkey(){
+	
+		if(event.keyCode ==13){
+			sendMessage();
+		}
+		
+	
+	}
+	
+	</script>
 <body>
 
     <!-- Preloader -->
@@ -87,11 +133,11 @@
         <section class="inner-intro dark-bg overlay-dark ">
             <div class="container">
                 <div class="row title">
-                    <h2 class="h2">About Us</h2>
-					<h6>Hub for creative minds</h6>
+                    <h2 class="h2">관리자 Bot</h2>
+					<h6>Space for talk to Admin Bot</h6>
 					<div class="spacer-15"></div>
                     <div class="page-breadcrumb">
-                        <a href="/index">Home</a>/<span>About</span>
+                        <a href="/index">Home</a>/<span>Admin Bot Chat</span>
                     </div>
                 </div>
             </div>
@@ -103,207 +149,28 @@
             <div class="container">
                 <div class="row text-center">
                     <div class="col-md-12">
-                        <h3 class="h4">개발자 대리 챗봇과의 1:1 대화</h3>
+                    
+                        <h3 class="h4">관리자 Bot 에게 질문해보세요!</h3>
+                        <h5 class="h4"> (현재는 '안녕'이 들어간 말과, '뭐해'가 들어간 말외에는 반응이 어렵습니다. ) </h5>
                         <div class="spacer-15"></div>
-						<input type="button" id="enterBtn" value="ENTER"/>
-						<input type="button" id="exitBtn" value="EXIT"/>
 						<p>
-						Session ID : <input type="text" id="sessionid" value="" size="50"/>
-						<p>
-						<input type="text" id="message" size="50"/>
-						<input type="button" id="sendBtn" value="SEND"/>
+						<div id="chatArea" style="display:none; text-align:left; width:80%; height:250px; overflow:auto;"></div>
+						</p>
+						<input type="text" id="targetP" value=""/>
+						<input type="text" id="message" size="50" onkeyup="enterkey()" />
+						<input type="button" id="sendBtn" value="SEND" onclick="sendMessage()"/>
+						<input type="button" id="connectBtn" value="접속하기" onclick="connectChat()"/>
 						
-						<div id="data">
-						
-						</div>
-
-						<p>We at Global talent house understand your needs, your foresight and….you. Thus we take you ahead confirming your presence in style 
-						with our sweat our toil. Firming your grip on every industry, securing a spot in every event, here we are, not just to give and take, 
-						but to participate.</p>
                     </div>
-                </div>
-                <div class="row mt-80">
-                    <!-- Welcome Content -->
-                    <div class="col-md-6">
-                        <h4>YOU ARE SO WE ARE.</h4>
-                        <div class="spacer-15"></div>
-                        <p>We understand that it is very difficult for the established or the emerging creative professionals to show case there talents on the 
-						web, live through portfolios, show reels, or video clips of creative individuals or groups displaying their talents or to do live 
-						performance for promotions individuals. The basic infrastructure cost for making portfolios, video clips, show reels and more 
-						importantly the marketing would be too time consuming and not economically viable for each individuals or group.</p>
-
-						<p>However we cover you all in our own special way.</p>
-
-						<p>Hence Global Talent House.com an online portal dedicated to the creative community was established with the sole aim of providing 
-						the creative professionals a platform to show case there talents to the national and international community and helping individuals 
-						and groups open their doors to global markets.</p>
-                    </div>
-                    <!-- End Welcome Content -->
-
-                    <!-- Skills -->
-                    <div class="col-md-6">
-						<div class="spacer-45"></div>
-                        <p>With a the perfect team of advisor, trainers, skill developers, Photographers, Web & graphic Designers, Marketers, Coordinators, 
-						promotions and PR Managers we are your one stop shop for all your promotional needs. This we do by providing creative innovative and 
-						cost effective marketing strategies and solutions in the most convincing and professionals ways.</p>
-
-						<p>All promotional need services are provided at a very nominal cost. Our training and skill development ensures that you are better 
-						than the best.</p>
-
-						<p>So go global - Share the same platform as the leaders in the creative world.</p>
-
-						<p>Now…….Isn’t it the simplest way, to put a plus factor into your own creative outlook……!</p>
-                    </div>
-                    <!-- End Skills -->
                 </div>
             </div>
         </section>
 
 
         <!-- Vision -->
-        <section id="testimonial" class="overlay-dark80 dark-bg ptb-80 ptb-sm-80" style="background-image: url('/img/full/25.jpg');" data-stellar-background-ratio="0.4">
-            <div class="container">
-                <div class="owl-carousel testimonial-carousel nf-carousel-theme white">
-                    <div class="item">
-                        <div class="testimonial text-center dark-color">
-							<h4 class="quote-author">Our Vision</h4>
-                            <p class="lead">To become the most admired and sought after provider of a platform to the talented creative community of India. </p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimonial text-center dark-color">
-                            <h4 class="quote-author">Our Mission</h4>
-                            <p class="lead">To unearth the best available Indian talent from different regions of the country and the world.</p>
-							<p class="lead">To provide them the best possible Guidance, Training, Grooming and Skill development to enable them to showcase their talent across the world to the Global Market.</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimonial text-center dark-color">
-                            <h4 class="quote-author">Our Values</h4>
-                            <p class="lead">To maintain transparency</p>
-							<p class="lead">To provide Quality Service</p>
-							<p class="lead">Customers satisfaction</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- End Vision -->
 
         <!-- Team -->
-        <section class="ptb-80 ptb-sm-80">
-            <div class="container text-center">
-                <h3>The Team Behind The Scenes</h3>
-                <div class="spacer-60"></div>
-                <!--Team Carousel -->
-                <div class="row">
-                    <div class="owl-carousel team-carousel nf-carousel-theme">
-
-                        <div class="item">
-                            <div class="team-item nf-col-padding">
-                                <div class="team-item-img">
-                                    <img src="/img/team/people-1.jpg" alt="" />
-                                    <div class="team-item-detail">
-                                        <div class="team-item-detail-inner light-color">
-                                            <h5>John Doe</h5>
-                                            <p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
-                                            <ul class="social">
-                                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="https://www.dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-                                                <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team-item-info">
-                                    <h5>John Doe</h5>
-                                    <p class="">Designer</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="team-item nf-col-padding">
-                                <div class="team-item-img">
-                                    <img src="/img/team/people-2.jpg" alt="" />
-                                    <div class="team-item-detail">
-                                        <div class="team-item-detail-inner light-color">
-                                            <h5>John Doe</h5>
-                                            <p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
-                                            <ul class="social">
-                                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="https://www.dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-                                                <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team-item-info">
-                                    <h5>John Doe</h5>
-                                    <p class="">Artist</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="team-item nf-col-padding">
-                                <div class="team-item-img">
-                                    <img src="/img/team/people-3.jpg" alt="" />
-                                    <div class="team-item-detail">
-                                        <div class="team-item-detail-inner light-color">
-                                            <h5>Jane Doe</h5>
-                                            <p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
-                                            <ul class="social">
-                                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="https://www.dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-                                                <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team-item-info">
-                                    <h5>Jane Doe</h5>
-                                    <p class="">Project Manager</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="team-item nf-col-padding">
-                                <div class="team-item-img">
-                                    <img src="/img/team/people-4.jpg" alt="" />
-                                    <div class="team-item-detail">
-                                        <div class="team-item-detail-inner light-color">
-                                            <h5>John Doe</h5>
-                                            <p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
-                                            <ul class="social">
-                                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="https://www.dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-                                                <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team-item-info">
-                                    <h5>John Doe</h5>
-                                    <p class="">Photographer</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <!--End Team Carousel --->
-            </div>
-        </section>
         <!-- End Team -->
 
         <!-- About Section -->
@@ -333,7 +200,7 @@
 
     <!-- JS -->
 
-    <script src="/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    
     <script src="/js/jquery-ui.min.js" type="text/javascript"></script>
     <script src="/js/plugin/jquery.easing.js" type="text/javascript"></script>
     <script src="/js/bootstrap.min.js" type="text/javascript"></script>

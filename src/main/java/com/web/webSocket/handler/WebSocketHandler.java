@@ -12,11 +12,13 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.web.entity.player.Player;
 import com.web.interceptor.SessionNames;
+import com.web.util.chatBot.ChatBot;
 
 public class WebSocketHandler extends TextWebSocketHandler{ // 스트리밍은 바이너리
 	
 	private Map<String, WebSocketSession> userSessions = new HashMap<String, WebSocketSession>();
 	private Map<String, WebSocketSession> chatSessions = new HashMap<String, WebSocketSession>();
+	private Map<String, WebSocketSession> botChatSessions = new HashMap<String, WebSocketSession>();
 //	List<WebSocketSession> sessions = new ArrayList<>();
 	
 	@Override
@@ -124,9 +126,22 @@ public class WebSocketHandler extends TextWebSocketHandler{ // 스트리밍은 �
 						}
 						
 					}else if(string2.equals("2")) {
+						//chat, 접속자, adminBot, message, 2
 						
-						
-						
+						TextMessage chatMsg = new TextMessage(string1);
+						if(user1.equals("admin")) {
+							
+							System.out.println("bot stage");
+							
+							if(mySession != null) {
+								
+								String result = new ChatBot().start(string1);
+								mySession.sendMessage(new TextMessage("3"+"<a style='text-align:left; color:orange;'>"+user2+" : "+string1+"</a>"+"<br>"+"<a style='text-align:left; color:green;'>admin : "+result+"</a>"));
+								
+							}
+							
+							
+						}
 						
 					}
 					
