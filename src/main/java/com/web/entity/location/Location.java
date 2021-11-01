@@ -44,5 +44,12 @@ public class Location {
 	@OneToMany(mappedBy="location", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	private Set<Player> player;	
 	
+	public Location(int locIdx) {
+		this.locIdx = locIdx;
+		this.locName = "첫 번째 마을";
+		this.locChar = 1;
+		this.locFront = 1;
+		this.locBack = 0;
+	}
 	
 }
