@@ -51,5 +51,15 @@ public class Location {
 		this.locFront = 1;
 		this.locBack = 0;
 	}
+
+	public Location(int locIdx, String locName, int locChar, int locFront, int locBack) {
+		super();
+		this.locIdx = locIdx;
+		this.locName = locName;
+		this.locChar = locChar;
+		this.locFront = locFront;
+		this.locBack = locBack;
+	}
+
 	
 }

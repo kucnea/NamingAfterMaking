@@ -25,15 +25,12 @@ public class PlayerService {
 		boolean validFlag = validateDuplicatePlayer(player); // 중복 체크
 		if(!validFlag) {
 			
-			System.out.println("player add loc : stage1");
 			Location loc = locationRepository.findOne(0);
-			System.out.println(loc);
+
 			if(loc==null) loc = new Location(0);
-			System.out.println("player add loc : stage2");
+			
 			player.setLocation(loc);
-			System.out.println("player add loc : stage3");
 			playerRepository.save(player);
-			System.out.println("player add loc : stage4");
 			return player.getPIdx();
 			
 		}else {

@@ -104,7 +104,7 @@
                         <c:set var="PId" value="${player.PId }"/> <!-- pStatus (0 : 자유, 1 : 제제, 2 : 관리자) -->
 	                    <c:if test="${PId eq 'admin' }">
 	                        <li>
-	                        <a class="btn btn-md btn-black join-btn" href="/player/login">관리페이지</a>
+	                        <a class="btn btn-md btn-black join-btn" href="/admin/adminpage">관리페이지</a>
 	                        </li>
                         </c:if>
                         </c:if>

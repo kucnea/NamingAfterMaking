@@ -82,7 +82,7 @@ public class Player {
 	@OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
 	private Set<Gong> gong;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="locIdx", referencedColumnName = "locIdx")
 	private  Location location;
 	
