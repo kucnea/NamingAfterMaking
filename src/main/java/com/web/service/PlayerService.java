@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.web.entity.location.Location;
 import com.web.entity.player.Player;
+import com.web.repository.LocationRepository;
 import com.web.repository.PlayerRepository;
 
 @Service
@@ -15,15 +17,19 @@ import com.web.repository.PlayerRepository;
 public class PlayerService {
 
 	@Autowired PlayerRepository playerRepository;
-	
+	@Autowired LocationRepository locationRepository;
 	
 	/* 회원가입 */
 	public int join(Player player) {
 		
 		boolean validFlag = validateDuplicatePlayer(player); // 중복 체크
 		if(!validFlag) {
-		playerRepository.save(player);
-		return player.getPIdx();
+			
+			Location loc = locationRepository.findOne(0);
+			player.setLocation(loc);
+			playerRepository.save(player);
+			return player.getPIdx();
+			
 		}else {
 			return -1;
 		}
@@ -151,9 +157,19 @@ public class PlayerService {
 				}
 			}
 			return "#"+pNick; // 중복 O, 규약에 안맞음 = 추천 Id제공
+		}
+	
+	
 	}
 	
 	
-}
+	
+	/* 게임 파트 접속*/
+	public Player connectGame(int pIdx) {
+		
+		Player player = playerRepository.findOne(pIdx);
+		
+		return player;
+	}
 	
 }

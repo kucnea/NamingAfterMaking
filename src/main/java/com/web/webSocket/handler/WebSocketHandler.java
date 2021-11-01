@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -12,13 +13,15 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.web.entity.player.Player;
 import com.web.interceptor.SessionNames;
+import com.web.service.PlayerService;
 import com.web.util.chatBot.ChatBot;
 
 public class WebSocketHandler extends TextWebSocketHandler{ // 스트리밍은 바이너리
 	
 	private Map<String, WebSocketSession> userSessions = new HashMap<String, WebSocketSession>();
 	private Map<String, WebSocketSession> chatSessions = new HashMap<String, WebSocketSession>();
-	private Map<String, WebSocketSession> botChatSessions = new HashMap<String, WebSocketSession>();
+	
+	@Autowired PlayerService playerservice;
 //	List<WebSocketSession> sessions = new ArrayList<>();
 	
 	@Override
@@ -139,14 +142,46 @@ public class WebSocketHandler extends TextWebSocketHandler{ // 스트리밍은 �
 								mySession.sendMessage(new TextMessage("3"+"<a style='text-align:left; color:orange;'>"+user2+" : "+string1+"</a>"+"<br>"+"<a style='text-align:left; color:green;'>admin : "+result+"</a>"));
 								
 							}
-							
-							
 						}
+					}
+				}
+				
+				/* 
+				protocol 
+				user2 : 접속 유저
+				user1 : "all" 로 통일
+				string1 : 액션
+				string2 : 장소 ( player.location.getLocIdx() )
+				
+				send message : 4로 시작
+				*/
+				if(cmd.equals("game")) {
+					System.out.println("webSocket game stage");
+					TextMessage returnMsg = new TextMessage(string1);
+					
+					WebSocketSession mySession = userSessions.get(senderId);
+					
+					int pIdx = Integer.parseInt(user2);
+					Player player = playerservice.connectGame(pIdx);
+					String pNikc = player.getPNick();
+					String pLoc = player.getLocation().getLocName();
+					if(string2.equals("0")) {
+						
+						TextMessage startMsg = new TextMessage(
+								"4"+"<a style='text-align:left; color:orange; font-size:1.2em;'>"
+								+pNikc+"</a>"+"님 반갑습니다. N.A.M에 접속했습니다.<br>"
+								+"현재 위치는 "
+								+"<a style='text-align:left; color:green; font-size:1.2em;'>"
+								+pLoc+"</a>"
+								+"입니다."		
+								);
+						mySession.sendMessage(startMsg);
 						
 					}
 					
-					
 				}
+				
+				
 				
 				
 			}

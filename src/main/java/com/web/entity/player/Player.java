@@ -2,17 +2,21 @@ package com.web.entity.player;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.web.entity.gong.Gong;
+import com.web.entity.location.Location;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -56,7 +60,7 @@ public class Player {
 	private int pDefElm;
 	private int pLuck = 7;
 	private int pSpd = 1;
-	private int pLocation;
+//	private int pLocation;
 	private int pEHelmet;
 	private int pEArmor;
 	private int pEWeapon;
@@ -78,6 +82,9 @@ public class Player {
 	@OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
 	private Set<Gong> gong;
 	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="locIdx", referencedColumnName = "locIdx")
+	private  Location location;
 	
 	public Player(String pId, String pPw) { 	// test를 위한 생성자
 		this.pId = pId;

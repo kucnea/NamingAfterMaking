@@ -33,6 +33,65 @@
 
 </head>
 <tiles:insertAttribute name="title"/>
+
+	<script type="text/javascript">
+	
+	/* 
+	protocol
+	user2 : 접속 유저
+	user1 : "all" 로 통일
+	string1 : 액션
+	string2 : 장소 ( player.location.getLocIdx() )
+	*/
+	 
+	
+	function sendMessage(){
+		var msg = document.getElementById("message").value;
+		
+		if(${player.getPIdx() != null}){
+		
+			var user2 = "${player.getPIdx() }";
+			var user1= "all"; 
+			
+			if(msg.length > 0){
+				if(socket){
+					socket.send("game,"+user2+","+user1+","+msg+",1");
+				}
+			}
+			
+		}
+		else user2 = "unknown";
+		
+		document.getElementById("message").value = "";
+		document.getElementById("message").focus();
+		
+	}
+	
+	function connectGame(){
+		if(${player.getPIdx() != null}){
+			
+			var user2 = "${player.getPIdx() }";
+			var user1 = "all";  /* player.location.getLocChar 에 따라 */
+			var string1 = "";
+			var string2 = "0";
+			if(socket) socket.send("game,"+user2+","+user1+","+string1+","+string2);
+			
+		}else{
+			console.log('INFO : player의 번호가 확인되지 않습니다.');
+		}
+	}
+	
+	function enterkey(){
+	
+		if(event.keyCode ==13){
+			sendMessage();
+		}
+		
+	
+	}
+	
+	</script>
+	
 <body>
 
     <!-- Preloader -->
@@ -202,7 +261,26 @@
         <!-- End About Section -->
 		
         <!-- Calendar Section -->
-        <div id="calendar" class="section ptb-60 pt-sm-80 bg-img light-color" style="background: #93301d url('img/events-bg.jpg') left center no-repeat; background-size:100% auto;">
+        <!-- <div id="competitions" class="section pt-60 pt-sm-80" style="background:#323232;"> -->
+        <div id="about" class="section overlay-dark80 light-color pt-60 pt-sm-80 pb-sm-30" style="background:#323232;">
+            <div class="container">
+                    	
+				
+				<h3 class="h4"> 접속하기를 눌러 용사를 조종해보세요! </h3>
+                <h5 class="h4"> 명령어 : </h5>
+                <h5 class="h4"> 이동 : </h5>
+                <div class="spacer-15"></div>
+				<p>
+				<div id="chatArea" style="display:none; text-align:left; width:80%; height:250px; overflow:auto;"></div>
+				</p>
+				<input type="text" id="message" size="80" onkeyup="enterkey()" />
+				<input type="button" id="sendBtn" value="SEND" onclick="sendMessage()"/>
+				<input type="button" id="connectBtn" value="접속하기" onclick="connectGame()"/>
+				
+
+            </div>
+        </div>
+        <!-- <div id="calendar" class="section ptb-60 pt-sm-80 bg-img light-color" style="background: #93301d url('img/events-bg.jpg') left center no-repeat; background-size:100% auto;">
             <div class="container text-left">
 				<div class="col-md-7">
                 <h3 class="float-left float-none-xs">EVENTS THIS MONTH</h3>
@@ -230,7 +308,7 @@
 					</div>
 				</div>
             </div>
-        </div>
+        </div> -->
         <!-- End Calendar Section -->
 		<!-- To DO Section -->
         <div id="todo" class="section ptb-60 pt-sm-80 shadow bg-image dark-color" style="background: #fff url('img/desk.jpg') top left no-repeat; background-size:100% 100%;">
