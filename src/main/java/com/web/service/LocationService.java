@@ -114,7 +114,7 @@ public class LocationService {
 			//첫번째 시트 불러오기
 			XSSFSheet sheet = workBook.getSheetAt(0);
 			
-			for (int i = 0; i < sheet.getLastRowNum()+1; i++) {
+			for (int i = 1; i < sheet.getLastRowNum()+1; i++) {
 				Location location = new Location();
 				XSSFRow row = sheet.getRow(i);
 				
