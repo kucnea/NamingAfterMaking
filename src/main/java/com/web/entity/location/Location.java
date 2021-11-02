@@ -21,10 +21,10 @@ import lombok.ToString;
 
 @Entity
 @Table(name="LOCATION")
-@SequenceGenerator(						// 오라클 사용시
-		name = "LOCATION_SEQ_GENERATOR",
-		sequenceName = "LOCATION_SEQ",
-		initialValue = 0, allocationSize = 1)
+//@SequenceGenerator(						// 오라클 사용시
+//		name = "LOCATION_SEQ_GENERATOR",
+//		sequenceName = "LOCATION_SEQ",
+//		initialValue = 0, allocationSize = 1)
 @NoArgsConstructor
 @Getter
 @Setter
@@ -33,7 +33,7 @@ public class Location {
 
 	@Id
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)  // MYSQL 사용시
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "LOCATION_SEQ_GENERATOR") // 오라클 사용시
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "LOCATION_SEQ_GENERATOR") // 오라클 사용시
 	private int locIdx = 0;
 	
 	@Column(nullable = false, length = 16)

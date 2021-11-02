@@ -165,6 +165,8 @@ public class WebSocketHandler extends TextWebSocketHandler{ // 스트리밍은 �
 					Player player = playerservice.connectGame(pIdx);
 					String pNikc = player.getPNick();
 					String pLoc = player.getLocation().getLocName();
+					int lIdx = player.getLocation().getLocIdx();
+					
 					if(string2.equals("0")) {
 						
 						TextMessage startMsg = new TextMessage(
@@ -176,6 +178,83 @@ public class WebSocketHandler extends TextWebSocketHandler{ // 스트리밍은 �
 								+"입니다."		
 								);
 						mySession.sendMessage(startMsg);
+						
+					}else {
+						
+						if(string1.equals("이동 앞으로")) {
+							
+							player.getLocation().setLocIdx(player.getLocation().getLocFront());
+							player = playerservice.moving(player);
+							
+							pLoc = player.getLocation().getLocName();
+							
+							TextMessage startMsg = null;
+							if(lIdx != player.getLocation().getLocIdx()) {
+								startMsg = new TextMessage(
+										"4"+"<a style='text-align:left; color:orange; font-size:1.2em;'>"
+										+pNikc+" : </a>"+string1+"<br>"
+										+"SYSTEM : 앞으로 이동 했습니다. 현재 위치는 "
+										+"<a style='text-align:left; color:green; font-size:1.2em;'>"
+										+pLoc+"</a>"
+										+"입니다."		
+										);
+							}else {
+								startMsg = new TextMessage(
+										"4"+"<a style='text-align:left; color:orange; font-size:1.2em;'>"
+										+pNikc+" : </a>"+string1+"<br>"
+										+"SYSTEM : 이 방향으로 더 이상 길이 없습니다. 현재 위치는 "
+										+"<a style='text-align:left; color:green; font-size:1.2em;'>"
+										+pLoc+"</a>"
+										+"입니다."		
+										);
+							}
+							
+							mySession.sendMessage(startMsg);
+							
+						}else if(string1.equals("이동 뒤로")){
+							
+							player.getLocation().setLocIdx(player.getLocation().getLocBack());
+							player = playerservice.moving(player);
+							
+							pLoc = player.getLocation().getLocName();
+							
+							TextMessage startMsg = null;
+							if(lIdx != player.getLocation().getLocIdx()) {
+								startMsg = new TextMessage(
+										"4"+"<a style='text-align:left; color:orange; font-size:1.2em;'>"
+										+pNikc+" : </a>"+string1+"<br>"
+										+"SYSTEM : 앞으로 이동 했습니다. 현재 위치는 "
+										+"<a style='text-align:left; color:green; font-size:1.2em;'>"
+										+pLoc+"</a>"
+										+"입니다."		
+										);
+							}else {
+								startMsg = new TextMessage(
+										"4"+"<a style='text-align:left; color:orange; font-size:1.2em;'>"
+										+pNikc+" : </a>"+string1+"<br>"
+										+"SYSTEM : 이 방향으로 더 이상 길이 없습니다. 현재 위치는 "
+										+"<a style='text-align:left; color:green; font-size:1.2em;'>"
+										+pLoc+"</a>"
+										+"입니다."		
+										);
+							}
+							
+							mySession.sendMessage(startMsg);
+							
+						}else {
+							
+							TextMessage startMsg = new TextMessage(
+									"4"+"<a style='text-align:left; color:orange; font-size:1.2em;'>"
+									+pNikc+" : </a>"+string1+"<br>"
+									+"SYSTEM : 무슨 말씀인지 모르겠습니다. 현재 위치는 "
+									+"<a style='text-align:left; color:green; font-size:1.2em;'>"
+									+pLoc+"</a>"
+									+"입니다."		
+									);
+							mySession.sendMessage(startMsg);
+							
+						}
+						
 						
 					}
 					

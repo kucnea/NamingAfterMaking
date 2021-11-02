@@ -11,6 +11,7 @@ import com.web.entity.location.Location;
 import com.web.entity.player.Player;
 import com.web.repository.LocationRepository;
 import com.web.repository.PlayerRepository;
+import com.web.webSocket.handler.playe;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -176,6 +177,12 @@ public class PlayerService {
 		Player player = playerRepository.findOne(pIdx);
 		
 		return player;
+	}
+
+	/* 게임에서 이동시 사용했는데 자체 수정에도 사용할지는 후에 판단 */
+	public Player moving(Player player) {
+
+		return playerRepository.save(player);
 	}
 	
 }

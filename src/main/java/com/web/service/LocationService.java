@@ -159,10 +159,9 @@ public class LocationService {
 	/* 기존 DB가 있다면 update, 없다면 save */
 	public void update(Location location) {
 		System.out.println("location locName : "+location.getLocName());
-		Location update = locationRepository.findOne(location.getLocIdx());
+		Location update = findOne(location);
 		if(update == null) locationRepository.save(location);
 		else {
-			update.setLocIdx(location.getLocIdx());
 			update.setLocName(location.getLocName());
 			update.setLocChar(location.getLocChar());
 			update.setLocFront(location.getLocFront());
@@ -172,6 +171,14 @@ public class LocationService {
 		
 	}
 
+	
+	/* idx로 하나 가져오기*/
+	public Location findOne(Location location) {
+		Location find = locationRepository.findOne(location.getLocIdx());
+		return find;
+	}
+	
+	
 	/* 모두 가져오기 */
 	public List<Location> findAll() {
 
