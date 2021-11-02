@@ -25,19 +25,45 @@ public class ExcelController {
 	@PostMapping("downloadexcelfile")
 	public String downloadExcelFile(Model model) {
 	
-		String[] locName = {"첫 번째 마을", "마을 입구", "들판1", "들판2"};
-		int[] locChar = {1, 1, 2, 2};
-		int[] locFront = {1, 2, 3, 3};
-		int[] locBack = {0, 0, 1, 2};
+		List<Location> list = locationService.findAll();
 		
-		List<Location> list = locationService.makeLocationList(locName, locChar, locFront, locBack);
+		if(list!=null) {
+			String[] locName = new String[list.size()];
+			int[] locChar = new int[list.size()];
+			int[] locFront = new int[list.size()];
+			int[] locBack = new int[list.size()];
+			
+			for (int i = 0; i < list.size(); i++) {
+				locName[i] = list.get(i).getLocName();
+				locChar[i] = list.get(i).getLocChar();
+				locFront[i] = list.get(i).getLocFront();
+				locBack[i] = list.get(i).getLocBack();
+			}
+			
+			list = locationService.makeLocationList(locName, locChar, locFront, locBack);
+			
+			SXSSFWorkbook workBook = locationService.excelFileDownloadProcess(list); 
+			
+			model.addAttribute("locale",Locale.KOREA);
+			model.addAttribute("workBook",workBook);
+			
+			return "excelDownloadView";
+		}else {
+			String[] locName = {"이 것은", "LocationDB가 없을때", "나오는", "예시입니다."};
+			int[] locChar = {1, 1, 2, 2};
+			int[] locFront = {1, 2, 3, 3};
+			int[] locBack = {0, 0, 1, 2};
+			
+			list = locationService.makeLocationList(locName, locChar, locFront, locBack);
+			
+			SXSSFWorkbook workBook = locationService.excelFileDownloadProcess(list); 
+			
+			model.addAttribute("locale",Locale.KOREA);
+			model.addAttribute("workBook",workBook);
+			
+			return "excelDownloadView";
+		}
 		
-		SXSSFWorkbook workBook = locationService.excelFileDownloadProcess(list); 
-		
-		model.addAttribute("locale",Locale.KOREA);
-		model.addAttribute("workBook",workBook);
-		
-		return "excelDownloadView";
 	}
 	
 	@PostMapping("uploadexcelfile")
@@ -51,6 +77,11 @@ public class ExcelController {
 		}
 		
 		List<Location> list = locationService.uploadExcelFile(file);
+		
+		for (int i = 0; i < list.size(); i++) {
+			Location location = list.get(i);
+			locationService.update(location);
+		}
 		
 		model.addAttribute("list", list);
 		

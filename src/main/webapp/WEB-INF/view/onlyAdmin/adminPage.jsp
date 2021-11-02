@@ -137,29 +137,34 @@ function doExcelDownloadProcess(){
                         <form>
 	                        <h4>회원 삭제, 수정</h4>
 	                        <p>
-	                        
+	                        	개발 전
 	                        </p>
                         </form>
 						
-
+						<hr>
 						
 						<form>
 							<h4>게시글 삭제, 수정</h4>
 							<p>
-
+								개발 전
 							</p>
 						</form>
 						
+						<hr>
+						
 						<form id="DBForm" name="DBForm" method="post" enctype="multipart/form-data">
-							<h4>DB 삽입, 추출</h4>
+							<h4>Location DB 삽입, 추출</h4>
+							<h5>Only use formal .xlsx file</h5>
 							<p>
 								<input type="file" id="fileInput" name="fileInput">
-								<button type="button" onclick="doExcelUploadProcess()">엑셀 업로드 작업</button>
+								<button type="button" onclick="doExcelUploadProcess()">엑셀 업로드, location DB update 작업</button>
 								<button type="button" onclick="doExcelDownloadProcess()">엑셀 다운로드 작업</button>
 							</p>
 						</form>
 						<div id="excelResult">
 						</div>
+						
+						<hr>
 						
                     </div>
                 </div>

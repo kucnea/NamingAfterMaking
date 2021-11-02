@@ -1,7 +1,9 @@
 package com.web.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.ss.usermodel.Cell;
@@ -12,16 +14,24 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.web.entity.location.Location;
+import com.web.entity.player.Player;
+import com.web.repository.LocationRepository;
+import com.web.repository.PlayerRepository;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class LocationService {
 
+	@Autowired LocationRepository locationRepository;
+	@Autowired PlayerRepository playerRepository;
+	
+	
 	public List<Location> makeLocationList(String[] locName, int[] locChar, int[] locFront, int[] locBack) {
 		
 		ArrayList<Location> list = new ArrayList<Location>();
@@ -145,5 +155,32 @@ public class LocationService {
 		
 		return list;
 	}
+
+	/* 기존 DB가 있다면 update, 없다면 save */
+	public void update(Location location) {
+		System.out.println("location locName : "+location.getLocName());
+		Location update = locationRepository.findOne(location.getLocIdx());
+		if(update == null) locationRepository.save(location);
+		else {
+			update.setLocIdx(location.getLocIdx());
+			update.setLocName(location.getLocName());
+			update.setLocChar(location.getLocChar());
+			update.setLocFront(location.getLocFront());
+			update.setLocBack(location.getLocBack());
+			locationRepository.save(update);
+		}
+		
+	}
+
+	/* 모두 가져오기 */
+	public List<Location> findAll() {
+
+		List<Location> list = locationRepository.findAll();
+		
+		if(list!=null) return list;
+		else return null;
+	}
+	
+
 
 }

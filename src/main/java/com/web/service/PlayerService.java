@@ -27,7 +27,10 @@ public class PlayerService {
 			
 			Location loc = locationRepository.findOne(0);
 
-			if(loc==null) loc = new Location(0);
+			if(loc==null) {
+				loc = new Location(0);
+				locationRepository.save(loc);
+			}
 			
 			player.setLocation(loc);
 			playerRepository.save(player);
