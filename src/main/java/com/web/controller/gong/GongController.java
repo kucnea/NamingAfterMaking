@@ -160,6 +160,7 @@ public class GongController {
 		//글만 저장
 		HttpSession session = request.getSession();
 		Player player = (Player) session.getAttribute("player");
+		gong.setGongContent(gong.getGongContent().replace("\r\n", "<br>"));
 		Gong result = gongService.write(gong,player);
 		//그림 포함
 		if(file.getSize()!=0) gongImgService.save(gongImg,result);
@@ -186,6 +187,7 @@ public class GongController {
 		gong.setGongCnt(gong.getGongCnt()+1);		
 		gongService.update(gong);
 		gong = gongService.searchOne(gongIdx);
+		gong.setGongContent(gong.getGongContent().replace("\r\n", "<br>"));
 		model.addAttribute("gong",gong);
 
 		//댓글
@@ -282,7 +284,7 @@ public class GongController {
 //		List<GongImg> list = new ArrayList<GongImg>();
 //		list.add(gongImg);
 //		gong.setGongImg(list);
-		
+		gong.setGongContent(gong.getGongContent().replace("\r\n", "<br>"));
 		Gong result = gongService.update(gong);
 		
 		System.out.println("===file null Test===");

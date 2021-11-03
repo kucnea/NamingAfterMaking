@@ -267,8 +267,9 @@
                     	
 				
 				<h3 class="h4"> 접속하기를 눌러 용사를 조종해보세요! </h3>
-                <h5 class="h4"> 명령어 : </h5>
-                <h5 class="h4"> 이동 : </h5>
+                <h5 class="h4"> 명령어 : "이동 앞으로", "이동 뒤로" 까지 현재 지원됩니다.</h5>
+                <h5 class="h4"> 많은 명령어가 추가될 예정이니 기대해주세요. </h5>
+                <h5 class="h4"> 로그인을 통해 계약한 용사를 준비시켜야 접속이 가능합니다. </h5>
                 <div class="spacer-15"></div>
 				<p>
 				<div id="chatArea" style="display:none; text-align:left; width:80%; height:250px; overflow:auto;"></div>

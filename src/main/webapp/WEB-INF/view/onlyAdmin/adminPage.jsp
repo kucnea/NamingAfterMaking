@@ -168,46 +168,12 @@ function doExcelDownloadProcess(){
 						
                     </div>
                 </div>
-                <div class="row mt-80">
-                    <!-- Welcome Content -->
-                    <div class="col-md-6">
-                        <h4>YOU ARE SO WE ARE.</h4>
-                        <div class="spacer-15"></div>
-                        <p>We understand that it is very difficult for the established or the emerging creative professionals to show case there talents on the 
-						web, live through portfolios, show reels, or video clips of creative individuals or groups displaying their talents or to do live 
-						performance for promotions individuals. The basic infrastructure cost for making portfolios, video clips, show reels and more 
-						importantly the marketing would be too time consuming and not economically viable for each individuals or group.</p>
-
-						<p>However we cover you all in our own special way.</p>
-
-						<p>Hence Global Talent House.com an online portal dedicated to the creative community was established with the sole aim of providing 
-						the creative professionals a platform to show case there talents to the national and international community and helping individuals 
-						and groups open their doors to global markets.</p>
-                    </div>
-                    <!-- End Welcome Content -->
-
-                    <!-- Skills -->
-                    <div class="col-md-6">
-						<div class="spacer-45"></div>
-                        <p>With a the perfect team of advisor, trainers, skill developers, Photographers, Web & graphic Designers, Marketers, Coordinators, 
-						promotions and PR Managers we are your one stop shop for all your promotional needs. This we do by providing creative innovative and 
-						cost effective marketing strategies and solutions in the most convincing and professionals ways.</p>
-
-						<p>All promotional need services are provided at a very nominal cost. Our training and skill development ensures that you are better 
-						than the best.</p>
-
-						<p>So go global - Share the same platform as the leaders in the creative world.</p>
-
-						<p>Now…….Isn’t it the simplest way, to put a plus factor into your own creative outlook……!</p>
-                    </div>
-                    <!-- End Skills -->
-                </div>
             </div>
         </section>
 
 
         <!-- Vision -->
-        <section id="testimonial" class="overlay-dark80 dark-bg ptb-80 ptb-sm-80" style="background-image: url('img/full/25.jpg');" data-stellar-background-ratio="0.4">
+        <!-- <section id="testimonial" class="overlay-dark80 dark-bg ptb-80 ptb-sm-80" style="background-image: url('img/full/25.jpg');" data-stellar-background-ratio="0.4">
             <div class="container">
                 <div class="owl-carousel testimonial-carousel nf-carousel-theme white">
                     <div class="item">
@@ -233,15 +199,15 @@ function doExcelDownloadProcess(){
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- End Vision -->
 
         <!-- Team -->
-        <section class="ptb-80 ptb-sm-80">
+        <!-- <section class="ptb-80 ptb-sm-80">
             <div class="container text-center">
                 <h3>The Team Behind The Scenes</h3>
                 <div class="spacer-60"></div>
-                <!--Team Carousel -->
+                Team Carousel
                 <div class="row">
                     <div class="owl-carousel team-carousel nf-carousel-theme">
 
@@ -346,10 +312,10 @@ function doExcelDownloadProcess(){
                         </div>
 
                     </div>
-                </div>
+                </div> -->
                 <!--End Team Carousel --->
-            </div>
-        </section>
+            <!-- </div>
+        </section> -->
         <!-- End Team -->
 
         <!-- About Section -->

@@ -215,7 +215,6 @@
 	                    	<c:if test="${gong.getGongImg().size() ne 0 }">
 	                    		<img alt="MainPic" src="/upload/${gong.gongImg.iterator().next().getFileUseName() }"><br>
 	                    	</c:if>
-	                    	FIleUseName : ${gong.gongImg.iterator().next().getFileUseName() }
                     	${gong.gongContent }
                     	</p>
                     	<br><br><br>
