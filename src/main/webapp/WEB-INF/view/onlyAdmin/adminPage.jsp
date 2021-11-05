@@ -136,9 +136,19 @@ function doExcelDownloadProcess(){
                         
                         <form>
 	                        <h4>회원 삭제, 수정</h4>
+	                        <form>
 	                        <p>
-	                        	개발 전
+	                        	ID : <input type="text" id="playerId" name="playerId">
+	                        	PW : <input type="text" id="playerPw" name="playerPw">
+	                        	Nick : <input type="text" id="playerNick" name="playerNick">
+	                        	Status : <input type="text" id="playerGrade" name="playerGrade">
 	                        </p>
+	                        
+	                        <p>
+	                        -설명-
+	                        Status : 0 = 자유, 1 = 제제, 2 = 관리자
+	                        </p>
+	                        </form>
                         </form>
 						
 						<hr>
@@ -173,149 +183,9 @@ function doExcelDownloadProcess(){
 
 
         <!-- Vision -->
-        <!-- <section id="testimonial" class="overlay-dark80 dark-bg ptb-80 ptb-sm-80" style="background-image: url('img/full/25.jpg');" data-stellar-background-ratio="0.4">
-            <div class="container">
-                <div class="owl-carousel testimonial-carousel nf-carousel-theme white">
-                    <div class="item">
-                        <div class="testimonial text-center dark-color">
-							<h4 class="quote-author">Our Vision</h4>
-                            <p class="lead">To become the most admired and sought after provider of a platform to the talented creative community of India. </p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimonial text-center dark-color">
-                            <h4 class="quote-author">Our Mission</h4>
-                            <p class="lead">To unearth the best available Indian talent from different regions of the country and the world.</p>
-							<p class="lead">To provide them the best possible Guidance, Training, Grooming and Skill development to enable them to showcase their talent across the world to the Global Market.</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimonial text-center dark-color">
-                            <h4 class="quote-author">Our Values</h4>
-                            <p class="lead">To maintain transparency</p>
-							<p class="lead">To provide Quality Service</p>
-							<p class="lead">Customers satisfaction</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
         <!-- End Vision -->
 
         <!-- Team -->
-        <!-- <section class="ptb-80 ptb-sm-80">
-            <div class="container text-center">
-                <h3>The Team Behind The Scenes</h3>
-                <div class="spacer-60"></div>
-                Team Carousel
-                <div class="row">
-                    <div class="owl-carousel team-carousel nf-carousel-theme">
-
-                        <div class="item">
-                            <div class="team-item nf-col-padding">
-                                <div class="team-item-img">
-                                    <img src="/img/team/people-1.jpg" alt="" />
-                                    <div class="team-item-detail">
-                                        <div class="team-item-detail-inner light-color">
-                                            <h5>John Doe</h5>
-                                            <p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
-                                            <ul class="social">
-                                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="https://www.dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-                                                <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team-item-info">
-                                    <h5>John Doe</h5>
-                                    <p class="">Designer</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="team-item nf-col-padding">
-                                <div class="team-item-img">
-                                    <img src="/img/team/people-2.jpg" alt="" />
-                                    <div class="team-item-detail">
-                                        <div class="team-item-detail-inner light-color">
-                                            <h5>John Doe</h5>
-                                            <p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
-                                            <ul class="social">
-                                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="https://www.dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-                                                <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team-item-info">
-                                    <h5>John Doe</h5>
-                                    <p class="">Artist</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="team-item nf-col-padding">
-                                <div class="team-item-img">
-                                    <img src="/img/team/people-3.jpg" alt="" />
-                                    <div class="team-item-detail">
-                                        <div class="team-item-detail-inner light-color">
-                                            <h5>Jane Doe</h5>
-                                            <p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
-                                            <ul class="social">
-                                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="https://www.dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-                                                <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team-item-info">
-                                    <h5>Jane Doe</h5>
-                                    <p class="">Project Manager</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="team-item nf-col-padding">
-                                <div class="team-item-img">
-                                    <img src="/img/team/people-4.jpg" alt="" />
-                                    <div class="team-item-detail">
-                                        <div class="team-item-detail-inner light-color">
-                                            <h5>John Doe</h5>
-                                            <p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
-                                            <ul class="social">
-                                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="https://www.dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-                                                <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team-item-info">
-                                    <h5>John Doe</h5>
-                                    <p class="">Photographer</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div> -->
-                <!--End Team Carousel --->
-            <!-- </div>
-        </section> -->
         <!-- End Team -->
 
         <!-- About Section -->
