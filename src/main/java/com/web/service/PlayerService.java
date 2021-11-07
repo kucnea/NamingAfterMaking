@@ -183,5 +183,10 @@ public class PlayerService {
 
 		return playerRepository.save(player);
 	}
+
+	public Player searchPId(String searchId) {
+		
+		return playerRepository.findByPId(searchId);
+	}
 	
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 
 <!DOCTYPE html>
 <html>
@@ -54,6 +55,45 @@ function doExcelDownloadProcess(){
 	var f = document.DBForm;
 	f.action = "/excel/downloadexcelfile";
 	f.submit();
+	
+}
+
+function searchSubmit(){
+	
+	var id = document.getElementById("searchId").value;
+	
+	if(id.length < 1){
+		alert("검색할 id를 입력하세요.");
+		return false;
+	}else{
+		return true;	
+	}
+	
+	
+}
+function updateSubmit(){
+	
+	var id = document.getElementById("searchId").value;
+	var pw = document.getElementById("searchPw").value;
+	var nick = document.getElementById("searchNick").value;
+	var status = document.getElementById("searchStatus").value;
+	
+	if(id.length = 0) {
+		alert('id를 입력하세요');
+		return false;
+	}else if(pw.length = 0){
+		alert('pw를 입력하세요');
+		return false;
+	}else if(nick.length = 0){
+		alert('nick를 입력하세요');
+		return false;
+	}else if(status.length = 0){
+		alert('status를 입력하세요');
+		return false;
+	}else{
+		/* document.getElementById("searchForm").submit; */
+		return true;
+	}
 	
 }
 
@@ -134,16 +174,39 @@ function doExcelDownloadProcess(){
                         <h3 class="h4">관리자 페이지</h3>
                         <div class="spacer-15"></div>
                         
-                        <form>
+                        <form id="searchForm" action="/admin/playersearch" method="get" onsubmit="return searchSubmit()">
+                        	<c:choose>
+                        	<c:when test="${searchP ne null }">
+                        		ID 검색 : <input type="text" id="searchId" name="searchId" value="${searchP.pId }"> &nbsp; <input type="submit" id="searchButton" name="searchButton" value="검색">
+                        	</c:when>
+                        	<c:otherwise>
+                        		ID 검색 : <input type="text" id="searchId" name="searchId"> &nbsp; <input type="submit" id="searchButton" name="searchButton" value="검색">
+                        	</c:otherwise>
+                        	</c:choose>
+                        </form>
+                        <form id="updateForm" action="/admin/playerupdate" method="post">
 	                        <h4>회원 삭제, 수정</h4>
-	                        <form>
+	                        <c:choose>
+	                        <c:when test="${searchP ne null }">
+	                        <input type="hidden" id="updateIdx" name="updateIdx" value="${searchP.pidx }">
 	                        <p>
-	                        	ID : <input type="text" id="playerId" name="playerId">
-	                        	PW : <input type="text" id="playerPw" name="playerPw">
-	                        	Nick : <input type="text" id="playerNick" name="playerNick">
-	                        	Status : <input type="text" id="playerGrade" name="playerGrade">
+	                        	ID : <input type="text" id="updateId" name="updateId" value="${searchP.pId }"> 
+	                         	PW : <input type="text" id="updatePw" name="updatePw" value="${searchP.pPw }">
+	                        	Nick : <input type="text" id="updateNick" name="updateNick" value="${searchP.pNick }">
+	                        	Status : <input type="text" id="updateStatus" name="updateStatus"value="${searchP.pStatus }">
+	                        	<input type="submit" id="updateButton" name="updateButton" value="수정" onsubmit="return updateSubmit()">
 	                        </p>
-	                        
+	                        </c:when>
+	                        <c:otherwise>
+	                        <p>
+	                        	ID : <input type="text" id="updateId" name="searchId"> 
+	                        	PW : <input type="text" id="updatePw" name="searchPw">
+	                        	Nick : <input type="text" id="updateNick" name="searchNick">
+	                        	Status : <input type="text" id="searchStatus" name="searchStatus">
+	                        	<input type="submit" id="updateButton" name="updateButton" value="수정" onsubmit="return updateSubmit()">
+	                        </p>
+	                        </c:otherwise>
+	                        </c:choose>
 	                        <p>
 	                        -설명-
 	                        Status : 0 = 자유, 1 = 제제, 2 = 관리자
