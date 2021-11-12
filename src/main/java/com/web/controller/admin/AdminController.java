@@ -1,10 +1,12 @@
 package com.web.controller.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.web.entity.player.Player;
 import com.web.service.PlayerService;
@@ -23,18 +25,21 @@ public class AdminController {
 	
 	
 	@RequestMapping("playersearch")
-	public String playerSearch(Model model) {
+	public String playerSearch(
+			Model model,
+			@RequestParam("searchId") @Nullable String searchId
+			) {
 		
-		String searchId = (String) model.getAttribute("searchId");
-		
+		System.out.println("playerSearch stage : "+searchId);
 		if(searchId != null) {
 			Player player = playerService.searchPId(searchId);
 			if(player != null) {
-				model.addAttribute("searchP");
+				System.out.println("player.getPId() : "+player.getPId());
+				model.addAttribute("player1", player);
 			}
 		}
 		
-		return "redirect:adminPage";
+		return "admin.adminPage";
 	}
 	
 	@PostMapping("playerupdate")

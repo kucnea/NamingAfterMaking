@@ -79,16 +79,16 @@ function updateSubmit(){
 	var status = document.getElementById("searchStatus").value;
 	
 	if(id.length = 0) {
-		alert('id를 입력하세요');
+		alert("id를 입력하세요");
 		return false;
 	}else if(pw.length = 0){
-		alert('pw를 입력하세요');
+		alert("pw를 입력하세요");
 		return false;
 	}else if(nick.length = 0){
-		alert('nick를 입력하세요');
+		alert("nick를 입력하세요");
 		return false;
 	}else if(status.length = 0){
-		alert('status를 입력하세요');
+		alert("status를 입력하세요");
 		return false;
 	}else{
 		/* document.getElementById("searchForm").submit; */
@@ -176,8 +176,8 @@ function updateSubmit(){
                         
                         <form id="searchForm" action="/admin/playersearch" method="get" onsubmit="return searchSubmit()">
                         	<c:choose>
-                        	<c:when test="${searchP ne null }">
-                        		ID 검색 : <input type="text" id="searchId" name="searchId" value="${searchP.pId }"> &nbsp; <input type="submit" id="searchButton" name="searchButton" value="검색">
+                        	<c:when test="${player1 ne null }">
+                        		ID 검색 : <input type="text" id="searchId" name="searchId" value="${player1.getPId() }"> &nbsp; <input type="submit" id="searchButton" name="searchButton" value="검색">
                         	</c:when>
                         	<c:otherwise>
                         		ID 검색 : <input type="text" id="searchId" name="searchId"> &nbsp; <input type="submit" id="searchButton" name="searchButton" value="검색">
@@ -186,14 +186,15 @@ function updateSubmit(){
                         </form>
                         <form id="updateForm" action="/admin/playerupdate" method="post">
 	                        <h4>회원 삭제, 수정</h4>
+	                        searchP.pId : ${player1.getPId() } <br>
 	                        <c:choose>
-	                        <c:when test="${searchP ne null }">
-	                        <input type="hidden" id="updateIdx" name="updateIdx" value="${searchP.pidx }">
+	                        <c:when test="${player1 ne null }">
+	                        <input type="hidden" id="updateIdx" name="updateIdx" value="${player1.getPIdx() }">
 	                        <p>
-	                        	ID : <input type="text" id="updateId" name="updateId" value="${searchP.pId }"> 
-	                         	PW : <input type="text" id="updatePw" name="updatePw" value="${searchP.pPw }">
-	                        	Nick : <input type="text" id="updateNick" name="updateNick" value="${searchP.pNick }">
-	                        	Status : <input type="text" id="updateStatus" name="updateStatus"value="${searchP.pStatus }">
+	                        	ID : <input type="text" id="updateId" name="updateId" value="${player1.getPId() }"> <br>
+	                         	PW : <input type="text" id="updatePw" name="updatePw" value="${player1.getPPw() }"> <br>
+	                        	Nick : <input type="text" id="updateNick" name="updateNick" value="${player1.getPNick() }"> <br>
+	                        	Status : <input type="text" id="updateStatus" name="updateStatus"value="${player1.getPStatus() }"> 
 	                        	<input type="submit" id="updateButton" name="updateButton" value="수정" onsubmit="return updateSubmit()">
 	                        </p>
 	                        </c:when>
