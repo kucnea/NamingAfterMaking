@@ -73,10 +73,10 @@ function searchSubmit(){
 }
 function updateSubmit(){
 	
-	var id = document.getElementById("searchId").value;
-	var pw = document.getElementById("searchPw").value;
-	var nick = document.getElementById("searchNick").value;
-	var status = document.getElementById("searchStatus").value;
+	var id = document.getElementById("updateId").value;
+	var pw = document.getElementById("updatePw").value;
+	var nick = document.getElementById("updateNick").value;
+	var status = document.getElementById("updateStatus").value;
 	
 	if(id.length = 0) {
 		alert("id를 입력하세요");
@@ -91,8 +91,7 @@ function updateSubmit(){
 		alert("status를 입력하세요");
 		return false;
 	}else{
-		/* document.getElementById("searchForm").submit; */
-		return true;
+		return window.confirm("정말 수정하시겠습니까?");
 	}
 	
 }
@@ -184,27 +183,26 @@ function updateSubmit(){
                         	</c:otherwise>
                         	</c:choose>
                         </form>
-                        <form id="updateForm" action="/admin/playerupdate" method="post">
+                        <form id="updateForm" action="/admin/playerupdate" method="post" onsubmit="return updateSubmit()">
 	                        <h4>회원 삭제, 수정</h4>
-	                        searchP.pId : ${player1.getPId() } <br>
 	                        <c:choose>
 	                        <c:when test="${player1 ne null }">
-	                        <input type="hidden" id="updateIdx" name="updateIdx" value="${player1.getPIdx() }">
+	                        <input type="hidden" id="pIdx" name="pIdx" value="${player1.getPIdx() }">
 	                        <p>
-	                        	ID : <input type="text" id="updateId" name="updateId" value="${player1.getPId() }"> <br>
-	                         	PW : <input type="text" id="updatePw" name="updatePw" value="${player1.getPPw() }"> <br>
-	                        	Nick : <input type="text" id="updateNick" name="updateNick" value="${player1.getPNick() }"> <br>
-	                        	Status : <input type="text" id="updateStatus" name="updateStatus"value="${player1.getPStatus() }"> 
-	                        	<input type="submit" id="updateButton" name="updateButton" value="수정" onsubmit="return updateSubmit()">
+	                        	<label for="pId">ID : </label><input type="text" id="pId" name="pId" value="${player1.getPId() }"> <br>
+	                         	<label for="pPw">PW : </label><input type="text" id="pPw" name="pPw" value="${player1.getPPw() }"> <br>
+	                        	<label for="pNick">NICK : </label><input type="text" id="pNick" name="pNick" value="${player1.getPNick() }"> <br>
+	                        	<label for="pStatus">Status : </label><input type="text" id="pStatus" name="pStatus"value="${player1.getPStatus() }"> 
+	                        	<input type="submit" id="updateButton" name="updateButton" value="수정">
 	                        </p>
 	                        </c:when>
 	                        <c:otherwise>
 	                        <p>
-	                        	ID : <input type="text" id="updateId" name="searchId"> 
-	                        	PW : <input type="text" id="updatePw" name="searchPw">
-	                        	Nick : <input type="text" id="updateNick" name="searchNick">
-	                        	Status : <input type="text" id="searchStatus" name="searchStatus">
-	                        	<input type="submit" id="updateButton" name="updateButton" value="수정" onsubmit="return updateSubmit()">
+	                        	<label for="pId">ID : </label><input type="text" id="pId" name="pId"> <br>
+	                         	<label for="pPw">PW : </label><input type="text" id="pPw" name="pPw"> <br>
+	                        	<label for="pNick">NICK : </label><input type="text" id="pNick" name="pNick"> <br>
+	                        	<label for="pStatus">Status : </label><input type="text" id="pStatus" name="pStatus"> 
+	                        	<input type="submit" id="updateButton" name="updateButton" value="수정">
 	                        </p>
 	                        </c:otherwise>
 	                        </c:choose>

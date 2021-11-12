@@ -188,5 +188,17 @@ public class PlayerService {
 		
 		return playerRepository.findByPId(searchId);
 	}
+
+	public Player updateProfile(Player player) {
+
+		Player update = playerRepository.findOne(player.getPIdx());
+		update.setPId(player.getPId());
+		update.setPPw(player.getPPw());
+		update.setPNick(player.getPNick());
+		update.setPStatus(player.getPStatus());
+		playerRepository.save(update);
+		
+		return update;
+	}
 	
 }

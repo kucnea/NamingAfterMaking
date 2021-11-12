@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,19 +44,17 @@ public class AdminController {
 	}
 	
 	@PostMapping("playerupdate")
-	public String playerUpdaute(Model model) {
+	public String playerUpdaute(
+			@ModelAttribute("player") @Nullable Player player,
+			Model model) {
 		
-		String searchId = (String) model.getAttribute("updateId");
-		String searchPw = (String) model.getAttribute("updatePw");
-		String searchNick = (String) model.getAttribute("updateNick");
-		String searchStatus = (String) model.getAttribute("updateStatus");
-		int searchIdx = (int) model.getAttribute("updateIdx");
-		Player player = null;
-		if(model.getAttribute("updateIdx") == null) {
-//			player = playerService.searchPId(searchId);
+		if(player != null) {
+			System.out.println("playerUpdate stage : "+player.getPId());
+			Player updatePlayer = playerService.updateProfile(player);
+			model.addAttribute("player1", updatePlayer);
 		}
 		
-		return "";
+		return "admin.adminPage";
 	}
 	
 }
