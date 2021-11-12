@@ -34,7 +34,7 @@
 	<script type="text/javascript">
 	function validId(){
 		if(document.getElementById("pId").value.length > 0){
-			location.href="/player/validId?pId="+document.getElementById("pId").value+"&pNick="+document.getElementById("pNick").value+"&result2="+document.getElementById("result2").value;	
+			location.href="/player/validid?pId="+document.getElementById("pId").value+"&pNick="+document.getElementById("pNick").value+"&result2="+document.getElementById("result2").value;	
 		}else{
 			alert("입력된 아이디가 없습니다.");
 		}
@@ -43,7 +43,7 @@
 	
 	function validPNick(){
 		if(document.getElementById("pNick").value.length > 0){
-			location.href="/player/validPNick?pId="+document.getElementById("pId").value+"&pNick="+document.getElementById("pNick").value+"&result1="+document.getElementById("result1").value;	
+			location.href="/player/validpnick?pId="+document.getElementById("pId").value+"&pNick="+document.getElementById("pNick").value+"&result1="+document.getElementById("result1").value;	
 		}else{
 			alert("입력된 용사의 이름이 없습니다.");
 		}	

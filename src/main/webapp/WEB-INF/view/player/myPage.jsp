@@ -124,7 +124,12 @@
                                     <label>다른 분들과 이야기를 나눠보시는 건 어떨까요? 가끔은 환기도 중요하잖아요!</label>
                                     <button onclick="location.href='/free/board'" class="btn btn-md btn-black">자유게시판으로!</button>
                                 </div>
+                                <div class="form-field-wrapper">
+                                <label>용사와의 계약 내용을 수정해보고 싶은가요?</label><br>
+                                <button onclick="location.href='/player/updatepage'" class="btn btn-md btn-black">정보수정</button>
+                                </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>

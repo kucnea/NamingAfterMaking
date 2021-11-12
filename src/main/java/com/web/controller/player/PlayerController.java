@@ -116,7 +116,7 @@ public class PlayerController {
 		return "player.login";
 	}
 	
-	@RequestMapping("validId")
+	@RequestMapping("validid")
 	public String validId(
 			@RequestParam("pId") @Nullable String pId,
 			@RequestParam("pNick") @Nullable String pNick,
@@ -147,7 +147,7 @@ public class PlayerController {
 		return "player.join";
 	}
 	
-	@RequestMapping("validPNick")
+	@RequestMapping("validpnick")
 	public String validPNick(
 			@RequestParam("pId") @Nullable String pId,
 			@RequestParam("pNick") @Nullable String pNick,
@@ -179,4 +179,17 @@ public class PlayerController {
 		
 		return"player.join";
 	}
+	
+	
+	@RequestMapping("updatepage")
+	public String updatePage(Model model) {
+		
+		return "player.updatePage";
+	}
+	
+	
+	
+	
+	
+	
 }
