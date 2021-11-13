@@ -143,7 +143,6 @@ public class PlayerController {
 		
 		
 		
-//		return "redirect:join";
 		return "player.join";
 	}
 	
@@ -187,6 +186,91 @@ public class PlayerController {
 		return "player.updatePage";
 	}
 	
+	
+	@RequestMapping("validupdateid")
+	public String validUpdateId(
+			@RequestParam("pId") @Nullable String pId,
+			@RequestParam("pNick") @Nullable String pNick,
+			@RequestParam("result2") @Nullable String result2,
+			HttpServletRequest request,
+			Model model) {
+		
+		HttpSession session = request.getSession();
+		Player player = (Player) session.getAttribute("player");
+		
+		System.out.println("valid update stage");
+		if(pId.equals(player.getPId())) {
+			
+			model.addAttribute("result1",4);
+			
+		}else {
+			
+			pId = playerService.validId(pId);
+			if(pId.startsWith("@")) {
+				pId = pId.substring(1,pId.length());
+				model.addAttribute("result1", 1);	// 중복되진 않으나, 규약에 맞지 않아 추천 Id 제공
+			}else if(pId.startsWith("#")) {
+				pId = pId.substring(1,pId.length());
+				model.addAttribute("result1", 2);	// 중복이거나, 규약에 맞지 않아 추천 Id 제공
+			}else if(pId.startsWith("$")) {
+				pId = "";
+				model.addAttribute("result1", 3);	// 추천 아이디 알고리즘의 100가지 이상의 시도가 있었으나 사용중으로 추천 Id 제공불가
+			}else {
+				model.addAttribute("result1",4);		// 사용가능
+			}
+			
+		}
+		
+		model.addAttribute("pId1",pId);
+		model.addAttribute("pNick1",pNick);
+		model.addAttribute("result2",result2);
+		
+		return "player.join";
+	}
+	
+	
+	@RequestMapping("validupdatepnick")
+	public String validUpdatePNick(
+			@RequestParam("pId") @Nullable String pId,
+			@RequestParam("pNick") @Nullable String pNick,
+			@RequestParam("result1") @Nullable String result1,
+			HttpServletRequest request,
+			Model model) {
+		
+		HttpSession session = request.getSession();
+		Player player = (Player) session.getAttribute("player");
+		
+		pNick = playerService.validPNick(pNick);
+		
+		System.out.println("valid update pNick stage");
+		
+		if(pNick.equals(player.getPNick())) {
+			
+			model.addAttribute("result2", 4);
+			
+		}else {
+			
+			if(pNick.startsWith("@")) {
+				pNick = pNick.substring(1,pNick.length());
+				model.addAttribute("result2", 1);		// 중복되진 않으나, 규약에 맞지 않아 추천 Id 제공
+			}else if(pNick.startsWith("#")) {
+				pNick = pNick.substring(1,pNick.length());
+				model.addAttribute("result2", 2);		// 중복이거나, 규약에 맞지 않아 추천 Id 제공
+			}else if(pNick.startsWith("$")) {
+				pNick = "";
+				model.addAttribute("result2", 3);		// 추천 아이디 알고리즘의 100가지 이상의 시도가 있었으나 사용중으로 추천 Id 제공불가
+			}else {
+				model.addAttribute("result2", 4);			// 사용가능
+			}
+			
+		}
+		
+		model.addAttribute("pId1",pId);
+		model.addAttribute("pNick1",pNick);
+		model.addAttribute("result1",result1);
+		
+		return"player.join";
+	}
 	
 	
 	
