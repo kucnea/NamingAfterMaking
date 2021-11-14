@@ -25,7 +25,7 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter implemen
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(18000);
 		
-		Player player = (Player) session.getAttribute(login);
+		Player player = (Player) session.getAttribute("player");
 		if(player==null) response.sendRedirect("/player/login");
 		
 		session.setAttribute("player", player);

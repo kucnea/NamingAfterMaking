@@ -285,7 +285,9 @@ public class PlayerController {
 		
 		System.out.println("update Player stage : "+player.toString());
 		
-		playerService.updateProfile(player);
+		player = playerService.updateProfile(player);
+		
+		model.addAttribute("player",player);
 		
 		return "player.myPage";
 	}

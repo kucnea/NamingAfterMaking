@@ -80,6 +80,13 @@
 			<mvc:mapping path="/gong/gongwrite"/>
 			<bean id="authorizationInterceptor" class="com.web.interceptor.AuthorizationInterceptor"/>
 		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/player/updateplayer"/>
+			<mvc:mapping path="/admin/playerupdate"/>
+			<bean id="updatePlayerInterceptor" class="com.web.interceptor.UpdatePlayerInterceptor"/>
+		</mvc:interceptor>
+		
 	</mvc:interceptors>
 	
 	
