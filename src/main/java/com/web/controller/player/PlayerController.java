@@ -225,7 +225,7 @@ public class PlayerController {
 		model.addAttribute("pNick1",pNick);
 		model.addAttribute("result2",result2);
 		
-		return "player.join";
+		return "player.updatePage";
 	}
 	
 	
@@ -240,15 +240,17 @@ public class PlayerController {
 		HttpSession session = request.getSession();
 		Player player = (Player) session.getAttribute("player");
 		
-		pNick = playerService.validPNick(pNick);
-		
 		System.out.println("valid update pNick stage");
 		
+		System.out.println("pNick : "+pNick);
+		System.out.println("player.getPNick() : "+player.getPNick());
 		if(pNick.equals(player.getPNick())) {
 			
 			model.addAttribute("result2", 4);
 			
 		}else {
+			
+			pNick = playerService.validPNick(pNick);
 			
 			if(pNick.startsWith("@")) {
 				pNick = pNick.substring(1,pNick.length());
@@ -265,12 +267,29 @@ public class PlayerController {
 			
 		}
 		
+		System.out.println("pNick last: "+pNick);
+		System.out.println("player.getPNick() : "+player.getPNick());
+		
 		model.addAttribute("pId1",pId);
 		model.addAttribute("pNick1",pNick);
 		model.addAttribute("result1",result1);
 		
-		return"player.join";
+		return "player.updatePage";
 	}
+	
+	
+	@PostMapping("updateplayer")
+	public String updatePlayer(
+			@ModelAttribute("player") Player player,
+			Model model) {
+		
+		System.out.println("update Player stage : "+player.toString());
+		
+		playerService.updateProfile(player);
+		
+		return "player.myPage";
+	}
+	
 	
 	
 	

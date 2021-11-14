@@ -142,7 +142,8 @@
                     <div class="col-md-6">
                         <div class="border-box">
                             <h4> 용사와 계약을 수정하고 싶으신가요? </h4>
-                            <form action="/player/create" method="post" id="joinForm">
+                            <form action="/player/updateplayer" method="post" id="joinForm">
+                                <input type="hidden" id="pIdx" name="pIdx" value="${player.getPIdx() }">
                                 <div class="form-field-wrapper">
                                     <label for="pId">당신의 용사의 ID를 정해주세요. 
 	                                    <p style="font-size:0.8em;";>
@@ -188,10 +189,10 @@
                                     </label>
                                     <c:choose>
                                     <c:when test="${pNick1 eq null }">
-                                    <input type="text" required="" placeholder="Enter Hero's Name" name="pNick" id="pNick" class="input-sm form-full" aria-required="true" value="${pNick1 }">
+                                    <input type="text" required="" placeholder="Enter Hero's Name" name="pNick" id="pNick" class="input-sm form-full" aria-required="true" value="${player.getPNick() }">
                                     </c:when>
                                     <c:otherwise>
-                                    <input type="text" required="" placeholder="Enter Hero's Name" name="pNick" id="pNick" class="input-sm form-full" aria-required="true" value="${player.getPNick() }">
+                                    <input type="text" required="" placeholder="Enter Hero's Name" name="pNick" id="pNick" class="input-sm form-full" aria-required="true" value="${pNick1 }">
                                     </c:otherwise>
                                     </c:choose>
                                     <input type="hidden" id="dCPNick" value="${pNick1 }">
