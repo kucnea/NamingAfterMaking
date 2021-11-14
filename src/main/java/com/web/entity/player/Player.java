@@ -2,7 +2,6 @@ package com.web.entity.player;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.web.entity.free.Free;
 import com.web.entity.gong.Gong;
 import com.web.entity.location.Location;
 
@@ -81,6 +81,9 @@ public class Player {
 //				mappedBy = "player")
 	@OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
 	private Set<Gong> gong;
+	
+	@OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
+	private Set<Free> free;
 	
 	@ManyToOne
 	@JoinColumn(name="locIdx", referencedColumnName = "locIdx")

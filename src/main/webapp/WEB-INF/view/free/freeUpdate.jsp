@@ -27,12 +27,26 @@
     <link href="/css/plugin/sidebar-menu.css" rel="stylesheet" type="text/css" />
     <link href="/css/plugin/animate.css" rel="stylesheet" type="text/css" />
     <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+
 </head>
 <tiles:insertAttribute name="title"/>
-	<script type="text/javascript">
-		function changeSize(){
+<script type="text/javascript">
+	
+	function submitValid(){
+		if(document.getElementById("freeTitle").value.length > 70){
+			alert("제목은 70자 이하로 작성가능합니다.")
+		} else if(document.getElementById("freeTitle").value.length < 1){
+			alert("제목을 입력해주세요.")
+		} else{
+			if(document.getElementById("freeContent").value.length < 1){
+				alert("내용을 입력해주세요.")
+			}else{
+				return true;
+			}
 		}
-	</script>
+	}
+	
+</script>
 
 <body>
 
@@ -54,7 +68,7 @@
     </div>
     <!-- End Search Overlay Menu -->
 
-    <!-- Site Wraper -->
+        <!-- Site Wraper -->
     <div class="wrapper">
 
         <!-- Header -->
@@ -68,9 +82,6 @@
                 <!-- End Rightside Menu -->
 
                 <!-- Mobile Navbar Icon -->
-                <!-- End Mobile Navbar Icon -->
-
-                <!-- Navbar Navigation -->
                                 
                 <!-- menu -->
                 <!-- menu -->
@@ -97,109 +108,63 @@
 					<p> 여러 용사님들과 소통해보세요! </p>
 					<div class="spacer-15"></div>
                     <div class="page-breadcrumb">
-                        <a href="/index">Home</a>/<span>자유게시판</span>
+                        <a href="/index">Home</a>/<a href="/free/freelist">공략게시판</a>/<span>${free.freeTitle }</span>
                     </div>
                 </div>
             </div>
         </section>
         <!-- End Intro Section -->
-		
 
-        <!-- Options Section -->
+        <!-- Contact Section -->
         <section class="ptb-60 ptb-sm-30">
-			<div class="container text-left">
-                <div class="mb-30">	
-                	<a id="menu-sidebar-list-icon" class="btn btn-md btn-black float-right float-none-xs" href="/free/freewrite"><i class="fa fa-filter"></i><span> 글쓰기 </span></a>
-                	<form id="frm" action="/free/freelist" method="get">
-                	<select id="sizeSelect" name="size" class="btn btn-md btn-black float-right float-none-xs" onchange="submit()">
-                		<option value="${size1 }">현재 ${size1 }개씩</option>
-                		<option value="10">10개씩</option>
-                		<option value="20">20개씩</option>
-                		<option value="30">30개씩</option>
-                	</select>
-                	<a style="float:right">페이지로</a>
-                	<input type="number" name="page" min="1" max="${maxPage }" style="float:right" value="${page1 }">
-                	</form>
-					<h2> 자유게시글 </h2>	
-					<hr>
-				</div>	
-				<c:choose>
-				<c:when test="${msg eq '조회된 결과가 없습니다.' }">
-					<div class="col-md-8 col-sm-8 col-xs-12">
-						<a href="artist-profile.html"><h6>${msg }</h6></a>
-						<p> 다른 유저분들과 소통해보시는건 어떤가요? </p>								
-					</div>
-				</c:when>
-				<c:otherwise>
-				<c:forEach var="vo" items="${list }">
-				<div class="row mtb-30">
-					<div class="item-box col-md-4 col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2 mb-sm-30">
-						<a href="/free/freedetail?freeIdx=${vo.freeIdx}&page=${page1 }&size="${size1 }">
-						<c:choose>
-							<c:when test="${vo.getFreeImg().size() == 0 }">
-							<img alt="Thumnail" src="/img/portfolio/1.jpg" class="item-container">
-							</c:when>
-							<c:otherwise>
-							<img alt="Thumnail" src="/upload/${vo.freeImg.iterator().next().getFreeFileUseName() }" class="item-container">
-							</c:otherwise>
-						</c:choose>
-						</a>                           
-					</div>
-					<div class="col-md-8 col-sm-8 col-xs-12">
-						<a href="/free/freedetail?freeIdx=${vo.freeIdx}&page=${page1 }&size="${size1 }"><h6>${vo.freeTitle }</h6></a>
-						<p class="color">${vo.player.getPNick() }</p>
-						<p>조회수 : ${vo.freeCnt } 작성시간 : ${vo.freeWTime }</p>
-						<p><a href="/free/freedetail?freeIdx=${vo.freeIdx}&page=${page1 }&size="${size1 }">
-						<c:choose>
-						<c:when test="${vo.freeContent.length() >= 60 }">
-						${vo.freeContent.substring(0,60) }... <font size="0.7em"; color="orange";> 댓글 [${vo.getFreeComment().size() }]</font>
-						</c:when>
-						<c:otherwise>
-						${vo.freeContent } <font size="0.7em"; color="orange";> 댓글 [${vo.getFreeComment().size() }]</font>
-						</c:otherwise>
-						</c:choose>
-						</a></p>								
-					</div>
-				</div>	
-				<hr>
-				</c:forEach>
-				</c:otherwise>
-				</c:choose>
-				</div>
-			</div>
-				 <div style="text-align: center;">
-					<a href="?page=1&size=${size1 }">&lt;&lt;</a> 
-					<a href="?page=${page1-1 }&size=${size1 }">&lt;</a>  
-					
-					<c:forEach var="i" begin="1" end="${maxPage }">
-						<a href="?page=${i}&size=${size1 }">${i}</a>
-					</c:forEach>
-					
-					<a href="?page=${page1+1 }&size=${size1 }">&gt;</a> 
-					<a href="?page=${maxPage }&size=${size1 }">&gt;&gt;</a>
-				</div>
-				<form action="/free/freelist" method="get">
-				<input type="hidden" name="page" value="${page1 }">
-				<input type="hidden" name="size" value="${size1 }">
-				<table>
-					<tr>
-						<th>
-						<select name="searchObject">
-							<option value="subject">제목</option>
-							<option value="content">내용</option>
-							<option value="subjectContent">제목+내용</option>
-							<option value="writer">작성자</option>
-						</select>
-						</th>
-						<th>
-						<input type="text" name="searchTarget" placeholder="검색어를 입력하세요" required><input type="submit" value="검색">
-						</th>
-					</tr>
-				</table>
-				</form>
+            <div class="container">
+                <div class="row">
+				<div class="col-md-6 pb-60">
+                        <!-- Contact FORM -->
+                        <form action="/free/freeupdatesubmit" method="post" enctype="multipart/form-data">
+							<input type="hidden" name="freeIdx" value=${free.freeIdx }>
+							<input type="hidden" name="freeCnt" value=${free.freeCnt }>
+                            <!-- IF MAIL SENT SUCCESSFULLY -->
+                            <h6 class="successContent">
+                                <i class="fa fa-check left" style="color: #5cb45d;"></i>Your message has been sent successfully.
+                            </h6>
+                            <!-- END IF MAIL SENT SUCCESSFULLY -->
+
+                            <!-- MAIL SENDING UNSUCCESSFULL -->
+                            <h6 class="errorContent">
+                                <i class="fa fa-exclamation-circle left" style="color: #e1534f;"></i>There was a problem validating the form please check!
+                            </h6>
+                            <!-- END MAIL SENDING UNSUCCESSFULL -->
+
+                            <div class="form-field-wrapper">
+                                <input class="input-sm form-full" id="freeTitle" type="text" name="freeTitle" value = "${free.freeitle }" required>
+                            </div>
+                            
+                            <!-- <div class="form-field-wrapper"> -->
+	                            <h6>작성자 : ${player.PId }</h6>	
+                                <!-- 쪽지 기능(버튼) 추가 예정 -->
+                            <!-- </div> -->
+							<div class="form-field-wrapper">
+							<c:if test="${free.getFreeImg().size() ne 0 }">
+								<img alt="MainPic" src="/upload/${free.freeImg.iterator().next().getFileUseName() }">
+							</c:if>
+							</div>
+                            <div class="form-field-wrapper">
+                                <textarea class="form-full" id="freeContent" rows="7" name="freeContent" required>${free.freeContent }</textarea>
+                            </div>
+							
+							<!-- 이미지 첨부 파일 설정 위치 -->
+							<input type="file" name="file"/> <font size="0.8em" color="orange"> - 이미지 파일의 최대용랑은 15MB입니다. </font>
+							
+                            <button class="btn btn-md btn-black" type="submit" id="form-submit" name="submit">수정하기</button>
+                            <button class="btn btn-md btn-black" type="button" onclick="location.href='freelist'">취소하기</button>
+                        </form>
+                        <!-- END Contact FORM -->
+                    </div>
+                </div>
+            </div>
         </section>
-		
-        <!-- End Options Section -->
+        <!-- Contact Section -->
 
         <!-- End CONTENT ------------------------------------------------------------------------------>
 
@@ -234,16 +199,19 @@
     <script src="/js/plugin/jquery.viewportchecker.js" type="text/javascript"></script>
     <script src="/js/plugin/jquery.stellar.min.js" type="text/javascript"></script>
     <script src="/js/plugin/wow.min.js" type="text/javascript"></script>
-    <script src="/js/plugin/jquery.colorbox-min.js" type="text/javascript"></script>	
+    <script src="/js/plugin/jquery.colorbox-min.js" type="text/javascript"></script>
     <script src="/js/plugin/owl.carousel.min.js" type="text/javascript"></script>
     <script src="/js/plugin/isotope.pkgd.min.js" type="text/javascript"></script>
     <script src="/js/plugin/masonry.pkgd.min.js" type="text/javascript"></script>
     <script src="/js/plugin/imagesloaded.pkgd.min.js" type="text/javascript"></script>
     <script src="/js/plugin/jquery.fs.tipper.min.js" type="text/javascript"></script>
     <script src="/js/plugin/mediaelement-and-player.min.js"></script>
+    <script src="/js/plugin/jquery.validate.min.js" type="text/javascript"></script>
     <script src="/js/plugin/sidebar-menu.js" type="text/javascript"></script>
     <script src="/js/theme.js" type="text/javascript"></script>
     <script src="/js/navigation.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+    <script src="/js/contact-form.js" type="text/javascript"></script>
 </body>
 </html>
-

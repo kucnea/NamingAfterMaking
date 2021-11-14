@@ -78,6 +78,7 @@
 			<mvc:mapping path="/player/mypage"/>
 			<mvc:mapping path="/player/joincomplete"/>
 			<mvc:mapping path="/gong/gongwrite"/>
+			<mvc:mapping path="/free/freewrite"/>
 			<bean id="authorizationInterceptor" class="com.web.interceptor.AuthorizationInterceptor"/>
 		</mvc:interceptor>
 		
